@@ -2,6 +2,7 @@
 page_type: sample
 languages:
 - csharp
+- .Net 5.0
 products:
 - azure
 - azure-communication-services
@@ -13,8 +14,8 @@ products:
 # ACS Solutions - Authentication Server Sample
 
 <!--[![CI build status](https://github.com/Azure-Samples/communication-services-authentication-hero-nodejs/workflows/CI/badge.svg?branch=main)](https://github.com/Azure-Samples/communication-services-authentication-hero-nodejs/actions/workflows/ci.yml?query=branch%3Amain)-->
-[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/%3C%2F%3E-Node.js-%230074c1.svg)](https://nodejs.org/en/)
+[![C#](https://img.shields.io/badge/%3C%2F%3E-C%23-blue)](https://dotnet.microsoft.com/en-us/languages/csharp)
+[![.Net 5.0](https://img.shields.io/badge/%3C%2F%3E-.Net 5.0-%230074c1.svg)](https://dotnet.microsoft.com/en-us/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
@@ -54,6 +55,8 @@ Before contributing to this sample, please read our [contribution guidelines](./
 ## Features
 
 This ACS Solutions - Authentication server sample provides the following features:
+
+* **/deleteUser** - Delete the identity mapping information from the user's roaming profile including the ACS identity.
 
 * **/getToken** - Get / refresh a token for an ACS user.
 
