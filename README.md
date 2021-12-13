@@ -73,6 +73,9 @@ To run the demo, follow these steps:
 
 ## Resources
 
-- Link to supporting information
-- Link to similar sample
-- ...
+- https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow
+- https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof
+
+
+- The following was used to help construct the server portion, for the client portion an auto generated single page app via azure portal was used.
+- https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
