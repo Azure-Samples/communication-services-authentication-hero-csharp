@@ -68,7 +68,7 @@ To run the demo, follow these steps:
 1. after starting both applications, proceed to localhost:3000, and sign in. Add break point and intercept token.
     - add the breakpoint in authPopup.js, function "seeProfile" and the line that calls "callMSGraph".
     - now click the "See Profile" button, and intercept the token from the accessToken field in the response. 
-2. User postman to test the newly generated token with your API
+2. Use postman to test the newly generated token with your API
     - get request to https://localhost:44351/api/MiddleApi
     - set the authorization to Bearer Token and enter the token you intercepted previously.
     - it should return your email address by calling graph
