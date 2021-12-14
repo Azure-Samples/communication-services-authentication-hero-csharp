@@ -103,7 +103,7 @@ This ACS Solutions - Authentication server sample provides the following feature
 - now select add a client application and add the auth client app id.
 - now under manifest, select known applications, and add the app id for the client.
 
-### Downloading the cleint (SPA)
+### Downloading the client (SPA)
 - open the client app registration from the previous step
 - select quickstart
 - select single-page application -> JavaScript (auth code flow)
@@ -135,7 +135,7 @@ To run the demo, follow these steps:
     - add the breakpoint in authPopup.js, function "seeProfile" and the line that calls "callMSGraph".
     - now click the "See Profile" button, and intercept the token from the accessToken field in the response. 
 2. Use postman to test the newly generated token with your API
-    - get request to https://localhost:44351/api/TokenApi
+    - get request to https://localhost:44351/api/token
     - set the authorization to Bearer Token and enter the token you intercepted previously.
     - it should return your email address by calling graph
 3. Should successfully complete a graph call.

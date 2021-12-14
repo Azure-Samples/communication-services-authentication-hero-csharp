@@ -18,7 +18,7 @@ namespace TokenApi.Controllers
 
         private readonly GraphServiceClient _graphServiceClient;
 
-        // GET: api/values
+        // GET: api/token
         [HttpGet]
         public string Get()
         {
