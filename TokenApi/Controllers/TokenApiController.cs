@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Graph;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.Resource;
-namespace TokenApi.Controllers
+namespace AcsTokenApi.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]

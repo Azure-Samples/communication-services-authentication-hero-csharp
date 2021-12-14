@@ -2,7 +2,7 @@
 page_type: sample
 languages:
 - csharp
-- .Net 3.1
+- .Net 5
 products:
 - azure
 - azure-communication-services
@@ -15,7 +15,7 @@ products:
 
 <!--[![CI build status](https://github.com/Azure-Samples/communication-services-authentication-hero-nodejs/workflows/CI/badge.svg?branch=main)](https://github.com/Azure-Samples/communication-services-authentication-hero-nodejs/actions/workflows/ci.yml?query=branch%3Amain)-->
 [![C#](https://img.shields.io/badge/%3C%2F%3E-C%23-blue)](https://dotnet.microsoft.com/en-us/languages/csharp)
-[![.Net 3.1](https://img.shields.io/badge/%3C%2F%3E-.Net%203.1-blue.svg)](https://dotnet.microsoft.com/en-us/)
+[![.Net 5.0](https://img.shields.io/badge/%3C%2F%3E-.Net 5.0-%230074c1.svg)](https://dotnet.microsoft.com/en-us/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
@@ -122,7 +122,7 @@ This ACS Solutions - Authentication server sample provides the following feature
 
 ### Locally deploying the sample app
 
-- open AuthMiddleApi, run dotnet build. then run dotnet run
+- open TokenApi, run dotnet build. then run dotnet run
 - open yourClientApplication, run npm install, then npm start.
 
 ## Demo
