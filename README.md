@@ -84,6 +84,7 @@ This ACS Solutions - Authentication server sample provides the following feature
 - Name it AuthServer and select Default Directory Only - single tenant
 - For redirect uri select web and enter https://localhost:44351/
 - select certificates and secrets, and create a new client secret (save this for later)
+- under API permissions select grant admin access for the graph api call
 - go to expose an API and select set an application id uri
 - now select add a scope
 - Scope name = access_as_user
@@ -99,16 +100,13 @@ This ACS Solutions - Authentication server sample provides the following feature
 - For redirect uri select single page application and enter http://localhost:3000/
 - under API permissions remove the existing graph API call.
 - select add permission, my API, and select the server and select access_as_user
-- select grant admin access for default directory
-- now select add a client application and add the auth client app id.
-- now under manifest, select known applications, and add the app id for the client.
+- now go back to the server registration, under manifest, select known applications, and add the app id for the client.
 
 ### Downloading the client (SPA)
 - open the client app registration from the previous step
 - select quickstart
 - select single-page application -> JavaScript (auth code flow)
 - select "Make these changes for me" and then download the code sample.
-
 
 ### Server config
 - Open TokenApi/appsettings.json.template and follow the comments on configuration. Afterwards, rename it to appsettings.json.
