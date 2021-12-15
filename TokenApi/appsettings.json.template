@@ -3,7 +3,6 @@
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "<yourserverclientidstring>",
     "ClientSecret": "<yourserversecretstring>",
-    "CallbackPath": "",
 
     /*
       You need specify the TenantId only if you want to accept access tokens from a single tenant (line of business app)
