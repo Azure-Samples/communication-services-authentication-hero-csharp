@@ -99,8 +99,6 @@ This ACS Solutions - Authentication server sample provides the following feature
 - Name it AuthClient and select Default Directory Only - single tenant
 - For redirect uri select single page application and enter http://localhost:3000/
 - under API permissions remove the existing graph API call.
-- select add permission, my API, and select the server and select access_as_user
-- now go back to the server registration, under manifest, select known applications, and add the app id for the client.
 
 ### Downloading the client (SPA)
 - open the client app registration from the previous step
