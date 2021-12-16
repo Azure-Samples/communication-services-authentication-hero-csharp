@@ -2,7 +2,7 @@
 page_type: sample
 languages:
 - csharp
-- .Net 5.0
+- .Net 5
 products:
 - azure
 - azure-communication-services
@@ -71,19 +71,73 @@ This ACS Solutions - Authentication server sample provides the following feature
 
 ### Prerequisites
 
-- ...
+- Register a client and server application in Azure Active Directory (AAD) * See instructions below
+- Download Quickstart single page application (SPA) * See instructions below
+- Update the client(SPA) and server(TokenApi) applications with information from the app registrations
+
+### Server Registration
+
+- go to https://portal.azure.com/
+- select Azure Active Directory
+- select App Registrations
+- select new registration 
+- Name it AuthServer and select Default Directory Only - single tenant
+- For redirect uri select web and enter https://localhost:44351/
+- select certificates and secrets, and create a new client secret (save this for later)
+- under API permissions select grant admin access for the graph api call
+- go to expose an API and select set an application id uri
+- now select add a scope
+- Scope name = access_as_user
+- select admin and users to who can consent.
+- add info for the descriptions and add the scope
+
+### Client Registraiton
+- go to https://portal.azure.com/
+- select Azure Active Directory
+- select App Registrations
+- select new registration 
+- Name it AuthClient and select Default Directory Only - single tenant
+- For redirect uri select single page application and enter http://localhost:3000/
+- under API permissions remove the existing graph API call.
+- select add permission, my API, and select the server and select access_as_user
+- now go back to the server registration, under manifest, select known applications, and add the app id for the client.
+
+### Downloading the client (SPA)
+- open the client app registration from the previous step
+- select quickstart
+- select single-page application -> JavaScript (auth code flow)
+- select "Make these changes for me" and then download the code sample.
+
+### Server config
+- Open TokenApi/appsettings.json.template and follow the comments on configuration. Afterwards, rename it to appsettings.json.
+
+### Client config
+- under loginRequest, update the scope to be the API we added during the client registration. Example "api://1234-5678-abcd-efgh...../access_as_user"
 
 ### Code Structure
 
 - ...
 
-### Before running the sample for the first time
-
-1. ...
-
 ### Locally deploying the sample app
 
-1. ...
+- open TokenApi, run dotnet build. then run dotnet run
+- open yourClientApplication, run npm install, then npm start.
+
+## Demo
+
+A demo app is included to show how to use the project.
+
+To run the demo, follow these steps:
+
+1. after starting both applications, proceed to localhost:3000, and sign in. Add break point and intercept the token.
+    - add the breakpoint in authPopup.js, function "seeProfile" and the line that calls "callMSGraph".
+    - now click the "See Profile" button, and intercept the token from the accessToken field in the response. 
+2. Use postman to test the newly generated token with your API
+    - get request to https://localhost:44351/api/token
+    - set the authorization to Bearer Token and enter the token you intercepted previously.
+    - it should return your email address by calling graph
+3. Should successfully complete a graph call.
+4. if you look at the web client, you can see the graph call from that side failed. Meaning it has no access to graph, but the middleware does on behalf of the user.
 
 ### Troubleshooting
 
@@ -113,7 +167,8 @@ This ACS Solutions - Authentication server sample provides the following feature
 
 - [Azure Communication Services Documentation](https://docs.microsoft.com/en-us/azure/communication-services/) - Find more about how to add voice, video, chat, and telephony on our official documentation.
 - [Azure Communication Services Hero Samples](https://docs.microsoft.com/en-us/azure/communication-services/samples/overview) - Find more ACS samples and examples on our samples overview page.
-
+- [On-Behalf-Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) - Find more about the OBO workflow
+- [Creating a protected API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) - Detailed example of creating a protected API
 ## Known Issues
 
 * ...

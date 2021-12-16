@@ -1,0 +1,39 @@
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "<yourserverclientidstring>",
+    "ClientSecret": "<yourserversecretstring>",
+
+    /*
+      You need specify the TenantId only if you want to accept access tokens from a single tenant (line of business app)
+      Otherwise you can leave them set to common
+    */
+    "Domain": "<yourtenantdomainstring>",
+    "TenantId": "<yourtenantidstring>"
+
+  },
+  "DownstreamAPI": {
+    /*
+       'Scopes' contains space separated scopes of the web API you want to call. This can be:
+        - a scope for a V2 application (for instance api://-------/access_as_user)
+        - a scope corresponding to a V1 application (for instance <App ID URI>/.default, where  <App ID URI> is the
+          App ID URI of a legacy v1 web application
+        Applications are registered in the https://portal.azure.com portal.
+      */
+    "BaseUrl": "https://graph.microsoft.com/v1.0",
+    "Scopes": "user.read"
+  },
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "https://localhost:44351"
+      }
+    }
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
