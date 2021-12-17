@@ -52,16 +52,14 @@ namespace AcsTokenApi
             else
             {
                 app.UseHsts();
+                app.UseHttpsRedirection();
             }
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
-            app.UseHttpsRedirection();
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
