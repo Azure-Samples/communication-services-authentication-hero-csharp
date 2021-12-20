@@ -3,7 +3,7 @@ name: Request a feature
 about: Suggest a feature or share an idea.
 title: Add [what] to/in [where]
 labels: "enhancement"
-assignees: ""
+assignees: "alcail, clarenceli-msft, ikumarapeli-msft, lei-msft, rvenugopal-msft, vaibhavjain-msft"
 ---
 
 **What feature are you requesting?**

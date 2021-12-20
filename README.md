@@ -102,7 +102,7 @@ This ACS Solutions - Authentication server sample provides the following feature
 - name it AuthClient and select Default Directory Only - single tenant
 - for redirect uri select Web (Choose SPA in case you add a client application)  and enter http://localhost:3000/
 - select add permission, my API, and select the AuthServer and select access_as_user
-- now go to certificates & secrets ,create a secret. This will be used later to generate the AAD token.
+- now go to certificates & secrets, create a secret. This will be used later to generate the AAD token.
 - now go back to the AuthServer app registration, under manifest, select known applications, and add the app registration id for the client.
 
 ### Code Structure
@@ -120,7 +120,7 @@ This ACS Solutions - Authentication server sample provides the following feature
 ```
 https://login.microsoftonline.com/<tenantid>.onmicrosoft.com/oauth2/v2.0/authorize?response_type=code&client_id=<client_appid>&redirect_uri=<put url encoded redirect_uri from client app>&scope=<put url encoded server scope>
 ```
-This will prompt you to perform authentication and consent, and it will return a code in the query string. 
+2. This will prompt you to perform authentication and consent, and it will return a code in the query string. 
 Use that code in the following request to get an access token, remember to put in the code and client secret.
 
 ``` SHELL
@@ -135,9 +135,9 @@ curl -X POST \
   -H 'cache-control: no-cache' \
   -d 'redirect_uri=<url encoded redirect_uri from client app>&client_id=<appid>&grant_type=authorization_code&code=<put code here>&client_secret=<put secret generated in client app registration>&scope=<url encoded server scope>
   ```
-   3. Once you get the access token, make a GET request to `http://localhost:44351/api/token` with the access token as a Authorization Bearer header. Verify that you get an output similar to the below. The values marked as ..removed.. will have actual values in your output.
-
- ``` SHELL
+3. Once you get the access token, make a GET request to `http://localhost:44351/api/token` with the access token as a Authorization Bearer header. Verify you get a successful status code i.e. 200.
+ 
+``` SHELL
 curl --location --request GET 'http://localhost:44351/api/token' \
 
 --header 'Authorization: Bearer <put access token here>
