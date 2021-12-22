@@ -42,10 +42,11 @@ products:
 
 In order to properly implement Azure Communication Services solutions, developers must start by putting in place the correct infrastructure to perform key actions for the communications lifecycle. These actions include authenticating users since the Azure Communication Services are identity-agnostic.
 
-This is an ACS solution server sample to provide a guidance establishing best practices on a simple use case to build trusted backend service that will manage ACS identities by mapping them 1:1 with Azure Active Directory identities (for Teams Interop or native ACS calling/chat) and issue ACS tokens . There are two scenarios:
+This is an ACS solution server sample to provide a guidance establishing best practices on a simple use case to build trusted backend service that will manage ACS identities by mapping them 1:1 with Azure Active Directory identities (for Teams Interop or native ACS calling/chat) and issue ACS tokens.
 
-1. As a developer, you need to enable authentication flow for joining native ACS and Teams Interop calling/chat by mapping ACS Identity to Azure Active Directory identity and using same ACS identity for the user to fetch ACS tokens in every session.
-2. As a developer, you need to enable authentication flow for Custom Teams Endpoint by using Azure Active Directory identity of Teams' user to fetch ACS tokens to join Teams calling/chat.
+There are two scenarios:
+1. As a developer, you need to enable authentication flow for joining native ACS and Teams Interop calling/chat by mapping an ACS Identity to an Azure Active Directory identity and using this same ACS identity for the user to fetch an ACS token in every session.
+2. As a developer, you need to enable authentication flow for Custom Teams Endpoint by using an Azure Active Directory identity of Teams' user to fetch an ACS token to be able to join Teams calling/chat.
 
 > :loudspeaker: An ACS Solutions - Authentication Sample (Nodejs version) can be found [here](https://github.com/Azure-Samples/communication-services-authentication-hero-javascript).
 
@@ -65,7 +66,7 @@ This ACS Solutions - Authentication server sample provides the following feature
 
 * **/exchangeToken** - Exchange an M365 token of a Teams user for an ACS token.
 
-  > :information_source: Teams users are authenticated via the MSAL library against Azure Active Directory in the client application. Authentication tokens are exchanged for Microsoft 365 Teams token via the Communication Services Identity SDK. Developers are encouraged to implement an exchange of tokens in your backend services as exchange requests are signed by credentials for Azure Communication Services. In backend services, you can require any additional authentication. Learn more information [here](https://docs.microsoft.com/en-ca/azure/communication-services/concepts/teams-interop#microsoft-365-teams-identity)
+  > :information_source: Teams users are authenticated via the MSAL library against Azure Active Directory in the client application. Authentication tokens are exchanged for Microsoft 365 Teams token via the Communication Services Identity SDK. Developers are encouraged to implement an exchange of tokens in their backend services as exchange requests are signed by credentials for Azure Communication Services. In backend services, developers can require any additional authentication. Learn more [here](https://docs.microsoft.com/en-ca/azure/communication-services/concepts/teams-interop#microsoft-365-teams-identity)
 
 
 (Add a workflow diagram here...)
@@ -80,30 +81,61 @@ This ACS Solutions - Authentication server sample provides the following feature
 #### Server App Registration
 
 - go to https://portal.azure.com/
-- select Azure Active Directory
-- select App Registrations
-- select new registration 
-- Name it AuthServer and select Default Directory Only - single tenant
-- For redirect uri select web and enter http://localhost:44351/
-- select certificates and secrets, and create a new client secret (save this for later)
-- under API permissions select grant admin access for the graph api call
-- go to expose an API and select set an application id uri
-- now select add a scope
-- Scope name = access_as_user
-- select admin and users to who can consent.
-- add info for the descriptions and add the scope
+- open Azure Active Directory service
+- on the Azure Active Directory page:
+  - navigate to and click on 'App Registrations' menu item
+  - click on 'New registration' 
+  - on the 'Register an application' page:
+    - name your application `AuthServer`
+    - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
+    - redirect the URI to 'Web' platform with `http://localhost:44351/` as link
+    - click on 'Register' and it will open your application page once registration is sucessful
+- on your AuthServer page:
+  - navigate to and click on 'Certificates & Secrets' menu item
+    - on the 'Client secrets' tab, click on 'New client secret' to create a new one
+    - add a description, select an expiration time and click 'Add'
+    - this will be used later on
+  - navigate to and click on 'API permissions' menu item
+    - select 'Grant admin consent' for the Microsoft Graph api call
+  - navigate to and click on 'Expose an API' menu item
+    - click on 'Set' beside 'Application ID URI'
+      - this will automatically set an ID URI for your application
+      - click on 'Save'
+    - now click on 'Add a scope'
+      - your scope should be `access_as_user`
+      - select the 'Admin and users' option for who can consent
+      - fill out the consent display name and description for both admin and user
+      - select the 'Enabled' state
+      - click on 'Add scope'
 
 #### Client App Registration
 **Note** - This client app registration will be used to manually generate the AAD Token required to call AAD protected Web Api as there is no client application in the sample.
 - go to https://portal.azure.com/
-- select Azure Active Directory
-- select App Registrations
-- select new registration 
-- name it AuthClient and select Default Directory Only - single tenant
-- for redirect uri select Web (Choose SPA in case you add a client application)  and enter http://localhost:3000/
-- select add permission, my API, and select the AuthServer and select access_as_user
-- now go to certificates & secrets, create a secret. This will be used later to generate the AAD token.
-- now go back to the AuthServer app registration, under manifest, select known applications, and add the app registration id for the client.
+- open Azure Active Directory service
+- on the Azure Active Directory page:
+  - navigate to and click on 'App Registrations' menu item
+  - click on 'New registration' 
+  - on the 'Register an application' page:
+    - name your application `AuthClient`
+    - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
+    - redirect the URI to 'Web' platform with `http://localhost:3000/` as link  (Choose SPA in case you add a client application)
+    - click on 'Register' and it will open your application page once registration is sucessful
+- on your AuthClient page:
+  - navigate to and click on 'API permissions' menu item
+    - click on 'Add a permission'
+      - navigate and click on 'My APIs' tab
+      - select your 'AuthServer' application
+      - check 'access_as_user' box for permissions
+  - now navigate to and click on 'Certificates & Secrets' menu item
+    - on the 'Client secrets' tab, click on 'New client secret' to create a new one
+    - add a description, select an expiration time and click 'Add'
+    - this will be used later on to generate the AAD token
+- now go back to your 'AuthServer' app
+  - navigate to and click on 'Expose an API'
+    - click on 'Add client applications
+      - past your 'AuthClient' application ID
+      - check the corresponding authorized scope box
+      - click on 'Add application'
 
 ### Code Structure
 
@@ -112,11 +144,11 @@ This ACS Solutions - Authentication server sample provides the following feature
 ### Locally deploying the sample app
 
 - Open TokenApi/appsettings.json.template and follow the comments on configuration. Afterwards, rename it to appsettings.json.
-- open TokenApi, run dotnet build. then run dotnet run
+- open TokenApi, run `dotnet build`, then run `dotnet run`.
 
 ### Locally testing the api
-1. You will need an access token using client app registration to call the api. In order to get the access token, open browser in private mode and visit below link
-**Note:** The full scope name of the server api should be used, e.g."api://1234-5678-abcd-efgh...../access_as_user" for the scope parameter in below request
+1. You will need an access token using client app registration to call the api. In order to get the access token, open your browser in private mode and visit the link below
+**Note:** The full scope name of the server api should be used for the scope parameter in the below request (e.g.: "api://1234-5678-abcd-efgh...../access_as_user")
 ```
 https://login.microsoftonline.com/<tenantid>.onmicrosoft.com/oauth2/v2.0/authorize?response_type=code&client_id=<client_appid>&redirect_uri=<put url encoded redirect_uri from client app>&scope=<put url encoded server scope>
 ```
