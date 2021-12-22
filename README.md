@@ -25,9 +25,10 @@ products:
    2. [Code Structure](#code-structure)
    3. [Before running the sample for the first time](#before-running-the-sample-for-the-first-time)
    4. [Locally deploying the sample app](#locally-deploying-the-sample-app)
-   5. [Troubleshooting](#troubleshooting)
-   6. [Publish to Azure](#publish-to-azure)
-   7. [Building off of the sample](#building-off-of-the-sample)
+   5. [Locally testing the api](#locally-testing-the-api)
+   6. [Troubleshooting](#troubleshooting)
+   7. [Publish to Azure](#publish-to-azure)
+   8. [Building off of the sample](#building-off-of-the-sample)
 4. [Guidance](#guidance)
    1. [Identity Storage Options](#Iidentity-storage-options)
    2. [Bring Your Own Identity (BYOI)](#bring-your-own-identity-byoi)
@@ -50,6 +51,8 @@ This is an ACS solution server sample to provide a guidance establishing best pr
 
 Additional documentation for this sample can be found on [Microsoft Docs](https://docs.microsoft.com/azure/communication-services/samples/calling-hero-sample).
 
+Since the sample only focuses on the server apis, the client application is not part of the sample. If you want to add the client application to login user using Azure AD, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-js).
+
 Before contributing to this sample, please read our [contribution guidelines](./CONTRIBUTING.md).
 
 ## Features
@@ -71,18 +74,17 @@ This ACS Solutions - Authentication server sample provides the following feature
 
 ### Prerequisites
 
-- Register a client and server application in Azure Active Directory (AAD) * See instructions below
-- Download Quickstart single page application (SPA) * See instructions below
-- Update the client(SPA) and server(TokenApi) applications with information from the app registrations
+- Register a Client and Web Api application in Azure Active Directory (AAD) as part of [On Behalf Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). See instructions below
+- Update the TokenApi applications with information from the app registrations
 
-### Server Registration
+#### Server App Registration
 
 - go to https://portal.azure.com/
 - select Azure Active Directory
 - select App Registrations
 - select new registration 
 - Name it AuthServer and select Default Directory Only - single tenant
-- For redirect uri select web and enter https://localhost:44351/
+- For redirect uri select web and enter http://localhost:44351/
 - select certificates and secrets, and create a new client secret (save this for later)
 - under API permissions select grant admin access for the graph api call
 - go to expose an API and select set an application id uri
@@ -91,28 +93,17 @@ This ACS Solutions - Authentication server sample provides the following feature
 - select admin and users to who can consent.
 - add info for the descriptions and add the scope
 
-### Client Registraiton
+#### Client App Registration
+**Note** - This client app registration will be used to manually generate the AAD Token required to call AAD protected Web Api as there is no client application in the sample.
 - go to https://portal.azure.com/
 - select Azure Active Directory
 - select App Registrations
 - select new registration 
-- Name it AuthClient and select Default Directory Only - single tenant
-- For redirect uri select single page application and enter http://localhost:3000/
-- under API permissions remove the existing graph API call.
-- select add permission, my API, and select the server and select access_as_user
-- now go back to the server registration, under manifest, select known applications, and add the app id for the client.
-
-### Downloading the client (SPA)
-- open the client app registration from the previous step
-- select quickstart
-- select single-page application -> JavaScript (auth code flow)
-- select "Make these changes for me" and then download the code sample.
-
-### Server config
-- Open TokenApi/appsettings.json.template and follow the comments on configuration. Afterwards, rename it to appsettings.json.
-
-### Client config
-- under loginRequest, update the scope to be the API we added during the client registration. Example "api://1234-5678-abcd-efgh...../access_as_user"
+- name it AuthClient and select Default Directory Only - single tenant
+- for redirect uri select Web (Choose SPA in case you add a client application)  and enter http://localhost:3000/
+- select add permission, my API, and select the AuthServer and select access_as_user
+- now go to certificates & secrets, create a secret. This will be used later to generate the AAD token.
+- now go back to the AuthServer app registration, under manifest, select known applications, and add the app registration id for the client.
 
 ### Code Structure
 
@@ -120,25 +111,37 @@ This ACS Solutions - Authentication server sample provides the following feature
 
 ### Locally deploying the sample app
 
+- Open TokenApi/appsettings.json.template and follow the comments on configuration. Afterwards, rename it to appsettings.json.
 - open TokenApi, run dotnet build. then run dotnet run
-- open yourClientApplication, run npm install, then npm start.
 
-## Demo
+### Locally testing the api
+1. You will need an access token using client app registration to call the api. In order to get the access token, open browser in private mode and visit below link
+**Note:** The full scope name of the server api should be used, e.g."api://1234-5678-abcd-efgh...../access_as_user" for the scope parameter in below request
+```
+https://login.microsoftonline.com/<tenantid>.onmicrosoft.com/oauth2/v2.0/authorize?response_type=code&client_id=<client_appid>&redirect_uri=<put url encoded redirect_uri from client app>&scope=<put url encoded server scope>
+```
+2. This will prompt you to perform authentication and consent, and it will return a code in the query string. 
+Use that code in the following request to get an access token, remember to put in the code and client secret.
 
-A demo app is included to show how to use the project.
+``` SHELL
+curl -X POST \
+  https://login.microsoftonline.com/<tenantid>.onmicrosoft.com/oauth2/v2.0/token \
+  -H 'Accept: */*' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Host: login.microsoftonline.com' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'cache-control: no-cache' \
+  -d 'redirect_uri=<url encoded redirect_uri from client app>&client_id=<appid>&grant_type=authorization_code&code=<put code here>&client_secret=<put secret generated in client app registration>&scope=<url encoded server scope>
+  ```
+3. Once you get the access token, make a GET request to `http://localhost:44351/api/token` with the access token as a Authorization Bearer header. Verify you get a successful status code i.e. 200.
+ 
+``` SHELL
+curl --location --request GET 'http://localhost:44351/api/token' \
 
-To run the demo, follow these steps:
-
-1. after starting both applications, proceed to localhost:3000, and sign in. Add break point and intercept the token.
-    - add the breakpoint in authPopup.js, function "seeProfile" and the line that calls "callMSGraph".
-    - now click the "See Profile" button, and intercept the token from the accessToken field in the response. 
-2. Use postman to test the newly generated token with your API
-    - get request to http://localhost:44351/api/token
-    - set the authorization to Bearer Token and enter the token you intercepted previously.
-    - it should return your email address by calling graph
-3. Should successfully complete a graph call.
-4. if you look at the web client, you can see the graph call from that side failed. Meaning it has no access to graph, but the middleware does on behalf of the user.
-
+--header 'Authorization: Bearer <put access token here>
+```
 ### Troubleshooting
 
 1. ...
