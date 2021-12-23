@@ -20,11 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Access TokenApi
-      run: cd TokenApi
     - name: Restore dependencies
-      run: dotnet restore
+      run: cd TokenApi && dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: cd TokenApi && dotnet build --no-restore
     # - name: Test
     #  run: dotnet test --no-build --verbosity normal
