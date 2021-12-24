@@ -9,7 +9,7 @@ namespace TokenApi.Test
     public class TokenControllerUnitTests
     {
         [Fact]
-        public void ValidDisplayNameIsReturned()
+        public void Valid_UserPrincipalName_Returned()
         {
             // Setup dependencies
             var mockAuthProvider = new Mock<IAuthenticationProvider>();
@@ -18,16 +18,18 @@ namespace TokenApi.Test
             var graphClient = mockGraphClient.Object;
             var tokenController = new AcsTokenApi.Controllers.TokenController(graphClient);
 
+            const string USER_PRINCIPAL_NAME = "Bob";
+
             // Act
             User testUser = new User
             {
-                UserPrincipalName = "Bob",
+                UserPrincipalName = USER_PRINCIPAL_NAME,
             };
             mockGraphClient.Setup(g => g.Me.Request().GetAsync(CancellationToken.None)).Returns(Task.Run(() => testUser)).Verifiable();
-            var returnedDisplayName = tokenController.Get();
+            var returnedUserPrincipalName = tokenController.Get();
 
             // Assert name returned is valid
-            Assert.Equal("Bob", returnedDisplayName);
+            Assert.Equal(USER_PRINCIPAL_NAME, returnedUserPrincipalName);
 
         }
     }

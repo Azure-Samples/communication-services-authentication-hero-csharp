@@ -205,6 +205,9 @@ curl --location --request GET 'http://localhost:44351/api/token' \
 To run unit tests in vscode, open the TokenApi.Test or the TokenApi folder, and run the command 'dotnet test'.
 To run unit tests in Visual Studio, open the solution, open up test explorer, and run the tests via the UI.
 
+- [Unit testing best practices](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices) - Find more about how best practices
+- [Unit testing with xUnit](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test) - Find more about how to use xUnit with C#
+
 ## Resources
 
 - [Azure Communication Services Documentation](https://docs.microsoft.com/en-us/azure/communication-services/) - Find more about how to add voice, video, chat, and telephony on our official documentation.
