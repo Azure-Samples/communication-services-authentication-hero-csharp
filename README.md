@@ -202,7 +202,7 @@ curl --location --request GET 'http://localhost:44351/api/token' \
 
 ### Testing
 
-To run unit tests in vscode, open the TokenApi.Test folder, and run the command 'dotnet test'.
+To run unit tests in vscode, open the TokenApi.Test or the TokenApi folder, and run the command 'dotnet test'.
 To run unit tests in Visual Studio, open the solution, open up test explorer, and run the tests via the UI.
 
 ## Resources
