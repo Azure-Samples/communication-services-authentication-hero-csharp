@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Options;
 using Microsoft.Graph;
-using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.Resource;
 namespace AcsTokenApi.Controllers
 {
@@ -11,7 +9,7 @@ namespace AcsTokenApi.Controllers
     [RequiredScope("access_as_user")] //This is the scope we gave the AuthService when registering the application.
     public class TokenController : Controller
     {
-        public TokenController(GraphServiceClient graphServiceClient, IOptions<MicrosoftGraphOptions> graphOptions)
+        public TokenController(GraphServiceClient graphServiceClient)
         {
             _graphServiceClient = graphServiceClient;
         }
