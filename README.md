@@ -33,11 +33,12 @@ products:
 4. [Guidance](#guidance)
    1. [Identity Storage Options](#Iidentity-storage-options)
    2. [Bring Your Own Identity (BYOI)](#bring-your-own-identity-byoi)
-5. [Resources](#resources)
-6. [Known Issues](#known-issues)
-7. [Contributing](#contributing)
-8. [Trademark](#trademark)
-9. [License](#license)
+5. [Unit Tests](#testing)
+6. [Resources](#resources)
+7. [Known Issues](#known-issues)
+8. [Contributing](#contributing)
+9. [Trademark](#trademark)
+10. [License](#license)
 
 ## Overview
 
@@ -198,6 +199,14 @@ curl --location --request GET 'http://localhost:44351/api/token' \
 ### Bring Your Own Identity (BYOI)
 
 (AAD B2C)
+
+### Testing
+
+To run unit tests in vscode, open the TokenApi.Test or the TokenApi folder, and run the command 'dotnet test'.
+To run unit tests in Visual Studio, open the solution, open up test explorer, and run the tests via the UI.
+
+- [Unit testing best practices](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices) - Find more about unit testing best practices.
+- [Unit testing with xUnit](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test) - Find more about how to use xUnit with C#.
 
 ## Resources
 
