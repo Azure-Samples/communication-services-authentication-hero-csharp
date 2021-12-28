@@ -84,7 +84,7 @@ namespace ACS.Solution.Authentication.Server.Services
             // Initialize an OpenTypeExtension instance.
             var extension = new OpenTypeExtension
             {
-                ExtensionName = Configuration.Constants.ExtensionName,
+                ExtensionName = Configurations.Constants.ExtensionName,
                 AdditionalData = new Dictionary<string, object>() { { IdentityMappingModel.IdentityMappingKeyName, acsUserId } },
             };
 
@@ -114,7 +114,7 @@ namespace ACS.Solution.Authentication.Server.Services
             try
             {
                 await _graphServiceClient.Me
-                                     .Extensions[Configuration.Constants.ExtensionName]
+                                     .Extensions[Configurations.Constants.ExtensionName]
                                      .Request()
                                      .DeleteAsync();
             }
