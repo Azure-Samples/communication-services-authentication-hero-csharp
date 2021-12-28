@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- Copyright needs to be in the form of © not (c) to be compliant -->
+    <Title>ACS Authentication Server Sample</Title>
+    <Authors>Microsoft</Authors>
+    <Company>Microsoft Corporation</Company>
+    <Product>ACS Authentication Server Sample</Product>
+    <Description>
+      An ACS solution server sample to provide a guidance establishing best practices on a simple use case to build trusted backend service that will manage ACS identities by mapping them 1:1 with Azure Active Directory identities
+    </Description>
+    <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Azure-Samples/communication-services-authentication-hero-csharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/src</RepositoryUrl>
+    <PackageReleaseNotes>The release notes are available at https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/blob/main/CHANGELOG.md </PackageReleaseNotes>
+    <ProjectGuid>{E84EE52D-D9C9-41D5-ACF9-A244A79FE212}</ProjectGuid>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>ACS.Solution.Authentication.Server</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Communication.Identity" Version="1.0.1" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.21.1" />
+    <PackageReference Include="Microsoft.Identity.Web.MicrosoftGraph" Version="1.21.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+</Project>
