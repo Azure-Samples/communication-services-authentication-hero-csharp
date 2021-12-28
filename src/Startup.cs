@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace AcsAuthenticationServiceSample
+namespace ACS.Solution.Authentication.Server
 {
     // Configuration and setup.
     public class Startup

@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace AcsAuthenticationServiceSample
+namespace ACS.Solution.Authentication.Server
 {
     public class Program
     {
