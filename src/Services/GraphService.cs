@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ACS.Solution.Authentication.Server.Exceptions;
 using ACS.Solution.Authentication.Server.Interfaces;
 using ACS.Solution.Authentication.Server.Models;
 using Microsoft.Graph;
@@ -19,10 +18,9 @@ namespace ACS.Solution.Authentication.Server.Services
         private readonly GraphServiceClient _graphServiceClient;
 
         // Error messages
-        private const string GetACSUserIdentityError = "An error occured when retrieving the ACS user id";
+        private const string RetrieveIdentityMappingError = "An error occured when retrieving the identity mapping information";
         private const string AddIdentityMappingError = "An error occured when adding the identity mapping information";
         private const string DeleteIdentityMappingError = "An error occured when deleting the identity mapping information";
-        private const string IdentityMappingNotFoundError = "No identity mapping information stored in Microsoft Graph";
 
         /// <summary>
         /// Initializes a new instance of Microsoft Graph service client.
@@ -50,26 +48,20 @@ namespace ACS.Solution.Authentication.Server.Services
 
                 IList<Extension> openExtensionsData = roamingProfileInfoResponse.Extensions.CurrentPage;
 
-                if (openExtensionsData.Count == 0)
+                OpenTypeExtension identityMappingOpenExtension = GetIdentityMappingOpenExtension(openExtensionsData);
+
+                if (openExtensionsData.Count == 0 || identityMappingOpenExtension == null)
                 {
-                    throw new IdentityMappingNotFoundException(IdentityMappingNotFoundError);
+                    return null;
                 }
-                else
-                {
-                    // An Communication Services identity mapping information existing in Microsoft Graph.
-                    return openExtensionsData[0].AdditionalData[IdentityMappingModel.IdentityMappingKeyName].ToString();
-                }
-            }
-            catch (IdentityMappingNotFoundException identityMappingNotFoundException)
-            {
-                // No identity mapping information stored in Microsoft Graph
-                Console.WriteLine($"{GetACSUserIdentityError}: {identityMappingNotFoundException.Message}");
-                throw;
+
+                // An Communication Services identity mapping information existing in Microsoft Graph.
+                return identityMappingOpenExtension.AdditionalData[IdentityMapping.IdentityMappingKeyName].ToString();
             }
             catch (Exception ex)
             {
                 // Fail to retrieve an Communication Services identity from Microsoft Graph.
-                Console.WriteLine($"{GetACSUserIdentityError}: {ex.Message}");
+                Console.WriteLine($"{RetrieveIdentityMappingError}: {ex.Message}");
                 throw;
             }
         }
@@ -85,7 +77,7 @@ namespace ACS.Solution.Authentication.Server.Services
             var extension = new OpenTypeExtension
             {
                 ExtensionName = Configurations.Constants.ExtensionName,
-                AdditionalData = new Dictionary<string, object>() { { IdentityMappingModel.IdentityMappingKeyName, acsUserId } },
+                AdditionalData = new Dictionary<string, object>() { { IdentityMapping.IdentityMappingKeyName, acsUserId } },
             };
 
             try
@@ -95,7 +87,7 @@ namespace ACS.Solution.Authentication.Server.Services
                                      .Request()
                                      .AddAsync(extension);
 
-                return response.AdditionalData[IdentityMappingModel.IdentityMappingKeyName].ToString();
+                return response.AdditionalData[IdentityMapping.IdentityMappingKeyName].ToString();
             }
             catch (Exception ex)
             {
@@ -124,6 +116,26 @@ namespace ACS.Solution.Authentication.Server.Services
                 Console.WriteLine($"{DeleteIdentityMappingError}: {ex.Message}");
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Get the identity mapping extension from Graph exthensions.
+        /// </summary>
+        /// <param name="openExtensionsData">Microsoft Graph Open Extensions.</param>
+        /// <returns>An identity mapping extension if existing, otherwise null.</returns>
+        private OpenTypeExtension GetIdentityMappingOpenExtension(IList<Extension> openExtensionsData)
+        {
+            OpenTypeExtension identityMappingOpenExtension = null;
+
+            foreach (OpenTypeExtension openExtension in openExtensionsData)
+            {
+                if (string.Equals(openExtension.ExtensionName, Configurations.Constants.ExtensionName, StringComparison.Ordinal))
+                {
+                    identityMappingOpenExtension = openExtension;
+                }
+            }
+
+            return identityMappingOpenExtension;
         }
     }
 }

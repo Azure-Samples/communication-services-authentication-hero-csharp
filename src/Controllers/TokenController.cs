@@ -3,7 +3,6 @@
 
 using System;
 using System.Threading.Tasks;
-using ACS.Solution.Authentication.Server.Exceptions;
 using ACS.Solution.Authentication.Server.Interfaces;
 using Azure.Communication.Identity;
 using Azure.Core;
@@ -72,18 +71,16 @@ namespace ACS.Solution.Authentication.Server.Controllers
 
             try
             {
-                // User exists
+                // Retrieve ACS Identity from Microsoft Graph
                 string acsUserId = await _graphService.GetACSUserId();
-                acsToken = await _acsService.CreateACSToken(acsUserId);
-            }
-            catch (IdentityMappingNotFoundException)
-            {
-                // No identity mapping information stored in Microsoft Graph
-                Console.WriteLine("There is no identity mapping info stored in Microsoft Graph. Creating now...");
 
-                // User doesn't exist
-                try
+                if (acsUserId == null)
                 {
+                    // User doesn't exist
+
+                    // No identity mapping information stored in Microsoft Graph
+                    Console.WriteLine("There is no identity mapping info stored in Microsoft Graph. Creating now...");
+
                     CommunicationUserIdentifierAndToken identityTokenResponse = await _acsService.CreateACSUserIdentityAndToken();
 
                     // Store the identity mapping information
@@ -94,9 +91,10 @@ namespace ACS.Solution.Authentication.Server.Controllers
                     // because the acsToken can not be returned if failing to add the identity mapping information to Microsoft Graph
                     acsToken = identityTokenResponse.AccessToken;
                 }
-                catch (Exception)
+                else
                 {
-                    throw;
+                    // User exists
+                    acsToken = await _acsService.CreateACSToken(acsUserId);
                 }
             }
             catch (Exception)

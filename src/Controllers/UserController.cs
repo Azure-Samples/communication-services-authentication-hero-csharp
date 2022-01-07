@@ -8,7 +8,6 @@ using ACS.Solution.Authentication.Server.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Graph;
 using Microsoft.Identity.Web.Resource;
 
 namespace ACS.Solution.Authentication.Server.Controllers
@@ -54,7 +53,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
             {
                 string acsUserId = await _graphService.GetACSUserId();
 
-                return Ok(acsUserId);
+                return Ok(new IdentityMapping(acsUserId));
             }
             catch (Exception)
             {
@@ -70,7 +69,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// <response code="500">Internal server error.</response>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(IdentityMappingModel), 201)]
+        [ProducesResponseType(typeof(IdentityMapping), 201)]
         [ProducesResponseType(500)]
         public async Task<ActionResult> CreateACSUser()
         {
