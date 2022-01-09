@@ -24,11 +24,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     
-    - name: Install dotnet-format tool
-      run: dotnet tool install -g dotnet-format
+    # - name: Install dotnet-format tool
+    #   run: dotnet tool install -g dotnet-format
 
-    - name: Verify dotnet format
-      run: cd src && dotnet format --verify-no-changes --verbosity diagnostic
+    # - name: Verify dotnet format
+    #   run: cd src && dotnet format --verify-no-changes --verbosity diagnostic
 
     - name: Restore dependencies
       run: cd src && dotnet restore
