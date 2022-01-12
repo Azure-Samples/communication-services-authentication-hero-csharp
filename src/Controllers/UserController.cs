@@ -91,7 +91,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
 
         /// <summary>
         /// DELETE: api/user
-        /// Delete a Communication Services identity and then remove an identity mapping from the user's roaming profile information
+        /// Delete a Communication Services identity and then remove an identity mapping from Microsoft Graph
         /// The strategy of deleting users applied here can avoid creating an ACS token using the ACS identity already deleted which
         /// will cause the error(Provided identity doesn't exist).
         /// <list type="number">
