@@ -15,14 +15,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    
+    # - name: Install dotnet-format tool
+    #   run: dotnet tool install -g dotnet-format
+
+    # - name: Verify dotnet format
+    #   run: cd src && dotnet format --verify-no-changes --verbosity diagnostic
+
     - name: Restore dependencies
-      run: cd TokenApi && dotnet restore
+      run: cd src && dotnet restore
+
     - name: Build
-      run: cd TokenApi && dotnet build --no-restore
-    - name: Test
-      run: cd TokenApi && dotnet test
+      run: cd src && dotnet build --no-restore
+
+    # - name: Unit Tests
+    #   run: dotnet test
