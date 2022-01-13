@@ -6,7 +6,3 @@ tests/UnitTests/[Oo]bj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
-
-# Project credentials
-src/appsettings.json
-src/appsettings.Development.json
