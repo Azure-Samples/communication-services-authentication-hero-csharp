@@ -1,9 +1,12 @@
 ﻿# Build results
-[Bb]in/
-[Oo]bj/
+src/[Bb]in/
+src/[Oo]bj/
+tests/UnitTests/[Bb]in/
+tests/UnitTests/[Oo]bj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 
 # Project credentials
-TokenApi/appsettings.json
+src/appsettings.json
+src/appsettings.Development.json
