@@ -78,10 +78,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
                 string acsUserId = await _acsService.CreateACSUserIdentity();
                 string identityMappingResponse = await _graphService.AddIdentityMapping(acsUserId);
 
-                return CreatedAtAction(
-                    nameof(GetACSUser),
-                    new { id = identityMappingResponse },
-                    identityMappingResponse);
+                return StatusCode(StatusCodes.Status201Created, new IdentityMapping(acsUserId));
             }
             catch (Exception)
             {
@@ -119,7 +116,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
                 // It also removes all the persisted content associated with the identity.
                 await _acsService.DeleteACSUserIdentity(acsUserId);
 
-                return StatusCode(StatusCodes.Status204NoContent, $"Successfully deleted the ACS user identity {acsUserId} which revokes all active access tokens and removes all the persisted content, and the identity mapping");
+                return StatusCode(StatusCodes.Status204NoContent);
             }
             catch (Exception)
             {
