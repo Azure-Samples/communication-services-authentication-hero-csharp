@@ -57,7 +57,6 @@ namespace ACS.Solution.Authentication.Server.Controllers
                 string acsUserId = await _graphService.GetACSUserId();
 
                 return acsUserId == null ? StatusCode(StatusCodes.Status404NotFound, NoIdentityMappingError) : Ok(new IdentityMapping(acsUserId));
-
             }
             catch (Exception)
             {
