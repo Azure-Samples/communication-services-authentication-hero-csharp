@@ -24,6 +24,9 @@ namespace ACS.Solution.Authentication.Server.Controllers
         private readonly IACSService _acsService;
         private readonly IGraphService _graphService;
 
+        // Error message
+        private const string NoIdentityMappingError = "There is no identity mapping information stored in Microsoft Graph";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UserController"/> class.
         /// </summary>
@@ -53,7 +56,8 @@ namespace ACS.Solution.Authentication.Server.Controllers
             {
                 string acsUserId = await _graphService.GetACSUserId();
 
-                return Ok(new IdentityMapping(acsUserId));
+                return acsUserId == null ? StatusCode(StatusCodes.Status404NotFound, NoIdentityMappingError) : Ok(new IdentityMapping(acsUserId));
+
             }
             catch (Exception)
             {
