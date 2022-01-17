@@ -67,10 +67,10 @@ namespace ACS.Solution.Authentication.Server.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult> GetACSTokenAsync()
         {
-            AccessToken acsToken;
-
             try
             {
+                AccessToken acsToken;
+
                 // Retrieve ACS Identity from Microsoft Graph
                 string acsUserId = await _graphService.GetACSUserId();
 
@@ -96,13 +96,13 @@ namespace ACS.Solution.Authentication.Server.Controllers
                     // User exists
                     acsToken = await _acsService.CreateACSToken(acsUserId);
                 }
+
+                return Ok(acsToken);
             }
             catch (Exception)
             {
                 throw;
             }
-
-            return Ok(acsToken);
         }
     }
 }
