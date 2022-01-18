@@ -58,8 +58,13 @@ namespace ACS.Solution.Authentication.Server.Extensions
              */
             // Add ACS service
             services.AddSingleton<IACSService, ACSService>();
+            /*
+             * In the case of Scoped service, a single instance is created per request and the same instance is shared across the request. 
+             * That is why operation Ids are the same for first instance as well as second instance of Request 1. 
+             * But if we click on refresh button or load the UI on different tab of a browser (which is nothing but Request 2), new ids are generated.
+             */
             // Add Graph service
-            services.AddSingleton<IGraphService, GraphService>();
+            services.AddScoped<IGraphService, GraphService>();
         }
 
         /// <summary>
