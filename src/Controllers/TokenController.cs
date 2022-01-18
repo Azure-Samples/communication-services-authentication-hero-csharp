@@ -11,6 +11,7 @@ using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Web.Resource;
 
 namespace ACS.Solution.Authentication.Server.Controllers
@@ -24,6 +25,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
     [RequiredScope("access_as_user")] // This is the scope we gave the AuthService when registering the application.
     public class TokenController : ControllerBase
     {
+        private readonly ILogger<TokenController> _logger;
         private readonly IACSService _acsService;
         private readonly IGraphService _graphService;
 
@@ -32,9 +34,11 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// </summary>
         /// <param name="acsService"> An instance representing the set of methods for Azure Communication Services Identity manipulation.</param>
         /// <param name="graphService">An instance representing the set of methods for Microsoft Graph manipulation.</param>
+        /// <param name="logger">Used to perform logging.</param>
         /// <exception cref="ArgumentNullException">The exception that is thrown when a null reference (Nothing in Visual Basic) is passed to a method that does not accept it as a valid argument.</exception>
-        public TokenController(IACSService acsService, IGraphService graphService)
+        public TokenController(IACSService acsService, IGraphService graphService, ILogger<TokenController> logger)
         {
+            _logger = logger;
             _acsService = acsService ?? throw new ArgumentNullException(nameof(acsService));
             _graphService = graphService ?? throw new ArgumentNullException(nameof(graphService));
         }
@@ -82,7 +86,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
                     // User doesn't exist
 
                     // No identity mapping information stored in Microsoft Graph
-                    Console.WriteLine("There is no identity mapping info stored in Microsoft Graph. Creating now...");
+                    _logger.LogInformation("There is no identity mapping info stored in Microsoft Graph. Creating now...");
 
                     CommunicationUserIdentifierAndToken acsIdentityTokenObject = await _acsService.CreateACSUserIdentityAndToken();
 
