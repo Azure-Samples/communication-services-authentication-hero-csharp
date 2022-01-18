@@ -34,8 +34,8 @@ namespace ACS.Solution.Authentication.Server
               Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
             */
 
-            // Enable viewing of PII logs so we can see more details about the error.
-            IdentityModelEventSource.ShowPII = true;
+            // Enable viewing of PII logs so we can see more details about the error when debugging/developing.
+            // IdentityModelEventSource.ShowPII = true;
 
             // Register services
 
