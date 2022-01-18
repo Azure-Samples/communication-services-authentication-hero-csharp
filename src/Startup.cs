@@ -1,12 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE.md in the project root for license information.
 
-using System;
 using ACS.Solution.Authentication.Server.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -56,17 +53,23 @@ namespace ACS.Solution.Authentication.Server
             // For more the Middleware Order information, see https://docs.microsoft.com/en/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0#middleware-order
             if (env.IsDevelopment())
             {
+                /*
+                  Since IdentityModel version 5.2.1 (or since Microsoft.AspNetCore.Authentication.JwtBearer version 2.2.0),
+                  PII hiding in log files is enabled by default for GDPR concerns.
+                  For debugging/development purposes, one can enable additional detail in exceptions by setting IdentityModelEventSource.ShowPII to true.
+                  Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
+                */
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(context => context.SwaggerEndpoint("/swagger/v1/swagger.json", "ACS Solution Authentication Server API v1"));
             }
             else
             {
+                // Handling Errors Globally with the Built-In Middleware
+                app.ConfigureExceptionHandler();
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            // Handling Errors Globally with the Built-In Middleware
-            app.ConfigureExceptionHandler();
 
             app.UseHttpsRedirection();
 
