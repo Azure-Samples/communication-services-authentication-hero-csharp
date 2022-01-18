@@ -63,16 +63,17 @@ namespace ACS.Solution.Authentication.Server
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             // For more the Middleware Order information, see https://docs.microsoft.com/en/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0#middleware-order
+
+            // Handling Errors Globally with the Built-In Middleware
+            app.ConfigureExceptionHandler(logger);
+
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(context => context.SwaggerEndpoint("/swagger/v1/swagger.json", "ACS Solution Authentication Server API v1"));
             }
             else
             {
-                // Handling Errors Globally with the Built-In Middleware
-                app.ConfigureExceptionHandler(logger);
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
