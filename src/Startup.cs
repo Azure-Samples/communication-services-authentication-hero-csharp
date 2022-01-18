@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace ACS.Solution.Authentication.Server
@@ -25,6 +27,16 @@ namespace ACS.Solution.Authentication.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /*
+              Since IdentityModel version 5.2.1 (or since Microsoft.AspNetCore.Authentication.JwtBearer version 2.2.0),
+              PII hiding in log files is enabled by default for GDPR concerns.
+              For debugging/development purposes, one can enable additional detail in exceptions by setting IdentityModelEventSource.ShowPII to true.
+              Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
+            */
+
+            // Enable viewing of PII logs so we can see more details about the error.
+            IdentityModelEventSource.ShowPII = true;
+
             // Register services
 
             // Add app settings
@@ -48,17 +60,11 @@ namespace ACS.Solution.Authentication.Server
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             // For more the Middleware Order information, see https://docs.microsoft.com/en/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0#middleware-order
             if (env.IsDevelopment())
             {
-                /*
-                  Since IdentityModel version 5.2.1 (or since Microsoft.AspNetCore.Authentication.JwtBearer version 2.2.0),
-                  PII hiding in log files is enabled by default for GDPR concerns.
-                  For debugging/development purposes, one can enable additional detail in exceptions by setting IdentityModelEventSource.ShowPII to true.
-                  Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
-                */
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(context => context.SwaggerEndpoint("/swagger/v1/swagger.json", "ACS Solution Authentication Server API v1"));
@@ -66,7 +72,7 @@ namespace ACS.Solution.Authentication.Server
             else
             {
                 // Handling Errors Globally with the Built-In Middleware
-                app.ConfigureExceptionHandler();
+                app.ConfigureExceptionHandler(logger);
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }

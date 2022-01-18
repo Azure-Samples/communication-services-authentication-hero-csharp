@@ -5,6 +5,7 @@ using ACS.Solution.Authentication.Server.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace ACS.Solution.Authentication.Server.Extensions
 {
@@ -15,7 +16,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
     /// </summary>
     public static class ExceptionMiddlewareExtension
     {
-        public static void ConfigureExceptionHandler(this IApplicationBuilder app)
+        public static void ConfigureExceptionHandler(this IApplicationBuilder app, ILogger logger)
         {
             app.UseExceptionHandler(appError =>
             {
@@ -28,6 +29,8 @@ namespace ACS.Solution.Authentication.Server.Extensions
 
                     if (exception != null)
                     {
+                        logger.LogError($"Something went wrong: {exception.Error}");
+
                         await context.Response.WriteAsync(new ErrorDetails()
                         {
                             StatusCode = context.Response.StatusCode,
