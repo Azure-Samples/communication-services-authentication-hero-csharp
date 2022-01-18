@@ -65,12 +65,12 @@
 					"tags": {
 						"displayName": "appsettings"
 					},
-					"properties": {
-						"CommunicationServices_ConnectionString": "[listkeys(variables('commsName'), '2020-08-20-preview' ).primaryConnectionString]",
-						"AzureActiveDirectory_ClientId": "",
-						"AzureActiveDirectory_ClientSecret": "",
-						"AzureActiveDirectory_TenantId": ""
-					}
+                    "properties": {
+                        "CommunicationServices__ConnectionString": "[listkeys(variables('commsName'), '2020-08-20-preview' ).primaryConnectionString]",
+                        "AzureActiveDirectory__ClientId": "",
+                        "AzureActiveDirectory__ClientSecret": "",
+                        "AzureActiveDirectory__TenantId": ""
+                    }
 				},
 				{
 					"name": "MSDeploy",

@@ -78,6 +78,7 @@ This ACS Solutions - Authentication server sample provides the following feature
 ### Prerequisites
 
 - Register a Client and Web Api application in Azure Active Directory (AAD) as part of [On Behalf Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). See instructions below
+- Create an ACS resource through [Azure Portal](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/create-communication-resource?tabs=linux&pivots=platform-azp).
 - Update the TokenApi applications with information from the app registrations
 
 #### Server App Registration
@@ -150,7 +151,9 @@ This ACS Solutions - Authentication server sample provides the following feature
 
 ### Locally deploying the sample app
 
-- Open TokenApi/appsettings.json.template and follow the comments on configuration. Afterwards, rename it to appsettings.json.
+1. Open TokenApi/appsettings.json and update the configurations.
+    a. Update the CommunicationServices:ConnectionString from ACS resource.
+    b. Update the AzureActiveDirectory settings from your server app registration. The ClientId and TenantId should be used from Overview Page and use the previously recorded ClientSecret as from the set up step.
 - open TokenApi, run `dotnet build`, then run `dotnet run`.
 
 ### Locally testing the api

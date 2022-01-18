@@ -24,7 +24,7 @@ jobs:
           release_name=Auth-Sample
           unset CI
           # Build everything
-          dotnet publish ./TokenApi -c Release -o "$release_name"
+          dotnet publish ./ -c Release -o "$release_name"
 
           7z a -tzip "auth-sample.zip" "./${release_name}/*"
 
