@@ -56,36 +56,17 @@ namespace ACS.Solution.Authentication.Server
             // For more the Middleware Order information, see https://docs.microsoft.com/en/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0#middleware-order
             if (env.IsDevelopment())
             {
-                /*
-                  Since IdentityModel version 5.2.1 (or since Microsoft.AspNetCore.Authentication.JwtBearer version 2.2.0),
-                  PII hiding in log files is enabled by default for GDPR concerns.
-                  For debugging/development purposes, one can enable additional detail in exceptions by setting IdentityModelEventSource.ShowPII to true.
-                  Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
-                */
-                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(context => context.SwaggerEndpoint("/swagger/v1/swagger.json", "ACS Solution Authentication Server API v1"));
             }
             else
             {
-                // The best practice is to manage exception handling in one place instead of add try-catch everywhere in actions - A.K.A controllers (Keep action cleaner and simpler)
-                app.UseExceptionHandler(config =>
-                {
-                    config.Run(async context =>
-                    {
-                        IExceptionHandlerPathFeature exception = context.Features.Get<IExceptionHandlerPathFeature>();
-
-                        if (exception != null)
-                        {
-                            Exception error = exception.Error;
-                            var response = new { code = StatusCodes.Status500InternalServerError, message = error.Message, stack_trace = error.StackTrace };
-                            await context.Response.WriteAsJsonAsync(response);
-                        }
-                    });
-                });
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            // Handling Errors Globally with the Built-In Middleware
+            app.ConfigureExceptionHandler();
 
             app.UseHttpsRedirection();
 
