@@ -9,6 +9,7 @@ using Azure;
 using Azure.Communication;
 using Azure.Communication.Identity;
 using Azure.Core;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace ACS.Solution.Authentication.Server.Services
@@ -18,6 +19,7 @@ namespace ACS.Solution.Authentication.Server.Services
     /// </summary>
     public sealed class ACSService : IACSService
     {
+        private readonly ILogger<ACSService> _logger;
         private readonly CommunicationServicesSettingsModel _communicationServicesSettings;
         private readonly CommunicationIdentityClient _identityClient;
 
@@ -31,8 +33,10 @@ namespace ACS.Solution.Authentication.Server.Services
         /// Initializes a new instance of Azure.Communication.Identity.CommunicationIdentityClient.
         /// </summary>
         /// <param name="communicationServicesSettingsOptions">The Communication Services settings object in appsettings file.</param>
-        public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions)
+        /// <param name="logger">Used to perform logging.</param>
+        public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions, ILogger<ACSService> logger)
         {
+            _logger = logger;
             _communicationServicesSettings = communicationServicesSettingsOptions.CurrentValue;
             _identityClient = new CommunicationIdentityClient(_communicationServicesSettings.ConnectionString);
         }
@@ -50,14 +54,12 @@ namespace ACS.Solution.Authentication.Server.Services
                 // Retrieve ACS identity from the response.
                 string identity = identityResponse.Value.Id;
 
-                Console.WriteLine($"\nCreated an identity with ID: {identity}");
-
                 return identity;
             }
             catch (Exception ex)
             {
                 // Fail to create an unique Communication Services identity.
-                Console.WriteLine($"{CreateACSUserIdentityError}: {ex.Message}");
+                _logger.LogWarning($"{CreateACSUserIdentityError}: {ex.Message}");
                 throw;
             }
         }
@@ -80,16 +82,12 @@ namespace ACS.Solution.Authentication.Server.Services
                 string token = tokenResponse.Value.Token;
                 DateTimeOffset expiresOn = tokenResponse.Value.ExpiresOn;
 
-                // Write the token details to the screen
-                Console.WriteLine($"\nIssued an access token with the given scope that expires at {expiresOn}: ");
-                Console.WriteLine(token);
-
                 return tokenResponse.Value;
             }
             catch (Exception ex)
             {
                 // Fail to issue an ACS access token with the given scope for a given ACS identity.
-                Console.WriteLine($"{CreateACSUserTokenError}: {ex.Message}");
+                _logger.LogWarning($"{CreateACSUserTokenError}: {ex.Message}");
                 throw;
             }
         }
@@ -111,17 +109,12 @@ namespace ACS.Solution.Authentication.Server.Services
                 string token = identityAndTokenResponse.Value.AccessToken.Token;
                 DateTimeOffset expiresOn = identityAndTokenResponse.Value.AccessToken.ExpiresOn;
 
-                // Print the details to the screen
-                Console.WriteLine($"\nCreated an identity with ID: {identity.Id}");
-                Console.WriteLine($"\nIssued an access token with 'voip' scope that expires at {expiresOn}:");
-                Console.WriteLine(token);
-
                 return identityAndTokenResponse.Value;
             }
             catch (Exception ex)
             {
                 // Fail to create a Communication Services identity and an access token for it at the same time.
-                Console.WriteLine($"{CreateACSUserIdentityTokenError}: {ex.Message}");
+                _logger.LogWarning($"{CreateACSUserIdentityTokenError}: {ex.Message}");
                 throw;
             }
         }
@@ -139,14 +132,11 @@ namespace ACS.Solution.Authentication.Server.Services
             {
                 CommunicationUserIdentifier identity = new CommunicationUserIdentifier(acsUserId);
                 await _identityClient.DeleteUserAsync(identity);
-
-                // Print the detail to the screen
-                Console.WriteLine($"\nDeleted the identity with ID: {identity.Id}");
             }
             catch (Exception ex)
             {
                 // Fail to delete a Communication Services identity.
-                Console.WriteLine($"{DeleteACSUserIdentityError}: {ex.Message}");
+                _logger.LogWarning($"{DeleteACSUserIdentityError}: {ex.Message}");
                 throw;
             }
         }

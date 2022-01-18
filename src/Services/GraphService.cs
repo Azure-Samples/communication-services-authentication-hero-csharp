@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ACS.Solution.Authentication.Server.Interfaces;
 using ACS.Solution.Authentication.Server.Models;
+using Microsoft.Extensions.Logging;
 using Microsoft.Graph;
 
 namespace ACS.Solution.Authentication.Server.Services
@@ -15,6 +16,7 @@ namespace ACS.Solution.Authentication.Server.Services
     /// </summary>
     public sealed class GraphService : IGraphService
     {
+        private readonly ILogger<GraphService> _logger;
         private readonly GraphServiceClient _graphServiceClient;
 
         // Error messages
@@ -26,8 +28,10 @@ namespace ACS.Solution.Authentication.Server.Services
         /// Initializes a new instance of Microsoft Graph service client.
         /// </summary>
         /// <param name="graphServiceClient">An instance of <c>GraphServiceClient</c>.</param>
-        public GraphService(GraphServiceClient graphServiceClient)
+        /// <param name="logger">Used to perform logging.</param>
+        public GraphService(GraphServiceClient graphServiceClient, ILogger<GraphService> logger)
         {
+            _logger = logger;
             _graphServiceClient = graphServiceClient;
         }
 
@@ -61,7 +65,7 @@ namespace ACS.Solution.Authentication.Server.Services
             catch (Exception ex)
             {
                 // Fail to retrieve an Communication Services identity from Microsoft Graph.
-                Console.WriteLine($"{RetrieveIdentityMappingError}: {ex.Message}");
+                _logger.LogWarning($"{RetrieveIdentityMappingError}: {ex.Message}");
                 throw;
             }
         }
@@ -92,7 +96,7 @@ namespace ACS.Solution.Authentication.Server.Services
             catch (Exception ex)
             {
                 // Fail to add an Communication Services identity mapping information to Microsoft Graph.
-                Console.WriteLine($"{AddIdentityMappingError}: {ex.Message}");
+                _logger.LogWarning($"{AddIdentityMappingError}: {ex.Message}");
                 throw;
             }
         }
@@ -113,7 +117,7 @@ namespace ACS.Solution.Authentication.Server.Services
             catch (Exception ex)
             {
                 // Fail to remove an Communication Services identity mapping information from Microsoft Graph.
-                Console.WriteLine($"{DeleteIdentityMappingError}: {ex.Message}");
+                _logger.LogWarning($"{DeleteIdentityMappingError}: {ex.Message}");
                 throw;
             }
         }
