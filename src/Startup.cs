@@ -81,6 +81,8 @@ namespace ACS.Solution.Authentication.Server
 
             app.UseRouting();
 
+            app.UseCors("CorsPolicy");
+
             app.UseAuthentication();
 
             app.UseAuthorization();
