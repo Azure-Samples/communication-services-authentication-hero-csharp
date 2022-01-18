@@ -78,8 +78,6 @@ namespace ACS.Solution.Authentication.Server.Controllers
 
             try
             {
-                AccessToken acsToken;
-
                 // Retrieve ACS Identity from Microsoft Graph
                 string acsUserId = await _graphService.GetACSUserId();
 
