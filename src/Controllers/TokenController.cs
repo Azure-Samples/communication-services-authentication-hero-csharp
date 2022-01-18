@@ -4,9 +4,12 @@
 using System;
 using System.Threading.Tasks;
 using ACS.Solution.Authentication.Server.Interfaces;
+using ACS.Solution.Authentication.Server.Models;
+using Azure.Communication;
 using Azure.Communication.Identity;
 using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
 
@@ -63,11 +66,11 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// <response code="500">Internal server error.</response>
         /// <returns>An ACS token.</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(AccessToken), 200)]
+        [ProducesResponseType(typeof(CommunicationUserIdentifierAndTokenResponse), 201)]
         [ProducesResponseType(404)]
         public async Task<ActionResult> GetACSTokenAsync()
         {
-            AccessToken acsToken;
+            CommunicationUserIdentifierAndTokenResponse acsIdentityTokenResponse;
 
             try
             {
@@ -81,20 +84,20 @@ namespace ACS.Solution.Authentication.Server.Controllers
                     // No identity mapping information stored in Microsoft Graph
                     Console.WriteLine("There is no identity mapping info stored in Microsoft Graph. Creating now...");
 
-                    CommunicationUserIdentifierAndToken identityTokenResponse = await _acsService.CreateACSUserIdentityAndToken();
+                    CommunicationUserIdentifierAndToken acsIdentityTokenObject = await _acsService.CreateACSUserIdentityAndToken();
 
                     // Store the identity mapping information
-                    await _graphService.AddIdentityMapping(identityTokenResponse.User.Id);
+                    await _graphService.AddIdentityMapping(acsIdentityTokenObject.User.Id);
 
-                    // Retrieve the acsToekn object from the response
                     // This LoC below should be excuted after AddIdentityMapping excuted successfully
                     // because the acsToken can not be returned if failing to add the identity mapping information to Microsoft Graph
-                    acsToken = identityTokenResponse.AccessToken;
+                    acsIdentityTokenResponse = new CommunicationUserIdentifierAndTokenResponse(acsIdentityTokenObject.AccessToken, acsIdentityTokenObject.User);
                 }
                 else
                 {
                     // User exists
-                    acsToken = await _acsService.CreateACSToken(acsUserId);
+                    AccessToken acsToken = await _acsService.CreateACSToken(acsUserId);
+                    acsIdentityTokenResponse = new CommunicationUserIdentifierAndTokenResponse(acsToken, new CommunicationUserIdentifier(acsUserId));
                 }
             }
             catch (Exception)
@@ -102,7 +105,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
                 throw;
             }
 
-            return Ok(acsToken);
+            return StatusCode(StatusCodes.Status201Created, acsIdentityTokenResponse);
         }
     }
 }
