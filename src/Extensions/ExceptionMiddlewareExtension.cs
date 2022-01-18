@@ -10,9 +10,9 @@ using Microsoft.Extensions.Logging;
 namespace ACS.Solution.Authentication.Server.Extensions
 {
     /// <summary>
-    /// Registered the UseExceptionHandler middleware.
-    /// Then, populated the status code and the content type of our response, logged the error message,
-    /// and finally returned the response with the custom created object.
+    /// The extension class is used to registere the UseExceptionHandler middleware, which 
+    /// populates the status code and the content type of our response, logs the error message,
+    /// and returns the response with the custom created object.
     /// </summary>
     public static class ExceptionMiddlewareExtension
     {
