@@ -9,7 +9,7 @@ products:
 
 ---
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)]()
+Deploy to Azure using instructions as [here](./docs/deploy/deploy_test-sample-on-azure.md).
 
 # ACS Solutions - Authentication Server Sample
 
@@ -147,9 +147,12 @@ This ACS Solutions - Authentication server sample provides the following feature
 ### Locally deploying the sample app
 
 1. Open TokenApi/appsettings.json and update the configurations.
+    
     a. Update the CommunicationServices:ConnectionString from ACS resource.
+    
     b. Update the AzureActiveDirectory settings from your server app registration. The ClientId and TenantId should be used from Overview Page and use the previously recorded ClientSecret as from the set up step.
-- open TokenApi, run `dotnet build`, then run `dotnet run`.
+
+2. open TokenApi, run `dotnet build`, then run `dotnet run`.
 
 ### Locally testing the api
 1. You will need an access token using client app registration to call the api. In order to get the access token, open your browser in private mode and visit the link below
