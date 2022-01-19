@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ACS.Solution.Authentication.Server.Interfaces;
 using ACS.Solution.Authentication.Server.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.Graph;
 
 namespace ACS.Solution.Authentication.Server.Services
@@ -17,6 +18,7 @@ namespace ACS.Solution.Authentication.Server.Services
     public sealed class GraphService : IGraphService
     {
         private readonly ILogger<GraphService> _logger;
+        private readonly GraphSettingsModel _graphSettingsOptions;
         private readonly GraphServiceClient _graphServiceClient;
 
         // Error messages
@@ -28,10 +30,12 @@ namespace ACS.Solution.Authentication.Server.Services
         /// Initializes a new instance of Microsoft Graph service client.
         /// </summary>
         /// <param name="graphServiceClient">An instance of <c>GraphServiceClient</c>.</param>
+        /// <param name="graphSettingsOptions">The Microsoft Graph Services settings object in appsettings file.</param>
         /// <param name="logger">Used to perform logging.</param>
-        public GraphService(GraphServiceClient graphServiceClient, ILogger<GraphService> logger)
+        public GraphService(GraphServiceClient graphServiceClient, IOptionsMonitor<GraphSettingsModel> graphSettingsOptions, ILogger<GraphService> logger)
         {
             _logger = logger;
+            _graphSettingsOptions = graphSettingsOptions.CurrentValue;
             _graphServiceClient = graphServiceClient;
         }
 
@@ -80,7 +84,7 @@ namespace ACS.Solution.Authentication.Server.Services
             // Initialize an OpenTypeExtension instance.
             var extension = new OpenTypeExtension
             {
-                ExtensionName = Configurations.Constants.ExtensionName,
+                ExtensionName = _graphSettingsOptions.ExtensionName,
                 AdditionalData = new Dictionary<string, object>() { { IdentityMapping.IdentityMappingKeyName, acsUserId } },
             };
 
@@ -110,7 +114,7 @@ namespace ACS.Solution.Authentication.Server.Services
             try
             {
                 await _graphServiceClient.Me
-                                     .Extensions[Configurations.Constants.ExtensionName]
+                                     .Extensions[_graphSettingsOptions.ExtensionName]
                                      .Request()
                                      .DeleteAsync();
             }
@@ -133,7 +137,7 @@ namespace ACS.Solution.Authentication.Server.Services
 
             foreach (OpenTypeExtension openExtension in openExtensionsData)
             {
-                if (string.Equals(openExtension.ExtensionName, Configurations.Constants.ExtensionName, StringComparison.Ordinal))
+                if (string.Equals(openExtension.ExtensionName, _graphSettingsOptions.ExtensionName, StringComparison.Ordinal))
                 {
                     identityMappingOpenExtension = openExtension;
                 }
