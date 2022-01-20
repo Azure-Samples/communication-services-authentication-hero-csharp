@@ -15,8 +15,6 @@ namespace ACS.Solution.Authentication.Server.Interfaces
         /// </summary>
         /// <param name="accessToken">The token issued by the Microsoft identity platform.</param>
         /// <returns>An Communication Services identity if existing in Microsoft Graph.</returns>
-        /// <exception cref="IdentityMappingNotFoundException">If no an Communication Services identity existing in Microsoft Graph.</exception>
-        /// <exception cref="ServiceException">If failing to retrieve an Communication Services identity from Microsoft Graph.</exception>
         Task<string> GetACSUserId();
 
         /// <summary>
@@ -24,14 +22,12 @@ namespace ACS.Solution.Authentication.Server.Interfaces
         /// </summary>
         /// <param name="acsUserId">The Communication Services identity.</param>
         /// <returns>A <see cref="IdentityMapping"> object.</returns>.
-        /// <exception cref="ServiceException">If failing to add an Communication Services identity to Microsoft Graph.</exception>
-        Task<string> AddIdentityMapping(string acsUserId);
+        Task AddIdentityMapping(string acsUserId);
 
         /// <summary>
         /// Delete an identity mapping information from a user's roaming profile.
         /// </summary>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
-        /// <exception cref="ServiceException">If failing to remove an Communication Services identity mapping information from Microsoft Graph.</exception>
         Task DeleteIdentityMapping();
     }
 }

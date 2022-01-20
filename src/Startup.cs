@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace ACS.Solution.Authentication.Server
@@ -34,7 +35,7 @@ namespace ACS.Solution.Authentication.Server
             */
 
             // Enable viewing of PII logs so we can see more details about the error when debugging/developing.
-            // IdentityModelEventSource.ShowPII = true;
+            IdentityModelEventSource.ShowPII = true;
 
             // Register services
 
