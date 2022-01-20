@@ -14,7 +14,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
     /// populates the status code and the content type of our response, logs the error message,
     /// and returns the response with the custom created object.
     /// </summary>
-    public static class ExceptionMiddlewareExtension
+    public static class ExceptionMiddlewareExtensions
     {
         public static void ConfigureExceptionHandler(this IApplicationBuilder app, ILogger logger)
         {
