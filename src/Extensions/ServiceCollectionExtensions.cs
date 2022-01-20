@@ -13,7 +13,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
     /// <summary>
     /// Combine service collection by moving related groups of registrations to an extension method to register services.
     /// </summary>
-    public static class ServiceCollectionExtension
+    public static class ServiceCollectionExtensions
     {
         /// <summary>
         /// Add cross-origin resource sharing services to the specified Microsoft.Extensions.DependencyInjection.IServiceCollection.
@@ -27,8 +27,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
             {
                 options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowAnyHeader());
             });
         }
 
@@ -58,8 +57,13 @@ namespace ACS.Solution.Authentication.Server.Extensions
              */
             // Add ACS service
             services.AddSingleton<IACSService, ACSService>();
+            /*
+             * In the case of Scoped service, a single instance is created per request and the same instance is shared across the request.
+             * That is why operation Ids are the same for first instance as well as second instance of Request 1.
+             * But if we click on refresh button or load the UI on different tab of a browser (which is nothing but Request 2), new ids are generated.
+             */
             // Add Graph service
-            services.AddSingleton<IGraphService, GraphService>();
+            services.AddScoped<IGraphService, GraphService>();
         }
 
         /// <summary>
