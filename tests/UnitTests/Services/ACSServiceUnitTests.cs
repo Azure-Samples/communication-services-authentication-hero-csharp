@@ -46,7 +46,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
 
             mockACSClient.Setup(g => g.CreateUserAsync(CancellationToken.None)).Returns(Task.Run(() => communicationUserIdentifierResponse)).Verifiable();
 
-            var ACSService = new ACSService(optionsMonitorMock.Object, new NullLogger<ACSService>(), mockACSClient.Object );
+            var ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object );
             var returnedACSUserIdentity = ACSService.CreateACSUserIdentity();
 
             Assert.Equal(ACS_USER_ID, returnedACSUserIdentity.Result);
@@ -69,7 +69,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
             var scopes = GetCommunicationTokenScopes(optionsMonitorMock.Object.CurrentValue);
             mockACSClient.Setup(g => g.GetTokenAsync(new CommunicationUserIdentifier(ACS_USER_ID), scopes, CancellationToken.None)).Returns(Task.Run(() => accessTokenResponse)).Verifiable();
 
-            var ACSService = new ACSService(optionsMonitorMock.Object, new NullLogger<ACSService>(), mockACSClient.Object);
+            var ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object);
             var returnedACSUserIdentity = ACSService.CreateACSToken(ACS_USER_ID);
 
             Assert.Equal(TOKEN_VALUE, returnedACSUserIdentity.Result.Token);
