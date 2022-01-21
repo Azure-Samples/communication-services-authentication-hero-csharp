@@ -25,9 +25,8 @@ namespace ACS.Solution.Authentication.Server.Services
         /// </summary>
         /// <param name="communicationServicesSettingsOptions">The Communication Services settings object in appsettings file.</param>
         /// <param name="logger">Used to perform logging.</param>
-        public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions, ILogger<ACSService> logger)
+        public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions, CommunicationIdentityClient identityClient = null)
         {
-            _logger = logger;
             _communicationServicesSettings = communicationServicesSettingsOptions.CurrentValue;
 
             if (identityClient != null)
