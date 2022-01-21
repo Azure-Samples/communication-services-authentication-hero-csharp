@@ -1,3 +1,12 @@
+using System;
+using System.Threading.Tasks;
+using ACS.Solution.Authentication.Server.Controllers;
+using ACS.Solution.Authentication.Server.Interfaces;
+using ACS.Solution.Authentication.Server.Models;
+using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging.Abstractions;
+using Moq;
 using Xunit;
 
 namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
@@ -5,16 +14,25 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
     public class TokenControllerUnitTests
     {
         [Fact]
-        public void GetACSTokenAsync_IdentityMappingExisting_ReturnACSToken()
+        public void GetACSTokenAsync_IdentityMappingExists_Returns_Status201()
         {
-            // Todo: Add implementation
+            var mockGraphService = new Mock<IGraphService>();
+            var mockAcsService = new Mock<IACSService>();
 
-        }
+            const string EXISTING_USERID = "UserId123";
+            const string EXISTING_USERID_TOKENVAL = "UserId123_TokenVal";
 
-        [Fact]
-        public void GetACSTokenAsync_IdentityMappingNotExisting_ReturnACSToken()
-        {
-            // Todo: Add implementation
+            mockGraphService.Setup(mg => mg.GetACSUserId()).Returns(Task.Run(() => EXISTING_USERID));
+            mockAcsService.Setup(ma => ma.CreateACSToken(EXISTING_USERID)).Returns(Task.Run(() => new AccessToken(EXISTING_USERID_TOKENVAL, DateTime.Now)));
+
+            var tokenController = new TokenController(mockAcsService.Object, mockGraphService.Object, new NullLogger<TokenController>());
+            var returnedTokenResult = tokenController.GetACSTokenAsync();
+            var returnedToken = returnedTokenResult.Result as ObjectResult;
+
+            CommunicationUserIdentifierAndTokenResponse accessToken = (CommunicationUserIdentifierAndTokenResponse)returnedToken.Value;
+            Assert.Equal(EXISTING_USERID_TOKENVAL, accessToken.Token);
+            Assert.Equal(EXISTING_USERID, accessToken.User.Id);
+            Assert.Equal(201, returnedToken.StatusCode);
 
         }
     }
