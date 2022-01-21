@@ -45,23 +45,15 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// </summary>
         /// <response code="200">ACS user id successfully retrieved.</response>
         /// <response code="404">Specified acs user id doesn't exist.</response>
-        /// <response code="500">Internal server error.</response>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(string), 200)]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> GetACSUser()
         {
-            try
-            {
-                string acsUserId = await _graphService.GetACSUserId();
+            string acsUserId = await _graphService.GetACSUserId();
 
-                return acsUserId == null ? StatusCode(StatusCodes.Status404NotFound, NoIdentityMappingError) : Ok(new IdentityMapping(acsUserId));
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return acsUserId == null ? StatusCode(StatusCodes.Status404NotFound, NoIdentityMappingError) : Ok(new IdentityMapping(acsUserId));
         }
 
         /// <summary>
@@ -69,24 +61,15 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// Create a Communication Services identity and then add the roaming identity mapping information to the user resource.
         /// </summary>
         /// <response code="201">ACS user successfully created.</response>
-        /// <response code="500">Internal server error.</response>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(IdentityMapping), 201)]
-        [ProducesResponseType(500)]
+        [ProducesResponseType(typeof(IdentityMapping), StatusCodes.Status201Created)]
         public async Task<ActionResult> CreateACSUser()
         {
-            try
-            {
-                string acsUserId = await _acsService.CreateACSUserIdentity();
-                string identityMappingResponse = await _graphService.AddIdentityMapping(acsUserId);
+            string acsUserId = await _acsService.CreateACSUserIdentity();
+            await _graphService.AddIdentityMapping(acsUserId);
 
-                return StatusCode(StatusCodes.Status201Created, new IdentityMapping(acsUserId));
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return StatusCode(StatusCodes.Status201Created, new IdentityMapping(acsUserId));
         }
 
         /// <summary>
@@ -104,27 +87,20 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// </list>
         /// </summary>
         /// <response code="204">ACS user id is deleted successfully.</response>
-        /// <response code="500">Internal server error.</response>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteACSUser()
         {
-            try
-            {
-                string acsUserId = await _graphService.GetACSUserId();
-                // Delete the identity mapping from the user's roaming profile information using Microsoft Graph Open Extension
-                await _graphService.DeleteIdentityMapping();
-                // Delete the ACS user identity which revokes all active access tokens
-                // and prevents users from issuing access tokens for the identity.
-                // It also removes all the persisted content associated with the identity.
-                await _acsService.DeleteACSUserIdentity(acsUserId);
+            string acsUserId = await _graphService.GetACSUserId();
+            // Delete the identity mapping from the user's roaming profile information using Microsoft Graph Open Extension
+            await _graphService.DeleteIdentityMapping();
+            // Delete the ACS user identity which revokes all active access tokens
+            // and prevents users from issuing access tokens for the identity.
+            // It also removes all the persisted content associated with the identity.
+            await _acsService.DeleteACSUserIdentity(acsUserId);
 
-                return StatusCode(StatusCodes.Status204NoContent);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return NoContent();
         }
     }
 }

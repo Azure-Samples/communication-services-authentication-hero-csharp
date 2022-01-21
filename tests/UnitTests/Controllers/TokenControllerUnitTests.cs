@@ -25,7 +25,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
             mockGraphService.Setup(mg => mg.GetACSUserId()).Returns(Task.Run(() => EXISTING_USERID));
             mockAcsService.Setup(ma => ma.CreateACSToken(EXISTING_USERID)).Returns(Task.Run(() => new AccessToken(EXISTING_USERID_TOKENVAL, DateTime.Now)));
 
-            var tokenController = new TokenController(mockAcsService.Object, mockGraphService.Object, new NullLogger<TokenController>());
+            var tokenController = new TokenController(mockAcsService.Object, mockGraphService.Object);
             var returnedTokenResult = tokenController.GetACSTokenAsync();
             var returnedToken = returnedTokenResult.Result as ObjectResult;
 
