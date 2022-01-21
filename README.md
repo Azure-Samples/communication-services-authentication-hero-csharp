@@ -42,13 +42,15 @@ Deploy to Azure using instructions as [here](./docs/deploy/deploy_test-sample-on
 
 ## Overview
 
-In order to properly implement Azure Communication Services solutions, developers must start by putting in place the correct infrastructure to perform key actions for the communications lifecycle. These actions include authenticating users since the Azure Communication Services are identity-agnostic.
+In order to properly implement a secure Azure Communication Services solutions, developers must start by putting in place the correct infrastructure to properly generate user and access token credentials for Azure Communication Services. Azure Communication Services is identity-agnostic, to learn more check out our [conceptual documentation](https://docs.microsoft.com/azure/communication-services/concepts/identity-model).
 
-This is an ACS solution server sample to provide a guidance establishing best practices on a simple use case to build trusted backend service that will manage ACS identities by mapping them 1:1 with Azure Active Directory identities (for Teams Interop or native ACS calling/chat) and issue ACS tokens.
+This repository provides a sample of a server implementation of an authentication service for Azure Communication Services. It uses best practices to build a trusted backend service that issues Azure Communication Services credentials and maps them to Azure Active Direction identities. 
 
-There are two scenarios:
+This sample can help you in the following scenarios:
 1. As a developer, you need to enable authentication flow for joining native ACS and Teams Interop calling/chat by mapping an ACS Identity to an Azure Active Directory identity and using this same ACS identity for the user to fetch an ACS token in every session.
-2. As a developer, you need to enable authentication flow for Custom Teams Endpoint by using an Azure Active Directory identity of Teams' user to fetch an ACS token to be able to join Teams calling/chat.
+2. As a developer, you need to enable authentication flow for Custom Teams Endpoint by using an M365 Azure Active Directory identity of a Teams' user to fetch an ACS token to be able to join Teams calling/chat.
+
+If you are looking to get started with Azure Communication Services, but are still in learning / prototyping phases, check out our [quickstarts for getting started with azure communication services users and access tokens](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
 
 > :loudspeaker: An ACS Solutions - Authentication Sample (Nodejs version) can be found [here](https://github.com/Azure-Samples/communication-services-authentication-hero-javascript).
 
@@ -58,9 +60,9 @@ Since the sample only focuses on the Web Server Apis, the client application is 
 
 Before contributing to this sample, please read our [contribution guidelines](./CONTRIBUTING.md).
 
-## Features
+## Endpoints
 
-This ACS Solutions - Authentication server sample provides the following features:
+This ACS Solutions - Authentication server sample provides the following endpoints:
 
 * **/deleteUser** - Delete the identity mapping information from the user's roaming profile including the ACS identity.
 
@@ -83,17 +85,15 @@ This ACS Solutions - Authentication server sample provides the following feature
 
 #### Server App Registration
 
-- go to https://portal.azure.com/
-- open Azure Active Directory service
-- on the Azure Active Directory page:
-  - navigate to and click on 'App Registrations' menu item
-  - click on 'New registration' 
-  - on the 'Register an application' page:
+Follow instructions on how to register your server application with Azure Active Directory [here](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
+
+When registering use the following information:
     - name your application `AuthServer`
     - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
     - redirect the URI to 'Web' platform with `http://localhost:44351/` as link
     - click on 'Register' and it will open your application page once registration is sucessful
-- on your AuthServer application page:
+
+On your application page
   - navigate to and click on 'Certificates & Secrets' menu item
     - on the 'Client secrets' tab, click on 'New client secret' to create a new one
     - add a description, select an expiration time and click 'Add'
@@ -114,17 +114,16 @@ This ACS Solutions - Authentication server sample provides the following feature
 #### Client App Registration
 
 **Note** - This client app registration should be used to generate the AAD Token manually to call AAD protected Web Apis in the sample, if you do not add a client application extending the backend Web Apis sample.
-- go to https://portal.azure.com/
-- open Azure Active Directory service
-- on the Azure Active Directory page:
-  - navigate to and click on 'App Registrations' menu item
-  - click on 'New registration' 
-  - on the 'Register an application' page:
+
+Follow instructions on how to register your client application with Azure Active Directory [here](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
+
+When registering use the following information:
     - name your application `AuthClient`
     - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
     - redirect the URI to 'Web' platform with `http://localhost:3000/` as link  (Choose SPA in case you add a client application)
     - click on 'Register' and it will open your application page once registration is sucessful
-- on your AuthClient page:
+    
+On your AuthClient page:
   - navigate to and click on 'API permissions' menu item
     - click on 'Add a permission'
       - navigate and click on 'My APIs' tab
