@@ -20,7 +20,7 @@ Deploy to Azure using instructions as [here](./docs/deploy/deploy_test-sample-on
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
-2. [Features](#features)
+2. [Endpoints](#endpoints)
 3. [Getting Started](#getting-started)
    1. [Prerequisites](#prerequisites)
    2. [Code Structure](#code-structure)
@@ -151,7 +151,7 @@ On your AuthClient page:
 ### Locally deploying the sample app
 
 1. Open TokenApi/appsettings.json and update the configurations.
-    
+   
     a. Update the CommunicationServices:ConnectionString from ACS resource.
     
     b. Update the AzureActiveDirectory settings from your server app registration. The ClientId and TenantId should be used from Overview Page and use the previously recorded ClientSecret as from the set up step.
@@ -190,7 +190,7 @@ curl --location --request POST 'https://login.microsoftonline.com/<tenantid>/oau
 --data-urlencode 'scope=<server api scope>'
 ```
 3. Once you get the access_token in the response, make a GET request to `http://localhost:44351/api/token` with the access token as a Authorization Bearer header. Verify you get a successful status code i.e. 200.
- 
+
 ``` SHELL
 curl --location --request GET 'http://localhost:44351/api/token' --header 'Authorization: Bearer <access_token>'
 ```
