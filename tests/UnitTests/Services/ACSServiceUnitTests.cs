@@ -42,12 +42,12 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
             Mock<IOptionsMonitor<CommunicationServicesSettingsModel>> optionsMonitorMock = new Mock<IOptionsMonitor<CommunicationServicesSettingsModel>>();
 
             const string ACS_USER_ID = "John";
-            var communicationUserIdentifierResponse = Response.FromValue(new CommunicationUserIdentifier(ACS_USER_ID), null);
+            Response<CommunicationUserIdentifier> communicationUserIdentifierResponse = Response.FromValue(new CommunicationUserIdentifier(ACS_USER_ID), null);
 
             mockACSClient.Setup(g => g.CreateUserAsync(CancellationToken.None)).Returns(Task.Run(() => communicationUserIdentifierResponse)).Verifiable();
 
-            var ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object );
-            var returnedACSUserIdentity = ACSService.CreateACSUserIdentity();
+            ACSService ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object );
+            Task<string> returnedACSUserIdentity = ACSService.CreateACSUserIdentity();
 
             Assert.Equal(ACS_USER_ID, returnedACSUserIdentity.Result);
         }
@@ -63,14 +63,14 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
 
             CommunicationServicesSettingsModel communicationServiceSettingsModel = new CommunicationServicesSettingsModel();
             communicationServiceSettingsModel.Scopes = new string[] { "chat", "voip" };
-            var accessTokenResponse = Response.FromValue<AccessToken>(new AccessToken(TOKEN_VALUE, DateTime.Now), null);
+            Response<AccessToken> accessTokenResponse = Response.FromValue(new AccessToken(TOKEN_VALUE, DateTime.Now), null);
 
             optionsMonitorMock.SetupGet(g => g.CurrentValue).Returns(communicationServiceSettingsModel);
-            var scopes = GetCommunicationTokenScopes(optionsMonitorMock.Object.CurrentValue);
+            CommunicationTokenScope[] scopes = GetCommunicationTokenScopes(optionsMonitorMock.Object.CurrentValue);
             mockACSClient.Setup(g => g.GetTokenAsync(new CommunicationUserIdentifier(ACS_USER_ID), scopes, CancellationToken.None)).Returns(Task.Run(() => accessTokenResponse)).Verifiable();
 
-            var ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object);
-            var returnedACSUserIdentity = ACSService.CreateACSToken(ACS_USER_ID);
+            ACSService ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object);
+            Task<AccessToken> returnedACSUserIdentity = ACSService.CreateACSToken(ACS_USER_ID);
 
             Assert.Equal(TOKEN_VALUE, returnedACSUserIdentity.Result.Token);
         }
