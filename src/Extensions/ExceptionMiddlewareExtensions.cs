@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE.md in the project root for license information.
 
+using System.Text.Json;
 using ACS.Solution.Authentication.Server.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -31,11 +32,11 @@ namespace ACS.Solution.Authentication.Server.Extensions
                     {
                         logger.LogError($"Something went wrong: {exception.Error}");
 
-                        await context.Response.WriteAsync(new ErrorDetails()
+                        await context.Response.WriteAsync(JsonSerializer.Serialize(new ErrorDetails()
                         {
                             StatusCode = context.Response.StatusCode,
                             Message = exception.Error.Message,
-                        }.ToString());
+                        }));
                     }
                 });
             });
