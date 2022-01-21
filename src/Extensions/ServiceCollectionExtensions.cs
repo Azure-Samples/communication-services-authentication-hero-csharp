@@ -42,6 +42,9 @@ namespace ACS.Solution.Authentication.Server.Extensions
             // Add CommunicationServicesSettingsModel to the service container with Configure and bound to configuration
             services.Configure<CommunicationServicesSettingsModel>(
                 configuration.GetSection(CommunicationServicesSettingsModel.CommunicationServicesSettingsName));
+            // Add GraphSettingsModel to the service container with Configure and bound to configuration
+            services.Configure<GraphSettingsModel>(
+                configuration.GetSection(GraphSettingsModel.GraphSettingsName));
         }
 
         /// <summary>
