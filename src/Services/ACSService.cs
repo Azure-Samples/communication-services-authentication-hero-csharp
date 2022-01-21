@@ -25,10 +25,18 @@ namespace ACS.Solution.Authentication.Server.Services
         /// </summary>
         /// <param name="communicationServicesSettingsOptions">The Communication Services settings object in appsettings file.</param>
         /// <param name="logger">Used to perform logging.</param>
-        public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions)
+        public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions, CommunicationIdentityClient identityClient = null)
         {
             _communicationServicesSettings = communicationServicesSettingsOptions.CurrentValue;
-            _identityClient = new CommunicationIdentityClient(_communicationServicesSettings.ConnectionString);
+
+            if (identityClient != null)
+            {
+                _identityClient = identityClient;
+            }
+            else
+            {
+                _identityClient = new CommunicationIdentityClient(_communicationServicesSettings.ConnectionString);
+            }
         }
 
         /// <summary>
