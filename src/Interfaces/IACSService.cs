@@ -13,10 +13,9 @@ namespace ACS.Solution.Authentication.Server.Interfaces
     public interface IACSService
     {
         /// <summary>
-        /// Create a Communication Servicesidentity using the client authenticated with Azure AD.
+        /// Create a Communication Services identity using the client.
         /// </summary>
         /// <returns>The unique Communication Services identity.</returns>
-        /// <exception cref="RequestFailedException">If failing to create an unique Communication Services identity.</exception>
         Task<string> CreateACSUserIdentity();
 
         /// <summary>
@@ -24,14 +23,12 @@ namespace ACS.Solution.Authentication.Server.Interfaces
         /// </summary>
         /// <param name="acsUserId">The unique Communication Services identity.</param>
         /// <returns>An ACS access token with the given scope for a given ACS identity.</returns>
-        /// <exception cref="RequestFailedException">If failing to issue an ACS access token with the given scope for a given ACS identity.</exception>
         Task<AccessToken> CreateACSToken(string acsUserId);
 
         /// <summary>
         /// Create a Communication Services identity and issue an access token for it in one go.
         /// </summary>
         /// <returns>A Communication Services identity and an access token for it at the same time.</returns>
-        /// <exception cref="RequestFailedException">If failing to create a Communication Services identity and an access token for it at the same time.</exception>
         Task<CommunicationUserIdentifierAndToken> CreateACSUserIdentityAndToken();
 
         /// <summary>
@@ -41,7 +38,6 @@ namespace ACS.Solution.Authentication.Server.Interfaces
         /// </summary>
         /// <param name="acsUserId">The unique Communication Services identity.</param>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
-        /// <exception cref="RequestFailedException">If failing to delete a Communication Services identity.</exception>
         Task DeleteACSUserIdentity(string acsUserId);
     }
 }
