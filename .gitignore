@@ -4,7 +4,7 @@ src/[Oo]bj/
 tests/UnitTests/[Bb]in/
 tests/UnitTests/[Oo]bj/
 
-# Debug user profile
+# Build user profile
 src/ACSAuthentication.Server.csproj.user
 
 # Visual Studio 2015/2017 cache/options directory

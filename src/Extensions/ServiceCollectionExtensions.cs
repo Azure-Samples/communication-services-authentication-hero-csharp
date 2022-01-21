@@ -13,7 +13,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
     /// <summary>
     /// Combine service collection by moving related groups of registrations to an extension method to register services.
     /// </summary>
-    public static class ServiceCollectionExtension
+    public static class ServiceCollectionExtensions
     {
         /// <summary>
         /// Add cross-origin resource sharing services to the specified Microsoft.Extensions.DependencyInjection.IServiceCollection.
