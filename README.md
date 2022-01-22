@@ -197,6 +197,8 @@ curl --location --request POST 'https://login.microsoftonline.com/<tenantid>/oau
 ``` SHELL
 curl --location --request GET 'http://localhost:44351/api/token' --header 'Authorization: Bearer <access_token>'
 ```
+4. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint the please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Azure Active Directory Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
+
 ### Troubleshooting
 
 1. ...
