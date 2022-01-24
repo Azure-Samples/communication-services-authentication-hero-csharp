@@ -41,42 +41,42 @@ const TestCallContent = () => {
             });
     }
 
-        if(username != "" && token != "" && acsID != "" && callAdapter == null && updatedAdapter && callGUID!="")
-        {
-                updatedAdapter=false
-                createAzureCommunicationCallAdapter({
-                    userId: {communicationUserId: acsID },
-                    displayName : username,
-                    credential: new AzureCommunicationTokenCredential(token),
-                    locator: { groupId :  callGUID }
-                  }).then(adapter => setCallAdapter(adapter));
-        }
+    if(username != "" && token != "" && acsID != "" && callAdapter == null && updatedAdapter && callGUID!="")
+    {
+        updatedAdapter=false
+        createAzureCommunicationCallAdapter({
+            userId: {communicationUserId: acsID },
+            displayName : username,
+            credential: new AzureCommunicationTokenCredential(token),
+            locator: { groupId :  callGUID }
+            }).then(adapter => setCallAdapter(adapter));
+    }
 
-        if(callAdapter)
-        {
-            return (
-                <>
-                    <h5 className="card-title">Welcome {accounts[0].name}</h5> 
-                    <h5 className="card-title">Call GUID: {callGUID}</h5> 
-                    <div style={{ width: '100vw', height: '45vh' }}>
-                    {callAdapter && <CallComposite adapter={callAdapter} />}
-                    </div>
-                </>
-            );
-        }
-        else
-        {
-            return (
-                <>
-                <h5 className="card-title">Welcome {accounts[0].name}</h5>
-                <label>Enter a GUID Or Use Generated GUID for the call ID</label>
-                <form>
-                <input type="text" defaultValue={uuidv4()} id = "guidTextBox"  />
-                </form>
-                <Button variant="secondary" onClick={RequestCallData}>{buttonText}</Button>
-                </>
-            );
-        }
+    if(callAdapter)
+    {
+        return (
+            <>
+                <h5 className="card-title">Welcome {accounts[0].name}</h5> 
+                <h5 className="card-title">Call GUID: {callGUID}</h5> 
+                <div style={{ width: '100vw', height: '45vh' }}>
+                {callAdapter && <CallComposite adapter={callAdapter} />}
+                </div>
+            </>
+        );
+    }
+    else
+    {
+        return (
+            <>
+            <h5 className="card-title">Welcome {accounts[0].name}</h5>
+            <label>Enter a GUID Or Use Generated GUID for the call ID</label>
+            <form>
+            <input type="text" defaultValue={uuidv4()} id = "guidTextBox"  />
+            </form>
+            <Button variant="secondary" onClick={RequestCallData}>{buttonText}</Button>
+            </>
+        );
+    }
 };
 
 /**
