@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/index.css";
-import App from "./App.jsx";
-import { PublicClientApplication } from "@azure/msal-browser";
-import { MsalProvider } from "@azure/msal-react";
-import { msalConfig } from "./authConfig";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/index.css';
+import App from './App.jsx';
+import { PublicClientApplication } from '@azure/msal-browser';
+import { MsalProvider } from '@azure/msal-react';
+import { msalConfig } from './authConfig';
 
 /**
  * Initialize a PublicClientApplication instance which is provided to the MsalProvider component
@@ -22,5 +22,5 @@ ReactDOM.render(
             <App />
         </MsalProvider>
     </React.StrictMode>,
-    document.getElementById("root")
+    document.getElementById('root')
 );
