@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ACS.Solution.Authentication.Server.Interfaces;
 using ACS.Solution.Authentication.Server.Models;
+using Microsoft.Extensions.Options;
 using Microsoft.Graph;
 
 namespace ACS.Solution.Authentication.Server.Services
@@ -15,14 +16,17 @@ namespace ACS.Solution.Authentication.Server.Services
     /// </summary>
     public sealed class GraphService : IGraphService
     {
+        private readonly GraphSettingsModel _graphSettingsOptions;
         private readonly GraphServiceClient _graphServiceClient;
 
         /// <summary>
         /// Initializes a new instance of Microsoft Graph service client.
         /// </summary>
         /// <param name="graphServiceClient">An instance of <c>GraphServiceClient</c>.</param>
-        public GraphService(GraphServiceClient graphServiceClient)
+        /// <param name="graphSettingsOptions">The Microsoft Graph Services settings object in appsettings file.</param>
+        public GraphService(GraphServiceClient graphServiceClient, IOptionsMonitor<GraphSettingsModel> graphSettingsOptions)
         {
+            _graphSettingsOptions = graphSettingsOptions.CurrentValue;
             _graphServiceClient = graphServiceClient;
         }
 
@@ -56,13 +60,13 @@ namespace ACS.Solution.Authentication.Server.Services
         /// Add an identity mapping to a user resource using Graph open extension.
         /// </summary>
         /// <param name="acsUserId">The Communication Services identity.</param>
-        /// <returns>A <see cref="IdentityMappingModel"> object.</returns>.
+        /// <returns>An awaitable <see cref="Task"/>.</returns>
         public async Task AddIdentityMapping(string acsUserId)
         {
             // Initialize an OpenTypeExtension instance.
             var extension = new OpenTypeExtension
             {
-                ExtensionName = Configurations.Constants.ExtensionName,
+                ExtensionName = _graphSettingsOptions.ExtensionName,
                 AdditionalData = new Dictionary<string, object>() { { IdentityMapping.IdentityMappingKeyName, acsUserId } },
             };
 
@@ -79,7 +83,7 @@ namespace ACS.Solution.Authentication.Server.Services
         public async Task DeleteIdentityMapping()
         {
             await _graphServiceClient.Me
-                                     .Extensions[Configurations.Constants.ExtensionName]
+                                     .Extensions[_graphSettingsOptions.ExtensionName]
                                      .Request()
                                      .DeleteAsync();
         }
@@ -95,7 +99,7 @@ namespace ACS.Solution.Authentication.Server.Services
 
             foreach (OpenTypeExtension openExtension in openExtensionsData)
             {
-                if (string.Equals(openExtension.ExtensionName, Configurations.Constants.ExtensionName, StringComparison.Ordinal))
+                if (string.Equals(openExtension.ExtensionName, _graphSettingsOptions.ExtensionName, StringComparison.Ordinal))
                 {
                     identityMappingOpenExtension = openExtension;
                 }

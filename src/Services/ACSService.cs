@@ -24,19 +24,11 @@ namespace ACS.Solution.Authentication.Server.Services
         /// Initializes a new instance of Azure.Communication.Identity.CommunicationIdentityClient.
         /// </summary>
         /// <param name="communicationServicesSettingsOptions">The Communication Services settings object in appsettings file.</param>
-        /// <param name="logger">Used to perform logging.</param>
+        /// <param name="identityClient">The Azure Communication Services Identity client.</param>
         public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions, CommunicationIdentityClient identityClient = null)
         {
             _communicationServicesSettings = communicationServicesSettingsOptions.CurrentValue;
-
-            if (identityClient != null)
-            {
-                _identityClient = identityClient;
-            }
-            else
-            {
-                _identityClient = new CommunicationIdentityClient(_communicationServicesSettings.ConnectionString);
-            }
+            _identityClient = identityClient ?? new CommunicationIdentityClient(_communicationServicesSettings.ConnectionString);
         }
 
         /// <summary>
