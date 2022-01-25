@@ -14,13 +14,14 @@ namespace ACS.Solution.Authentication.Server.Models
         public const string GraphSettingsName = "Graph";
 
         /// <summary>
+        /// Microsoft Graph Open Extension Name.
+        /// The name of Graph open extension representing some roaming profile information about users.
+        /// </summary>
+        public string ExtensionName { get; set; }
+
+        /// <summary>
         /// The URL of the Graph API.
         /// </summary>
         public string BaseUrl { get; set; }
-
-        /// <summary>
-        /// The scopes required for calling the Graph API.
-        /// </summary>
-        public string Scopes { get; set; }
     }
 }

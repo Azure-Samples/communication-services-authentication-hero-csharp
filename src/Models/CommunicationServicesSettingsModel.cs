@@ -18,7 +18,7 @@ namespace ACS.Solution.Authentication.Server.Models
         /// <summary>
         /// Gets or sets conection string of Communication Services.
         /// </summary>
-        public string ConnectionString { get; set; } = string.Empty;
+        public string ConnectionString { get; set; }
 
         /// <summary>
         /// List of scopes for a Communication services access token.
