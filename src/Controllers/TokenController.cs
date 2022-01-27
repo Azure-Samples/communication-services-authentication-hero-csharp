@@ -104,6 +104,8 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// 2. Initialize a Communication Identity Client and then issue an ACS access token for the Teams user.
         /// </summary>
         /// <param name="authorization">The authorization string to validate.</param>
+        /// <response code="201">ACS token is successfully generated.</response>
+        /// <response code="401">Fail to get an authorization code from the request header.</response>
         /// <returns>If authorizing successfully, an ACS access token for the Teams user. Otherwise, an unauthorized error message.</returns>
         [HttpGet]
         [Route("aad")]
