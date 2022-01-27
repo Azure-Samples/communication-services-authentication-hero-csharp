@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See LICENSE.md in the project root for license information.
 
 using System;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ACS.Solution.Authentication.Server.Interfaces;
 using ACS.Solution.Authentication.Server.Models;
@@ -18,14 +19,15 @@ namespace ACS.Solution.Authentication.Server.Controllers
     /// <summary>
     /// Token controller.
     /// </summary>
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    [RequiredScope("access_as_user")] // This is the scope we gave the AuthService when registering the application.
     public class TokenController : ControllerBase
     {
         private readonly IACSService _acsService;
         private readonly IGraphService _graphService;
+
+        // Error message
+        private const string NoAuthorizationCodeError = "Fail to get the authorization code from the request header";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenController"/> class.
@@ -63,6 +65,8 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// </summary>
         /// <response code="201">ACS token is successfully generated.</response>
         /// <returns>An ACS token with an ACS identity.</returns>
+        [Authorize]
+        [RequiredScope("access_as_user")] // This is the scope we gave the AuthService when registering the application.
         [HttpGet]
         [ProducesResponseType(typeof(CommunicationUserIdentifierAndTokenResponse), StatusCodes.Status201Created)]
         public async Task<ActionResult> GetACSTokenAsync()
@@ -92,6 +96,36 @@ namespace ACS.Solution.Authentication.Server.Controllers
             }
 
             return StatusCode(StatusCodes.Status201Created, acsIdentityTokenResponse);
+        }
+
+        /// <summary>
+        /// Eexchange AAD token for an ACS access token of Teams user using the Azure Communication Services Identity SDK.
+        /// 1. Get an AAD user access token passed through request header
+        /// 2. Initialize a Communication Identity Client and then issue an ACS access token for the Teams user.
+        /// </summary>
+        /// <param name="authorization">The authorization string to validate.</param>
+        /// <returns>If authorizing successfully, an ACS access token for the Teams user. Otherwise, an unauthorized error message.</returns>
+        [HttpGet]
+        [Route("aad")]
+        public async Task<ActionResult> ExchangeAADTokenAsync([FromHeader] string authorization)
+        {
+            if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
+            {
+                // Get an AAD token passed through request header
+                string aadTokenViaRequest = headerValue.Parameter;
+                // Exchange the AAD user token for the Teams access token
+                AccessToken acsTokenForTeamsUser = await _acsService.GetACSTokenForTeamsUser(aadTokenViaRequest);
+
+                return StatusCode(StatusCodes.Status201Created, acsTokenForTeamsUser);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status401Unauthorized, new ErrorDetails()
+                {
+                    StatusCode = StatusCodes.Status401Unauthorized,
+                    Message = NoAuthorizationCodeError,
+                });
+            }
         }
     }
 }

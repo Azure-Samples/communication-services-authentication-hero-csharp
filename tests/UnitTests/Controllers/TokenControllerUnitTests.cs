@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE.md in the project root for license information.
+
 using System;
 using System.Threading.Tasks;
 using ACS.Solution.Authentication.Server.Controllers;
@@ -5,7 +8,6 @@ using ACS.Solution.Authentication.Server.Interfaces;
 using ACS.Solution.Authentication.Server.Models;
 using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
