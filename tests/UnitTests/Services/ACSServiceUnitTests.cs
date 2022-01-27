@@ -1,19 +1,16 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See LICENSE.md in the project root for license information.
+
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using ACS.Solution.Authentication.Server.Interfaces;
 using ACS.Solution.Authentication.Server.Models;
 using ACS.Solution.Authentication.Server.Services;
 using Azure;
 using Azure.Communication;
 using Azure.Communication.Identity;
 using Azure.Core;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
-using Microsoft.Graph;
 using Moq;
 using Xunit;
 
