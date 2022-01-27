@@ -1,4 +1,7 @@
-﻿# Build results
+﻿# Minimal client node modules
+MinimalClient/node_modules/
+
+# Build results
 src/[Bb]in/
 src/[Oo]bj/
 tests/UnitTests/[Bb]in/
