@@ -43,7 +43,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
 
             mockACSClient.Setup(g => g.CreateUserAsync(CancellationToken.None)).Returns(Task.Run(() => communicationUserIdentifierResponse)).Verifiable();
 
-            ACSService ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object );
+            ACSService ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object);
             Task<string> returnedACSUserIdentity = ACSService.CreateACSUserIdentity();
 
             Assert.Equal(ACS_USER_ID, returnedACSUserIdentity.Result);
