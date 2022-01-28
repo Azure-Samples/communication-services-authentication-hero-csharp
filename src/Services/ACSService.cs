@@ -67,7 +67,7 @@ namespace ACS.Solution.Authentication.Server.Services
         {
             // Issue an access token for the Teams user that can be used with the Azure Communication Services SDKs.
             // Notice: the function name will be renamed to exchangeTeamsUserAadToken
-            // Know more, please read this https://github.com/Azure/azure-sdk-for-js/pull/18306
+            // Know more, please read this https://github.com/Azure/azure-sdk-for-net/pull/24846#issuecomment-948489542
             Response<AccessToken> tokenResponse = await _identityClient.GetTokenForTeamsUserAsync(aadTokan);
 
             return tokenResponse.Value;
