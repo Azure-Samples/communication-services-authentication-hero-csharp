@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace ACS.Solution.Authentication.Server.Extensions
 {
     /// <summary>
-    /// The extension class is used to registere the UseExceptionHandler middleware, which
+    /// The extension class is used to register the UseExceptionHandler middleware, which
     /// populates the status code and the content type of our response, logs the error message,
     /// and returns the response with the custom created object.
     /// </summary>
