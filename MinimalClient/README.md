@@ -6,8 +6,8 @@ To Run this client
 
 Pre-Req - Back end server set up and running - Single page client app registered on AAD - populate the authConfig.js file with the clientId, authority, redirectUri, and loginRequest Scope values from the app registrations (server and client).
 
-1.  run 'yarn install'
-2.  -   run 'yarn start'
+1.  run 'npm install'
+2.  -   run 'npm start'
 3.  -   navigate to "http://localhost:3000/"
 4.  -   click sign in, and sign into a valid user account withing the AAD being used
 5.  -   click Join Default Call to join a call using the displayed randomly generated GUID.
