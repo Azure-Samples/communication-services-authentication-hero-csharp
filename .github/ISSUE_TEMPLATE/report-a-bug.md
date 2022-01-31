@@ -1,15 +1,26 @@
 ---
 name: Report a bug
 about: Report a bug to help us improve.
-title: "[what is the issue?] in [where is the issue?]"
-labels: "bug"
-assignees: "alcail, clarenceli-msft, ikumarapeli-msft, lei-msft, rvenugopal-msft, vaibhavjain-msft"
+title: "[BUG] <what is the issue?> in <where is the issue?>"
+labels: bug
+assignees: alcail, clarenceli-msft, ikumarapeli-msft, lei-msft, rvenugopal-msft, vaibhavjain-msft
+
 ---
 
-**Describe the bug; what happened?**
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-**What are the steps to reproduce the issue?**
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Invoke the Api '...'
+2. Verify the result '....'
+3. See error
 
-**What behavior did you expect?**
+**Expected behavior**
+A clear and concise description of what you expected to happen.
 
-**Is there any additional information?**
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Additional context**
+Add any other context about the problem here.
