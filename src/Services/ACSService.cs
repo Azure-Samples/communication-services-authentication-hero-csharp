@@ -59,6 +59,21 @@ namespace ACS.Solution.Authentication.Server.Services
         }
 
         /// <summary>
+        /// Exchange an AAD access token of a Teams user for a new Communication Services AccessToken with a matching expiration time.
+        /// </summary>
+        /// <param name="aadTokan">The Azure AD token of the Teams user.</param>
+        /// <returns>An ACS access token with the given scope for a given ACS identity.</returns>
+        public async Task<AccessToken> GetACSTokenForTeamsUser(string aadTokan)
+        {
+            // Issue an access token for the Teams user that can be used with the Azure Communication Services SDKs.
+            // Notice: the function name will be renamed to exchangeTeamsUserAadToken
+            // Know more, please read this https://github.com/Azure/azure-sdk-for-net/pull/24846#issuecomment-948489542
+            Response<AccessToken> tokenResponse = await _identityClient.GetTokenForTeamsUserAsync(aadTokan);
+
+            return tokenResponse.Value;
+        }
+
+        /// <summary>
         /// Create a Communication Services identity and issue an access token for it in one go.
         /// </summary>
         /// <returns>A Communication Services identity and an access token for it at the same time.</returns>
