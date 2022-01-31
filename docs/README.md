@@ -1,5 +1,6 @@
 # Docs
 
+<<<<<<< HEAD
 ## Contribution Guides
 
 Looking to make a contribution to this repo? Check out our guide for a walk-through on how to make your first contribution:
@@ -11,4 +12,9 @@ Looking to make a contribution to this repo? Check out our guide for a walk-thro
 5. [Write Unit Tests](contribution-guides/5. write-unit-tests.md)
 6. [Submit a PR](contribution-guides/6. submit-a-pr.md)
 7. [Publish Your Changes](contribution-guides/7. publish-your-changes.md)
+=======
+## Architecture Design Guides
+
+- [Identity Mapping Design](design-guides/Identity-Mapping-Design_Graph-Open-Extensions.md) - How to utilize the **Microsoft Graph Open Extensions** to manage ACS identities by mapping them 1:1 with Azure Active Directory identities
+>>>>>>> 553ab007a28f158b5313cf8faf43601e7ee46efa
 

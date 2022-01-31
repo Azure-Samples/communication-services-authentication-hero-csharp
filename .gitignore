@@ -1,9 +1,14 @@
-﻿# Build results
-[Bb]in/
-[Oo]bj/
+﻿# Minimal client node modules
+MinimalClient/node_modules/
+
+# Build results
+src/[Bb]in/
+src/[Oo]bj/
+tests/UnitTests/[Bb]in/
+tests/UnitTests/[Oo]bj/
+
+# Debug user profile
+src/ACSAuthentication.Server.csproj.user
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
-
-# Project credentials
-TokenApi/appsettings.json
