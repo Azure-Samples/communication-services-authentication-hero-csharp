@@ -1,13 +1,10 @@
 # Secured Web API Design
 
-## Table of content
+## Table of Contents
 
 - [Scenario](#scenario)
 - [Overview](#overview)
   - [On-Behalf-Of Flow (OBO Flow)](#on-behalf-of-flow-obo-flow)
-- [Community Help and Support](#community-help-and-support)
-- [Contributing](#contributing)
-- [More Information](#more-information)
 
 ## Scenario
 
