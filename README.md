@@ -20,15 +20,18 @@ Deploy to Azure using instructions [here](./docs/deploy/deploy_test-sample-on-az
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
-3. [Code Structure](#code-structure)
-4. [Getting Started](#getting-started)
-5. [Guidance](#guidance)
-   1. [Identity Storage Options](#identity-storage-options)
-   2. [Bring Your Own Identity (BYOI)](#bring-your-own-identity-byoi)
-6. [Known Issues](#known-issues)
-7. [Contributing](#contributing)
-8. [Trademark](#trademark)
-9. [License](#license)
+3. [Getting Started](#getting-started)
+4. [Code Structure](#code-structure)
+5. [Architecture Overview](#architecture-overview)
+6. [Building off of the sample](#building-off-of-the-sample)
+7. [Publishing to Azure](#publishing-to-azure)
+8. [Troubleshooting](#troubleshooting)
+9. [Known Issues](#known-issues)
+10. [Bring Your Own Identity (BYOI)](#bring-your-own-identity-byoi)
+11. [Contributing](#contributing)
+12. [Resources](#resources)
+13. [Trademark](#trademark)
+14. [License](#license)
 
 ## Overview
 
@@ -54,35 +57,102 @@ Before contributing to this sample, please read our [contribution guidelines](./
 
 ## Endpoints
 
-This ACS Solutions - Authentication server sample provides the following endpoints:
+This ACS Solutions - Authentication sample provides the following endpoints:
 
-* **/deleteUser** - Delete the identity mapping information from the user's roaming profile including the ACS identity.
+- **GET /user** - Get an Azure Communication Services identity through Microsoft Graph.
 
-* **/getToken** - Get / refresh a token for an ACS user.
+- **POST /user** - Create an Azure Communication Services identity and then add the roaming identity mapping information to Microsoft Graph.
 
-* **/exchangeToken** - Exchange an M365 token of a Teams user for an ACS token.
+- **DELETE /user** - Delete the identity mapping information from Microsoft Graph including the Azure Communication Services resource related to the Azure Communication Services identity.
 
-  > :information_source: Teams users are authenticated via the MSAL library against Azure Active Directory in the client application. Authentication tokens are exchanged for Microsoft 365 Teams token via the Communication Services Identity SDK. Developers are encouraged to implement an exchange of tokens in their backend services as exchange requests are signed by credentials for Azure Communication Services. In backend services, developers can require any additional authentication. Learn more [here](https://docs.microsoft.com/en-ca/azure/communication-services/concepts/teams-interop#microsoft-365-teams-identity)
+- **GET /token** - Get / refresh an Azure Communication Services token for an Azure Communication Services user.
 
-The below section is WIP...
+- **GET /token/teams** - Exchange an M365 token of a Teams user for an Azure Communication Services token.
+
+  > :information_source: Teams users are authenticated via the MSAL library against Azure Active Directory in the client application. Authentication tokens are exchanged for Microsoft 365 Teams token via the Azure Communication Services Identity SDK. Developers are encouraged to implement an exchange of tokens in their backend services as exchange requests are signed by credentials for Azure Communication Services. In backend services, developers can require any additional authentication. Learn more [here](https://docs.microsoft.com/en-ca/azure/communication-services/concepts/teams-interop#microsoft-365-teams-identity).
 
 ## Getting Started
-### Code Structure
-### Architecture Overview
+
+If you're wondering where to get started, here are a few scenarios to help you get going:
+
+* "How does the ACS Authentication Server sample work?"
+  * Take a look at our conceptual documentation on:
+    - [ACS Authentication Server Sample Architecture Design](). !!! TODO: add link
+    - [Secured Web API Architecture Design](./docs/design-guides/Secured-Web-API-Design.md).
+    - [Identity Mapping Architecture Design](./docs/design-guides/Identity-Mapping-Design_Graph-Open-Extensions.md).
+    - [AAD Token Exchange Architecture Design](). !!! TODO: add link
+* "I want to see what this ACS Authentication Server sample can do by running it!"
+  * Check out our [Run Authentication Sample](<docs/contribution-guides/3. run-authentication-sample.md>) guide.
+* "I want to submit a fix or a feature for this project"
+  * Check out our [making a contribution](CONTRIBUTING.md) guide first.
+  * Check out the following guides in sequence after coding.
+    * [Test Your Changes](<docs/contribution-guides/4. test-your-changes.md>)
+    * [Write Unit Tests](<docs/contribution-guides/5. write-unit-tests.md>)
+    * [Submit a PR](<docs/contribution-guides/6. submit-a-pr.md>)
+    * [Publish Your Changes](<docs/contribution-guides/7. publish-your-changes.md>)
+
+## Code Structure
+
+Here's the breakdown of the repo:
+
+```
+.
+├── deploy - folder gathering all that is needed for Azure deployment
+├── src
+│    ├── Controllers - folder gathering each controller which describes the path of each route │and the method to call.
+│    ├── Extensions - folder gathering all extensions like exeption handler middleware or service collection.
+│    ├── Interfaces - folder gathering all interfaces.
+│    ├── Models - folder gathering all objects.
+│    ├── Properties - folder gathering properties needed to run the sample.
+│    ├── Services - folder gathering all services used in the project like Microsoft Graph, Communication Services and Azure Active Directory.
+│    ├── Program.cs - file containing the starting point of the sample.
+│    └── Startup.cs - file containing configuration and setup of the sample.
+└── tests - folder gathering all unit tests.
+     ├── controllers - folder gathering unit tests for each controller.
+     └── services - folder gathering unit tests for each service.
+```
+
+**Code dpendencies:**
+![ACS Authentication Server Sample - Code Dependency Diagram](/docs/images/ACS-Authentication-Server-sample_Dependency-Diagram.png)
+
+## Architecture Overview
+
+Coming soon...
+
 ## Building off of the sample
-## Publish to Azure
+
+Coming soon...
+
+## Publishing to Azure
+
+Coming soon...
+
 ## Troubleshooting
+
+Coming soon...
+
 ## Known Issues
 
-## Bring Your Own Identity (BYOI)
-(AAD B2C)
+- ...
 
+## Bring Your Own Identity (BYOI)
+
+Coming soon...
+
+(AAD B2C)
 
 ## Contributing
 
 Join us by making a contribution. To get you started check out our [making a contribution](CONTRIBUTING.md) guide.
 
 We look forward to building an amazing open source ACS Authentication Server sample with you!
+
+## Resources
+
+- [Azure Communication Services Documentation](https://docs.microsoft.com/en-us/azure/communication-services/) - Find more about how to add voice, video, chat, and telephony on our official documentation.
+- [Azure Communication Services Hero Samples](https://docs.microsoft.com/en-us/azure/communication-services/samples/overview) - Find more ACS samples and examples on our samples overview page.
+- [On-Behalf-Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) - Find more about the OBO workflow
+- [Creating a protected API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) - Detailed example of creating a protected API
 
 ## Trademark
 
