@@ -42,3 +42,8 @@
         ```
     
     b. Test the Apis using Test Client (To Be discussed...) 
+
+
+**[Proceed to Architecture Overview ...](../design-guides/architecture-overview.md)**
+
+**[Setting up for Local Development ...](<../contribution-guides/1. get-set-up.md>)**
