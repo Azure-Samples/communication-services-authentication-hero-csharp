@@ -20,10 +20,10 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## <a name="purpose"></a>Sample App Purpose
 
-Sample apps are built to help showcase the capabilities of Azure Communication Services (ACS).
+Sample apps are built to help showcase the capabilities of Azure Communication Services.
 This sample app uses all best practices and follows limitations related to the service.
 As contributor, make sure to follow our guidelines or your work might not be accepted.
-The app is built on top of the existing ACS SDKs, and will not diverge from the capabilities offered by those SDKs.
+The app is built on top of the existing Azure Communication Services SDKs, and will not diverge from the capabilities offered by those SDKs.
 This means that if your desired feature is not supported by those SDKs, please don't try to hack it into the sample.
 
 ## <a name="coc"></a> Code of Conduct

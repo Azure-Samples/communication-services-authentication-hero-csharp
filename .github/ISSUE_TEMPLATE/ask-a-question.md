@@ -1,6 +1,6 @@
 ---
 name: Ask a Question
-about: Describe this issue template'sFile a question for the ACS Authentication Server
+about: Describe this issue template'sFile a question for the Azure Communication Services Authentication Server
   sample purpose here.
 title: "[Question]"
 labels: question

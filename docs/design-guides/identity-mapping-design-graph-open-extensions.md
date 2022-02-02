@@ -4,21 +4,21 @@
 
 - [Scenario](#scenario)
 - [Overview](#overview)
-- [1:1 ACS Identity and Azure Active Directory user Identity mapping](#11-acs-identity-and-azure-active-directory-user-identity-mapping)
+- [1:1 Azure Communication Services Identity and Azure Active Directory user Identity mapping](#11-azure-communication-services-identity-and-azure-active-directory-user-identity-mapping)
 - [Contributing](#contributing)
 - [More Information](#more-information)
 
 ## Scenario
 
 The sample solution focuses on token management for below use cases:
-- Joining the native ACS Chat, Calling / Teams Interop Meetings
+- Joining the native Azure Communication Services Chat, Calling / Teams Interop Meetings
 - Joining the Teams meeting as Authenticated Team's user
 
-The first scenario requires the identity mapping solution leveraged in `/token` and `/user` endpoints (endpoints implemented to support only the first scenario). The ACS identity is mapped to Azure Active Directory user instance, so that the same ACS identity for the user can be used in multiple sessions. Please refer the  [Azure Communication Services Identity Model](https://docs.microsoft.com/azure/communication-services/concepts/identity-model)
+The first scenario requires the identity mapping solution leveraged in `/token` and `/user` endpoints (endpoints implemented to support only the first scenario). The Azure Communication Services identity is mapped to Azure Active Directory user instance, so that the same Azure Communication Services identity for the user can be used in multiple sessions. Please refer the  [Azure Communication Services Identity Model](https://docs.microsoft.com/azure/communication-services/concepts/identity-model)
 
 ## Overview
 
-This sample solution demonstrates how to use Microsoft Graph open extensions as the solution of identity mapping storage to build trusted backend service that will manage ACS identities by mapping them 1:1 with Azure Active Directory identities (for Teams Interop or native ACS calling/chat) and issue ACS tokens.
+This sample solution demonstrates how to use Microsoft Graph open extensions as the solution of identity mapping storage to build trusted backend service that will manage Azure Communication Services identities by mapping them 1:1 with Azure Active Directory identities (for Teams Interop or native Azure Communication Services calling/chat) and issue Azure Communication Services tokens.
 
 > Note: 
 > 1. Developers should not use extensions to store sensitive personally identifiable information, such as account credentials, government identification numbers, cardholder data, financial account data, healthcare information, or sensitive background information.
@@ -31,13 +31,13 @@ This sample solution demonstrates how to use Microsoft Graph open extensions as 
 >
 > 3. It is worth mentioning that a maximum of **2** **open extensions** are allowed per resource instance while **schema extensions**' maximum is **5**. To learm more about known issues, please visit [Known Extensions Limitations](https://docs.microsoft.com/graph/known-issues#extensions).
 
-![ ACS Authentication Server - Identity Mapping Flow](../images/ACS-Authentication-Server-Sample_Identity-Mapping-Flow.png)
+![ Azure Communication Services Authentication Server - Identity Mapping Flow](../images/ACS-Authentication-Server-Sample_Identity-Mapping-Flow.png)
 
-## 1:1 ACS Identity and Azure Active Directory user Identity mapping
+## 1:1 Azure Communication Services Identity and Azure Active Directory user Identity mapping
 
-As displayed in the ACS Authentication Server - Identity Mapping overview sequence diagram below, the identity mapping part consists of two endpoints - `/user` and `/token`
+As displayed in the Azure Communication Services Authentication Server - Identity Mapping overview sequence diagram below, the identity mapping part consists of two endpoints - `/user` and `/token`
 
-![ACS Authentication Server - Identity Mapping Sequence Diagram](../images/ACS-Authentication-Server-Sample_Identity-Mapping-Sequence.png)
+![Azure Communication Services Authentication Server - Identity Mapping Sequence Diagram](../images/ACS-Authentication-Server-Sample_Identity-Mapping-Sequence.png)
 
 Please refer to the [endpoints design doc](./endpoints-and-responses.md) for more details.
 

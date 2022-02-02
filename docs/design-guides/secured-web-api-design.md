@@ -13,7 +13,7 @@
 
 ## Scenario
 
-In this ACS Authentication Server sample, we would protect custom Web APIs using the Microsoft Identity Platform. The Web API, supporting authenticated users with personal Microsoft accounts as well as work and school accounts, will be protected using Azure Active Directory OAuth Bearer Authorization. Further on the API will also call a downstream API (Microsoft Graph) on-behalf of the signed-in user to provide additional value to its apps.
+In this Azure Communication Services Authentication Server sample, we would protect custom Web APIs using the Microsoft Identity Platform. The Web API, supporting authenticated users with personal Microsoft accounts as well as work and school accounts, will be protected using Azure Active Directory OAuth Bearer Authorization. Further on the API will also call a downstream API (Microsoft Graph) on-behalf of the signed-in user to provide additional value to its apps.
 
 ## Overview
 
@@ -21,7 +21,7 @@ This sample demonstrates how to call a ASP.Net core Web API, protected by [Azure
 
 > Developers who wish to become more familiar with programming using Microsoft Graph are advised to go through the [An introduction to Microsoft Graph for developers](https://www.youtube.com/watch?v=EBbnpFdB92A) recorded session, and also make requests and see responses against the Microsoft Graph using [Microsoft Graph explorer](https://developer.microsoft.com/graph/graph-explorer).
 
-As displayed in the ACS Authentication Server flow diagram below, the secured Web API contains two parts:
+As displayed in the Azure Communication Services Authentication Server flow diagram below, the secured Web API contains two parts:
 
 1. Authenticate users to call a **Web API** through **Authorization Code Grant flow** (Client side) - This is outside of the scope for sample solution, however there are necessary tools provided for testing which can be learned from [deployment section](../deploy/deploy-and-test-sample-on-azure.md).
 2. Make authenticated requests by a Web API to call a **downstream API** through **On-Behalf-Of flow** (Server side)
@@ -48,7 +48,7 @@ In order to gain access to protected resources, such as web APIs, the applicatio
 The access token expires every 24 hours, and the application must request another code using the refresh token.
 
 >The OAuth 2.0 authorization code grant can be used in apps that are installed on a device to gain access to protected resources, such as web APIs. To learn more, please visit [Microsoft identity platform and OAuth 2.0 authorization code flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow).
-:information_source: It is worth mentioning that the Authorization Code Grant flow (ACG flow) is implemented on the **client side** which is excluded from this ACS Authentication Server Sample. Therefore, users need to either integrate the ACG flow into their client applications or manually generate the access token via the ACG flow following our [Run Authentication Server Sample](../contribution-guides/3. run-authentication-sample.md) guide.
+:information_source: It is worth mentioning that the Authorization Code Grant flow (ACG flow) is implemented on the **client side** which is excluded from this Azure Communication Services Authentication Server Sample. Therefore, users need to either integrate the ACG flow into their client applications or manually generate the access token via the ACG flow following our [Run Authentication Server Sample](../contribution-guides/3. run-authentication-sample.md) guide.
 
 Below is a diagram and step-by-step explanation of the ACG flow for better understanding.
 
@@ -77,7 +77,7 @@ In many cases, web APIs also need to make outbound requests to other downstream 
 Therefore, after authenticating on an application using the OAuth 2.0 authorization code grant flow, the application now has an access token for Web API with the user's claims and consent to access the middle-tier web API. Now, Web API needs to make an authenticated request to the downstream API (Microsoft Graph in this sample).
 
 > The OAuth 2.0 On-Behalf-Of flow (OBO flow) serves the use case where an application invokes a service/web API, which in turn needs to call another service/web API. The idea is to propagate the delegated user identity and permissions through the request chain. For the middle-tier service to make authenticated requests to the downstream service, it needs to secure an access token from the Microsoft identity platform, on behalf of the user. To learn more, please visit [Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
-:information_source: It is worth mentioning that the On-Behalf-Of flow (OBO flow) is already integrated into this ACS Authentication Server sample. Users only to need to follow our documentations in **contribution guides** folder to make it work.
+:information_source: It is worth mentioning that the On-Behalf-Of flow (OBO flow) is already integrated into this Azure Communication Services Authentication Server sample. Users only to need to follow our documentations in **contribution guides** folder to make it work.
 
 Below is a diagram and step-by-step explanation of the OBO flow for better understanding.
 

@@ -10,7 +10,7 @@ products:
 
 Deploy to Azure using instructions [here](./docs/deploy/deploy-and-test-sample-on-azure.md).
 
-# ACS Solutions - Authentication Server Sample
+# Azure Communication Services Solutions - Authentication Server Sample
 
 [![CI](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/ci.yml/badge.svg)](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/codeql-analysis.yml)
@@ -33,17 +33,17 @@ Deploy to Azure using instructions [here](./docs/deploy/deploy-and-test-sample-o
 
 In order to properly implement a secure Azure Communication Services solutions, developers must start by putting in place the correct infrastructure to properly generate user and access token credentials for Azure Communication Services. Azure Communication Services is identity-agnostic, to learn more check out our [conceptual documentation](https://docs.microsoft.com/azure/communication-services/concepts/identity-model).
 
-This repository provides a sample of a server implementation of an authentication service for Azure Communication Services (ACS). It uses best practices to build a trusted backend service that issues Azure Communication Services credentials and maps them to Azure Active Directory identities. 
+This repository provides a sample of a server implementation of an authentication service for Azure Communication Services. It uses best practices to build a trusted backend service that issues Azure Communication Services credentials and maps them to Azure Active Directory identities. 
 
 This sample can help you in the following scenarios:
-1. As a developer, you need to enable an authentication flow for joining native ACS and/or Teams Interop calling/chat which is done by mapping an ACS identity to an Azure Active Directory identity and using this same ACS identity for the user to fetch an ACS token in every session.
-2. As a developer, you need to enable an authentication flow for Custom Teams Endpoint which is done by using an M365 Azure Active Directory identity of a Teams' user to fetch an ACS token to be able to join Teams calling/chat.
+1. As a developer, you need to enable an authentication flow for joining native Azure Communication Services and/or Teams Interop calling/chat which is done by mapping an Azure Communication Services identity to an Azure Active Directory identity and using this same Azure Communication Services identity for the user to fetch an Azure Communication Services token in every session.
+2. As a developer, you need to enable an authentication flow for Custom Teams Endpoint which is done by using an M365 Azure Active Directory identity of a Teams' user to fetch an Azure Communication Services token to be able to join Teams calling/chat.
 
 If you are looking to get started with Azure Communication Services, but are still in learning / prototyping phases, check out our [quickstarts for getting started with azure communication services users and access tokens](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
 
-> :loudspeaker: An ACS Solutions - Authentication Sample (NodeJS version) can be found [here](https://github.com/Azure-Samples/communication-services-authentication-hero-nodejs).
+> :loudspeaker: An Azure Communication Services Solutions - Authentication Sample (NodeJS version) can be found [here](https://github.com/Azure-Samples/communication-services-authentication-hero-nodejs).
 
-![ACS Authentication Server Sample Overview Flow](docs/images/ACS-Authentication-Server-Sample_Overview-Flow.png)
+![Azure Communication Services Authentication Server Sample Overview Flow](docs/images/ACS-Authentication-Server-Sample_Overview-Flow.png)
 
 Additional documentation for this sample can be found on [Microsoft Docs](https://docs.microsoft.com/azure/communication-services/samples/calling-hero-sample). !!! TODO: change link?
 
@@ -55,13 +55,13 @@ Before contributing to this sample, please read our [contribution guidelines](./
 
 If you're wondering where to get started, here are a few scenarios to help you get going:
 
-* "How does the ACS Authentication server sample work?"
+* "How does the Azure Communication Services Authentication server sample work?"
   * Take a look at our conceptual documentation on:
-    - [ACS Authentication Server Sample Architecture Design](./docs/design-guides/architecture-overview.md).
+    - [Azure Communication Services Authentication Server Sample Architecture Design](./docs/design-guides/architecture-overview.md).
     - [Secured Web API Architecture Design](./docs/design-guides/secured-web-api-design.md).
     - [Identity Mapping Architecture Design](./docs/design-guides/identity-mapping-design-graph-open-extensions.md).
     - [Azure Active Directory Token Exchange Architecture Design](). !!! TODO: add link
-* "I want to see what this ACS Authentication Server sample can do by running it!"
+* "I want to see what this Azure Communication Services Authentication Server sample can do by running it!"
   * Check out our [Run Authentication Sample](<docs/contribution-guides/3. run-authentication-sample.md>) guide. !!! TODO: guide user directly to #1 of contribution guides?
 * "I want to submit a fix or a feature for this project"
   * Check out our [contribution guidelines](CONTRIBUTING.md) first.
@@ -73,7 +73,7 @@ If you're wondering where to get started, here are a few scenarios to help you g
 
 ## Endpoints
 
-This ACS Solutions - Authentication server sample provides responses for **user** and **token** endpoints. For more details, please check our [Endpoints and Responses designe doc](./docs/design-guides/endpoints-and-responses.md).
+This Azure Communication Services Solutions - Authentication server sample provides responses for **user** and **token** endpoints. For more details, please check our [Endpoints and Responses designe doc](./docs/design-guides/endpoints-and-responses.md).
 
 ## Code Structure
 
@@ -97,7 +97,7 @@ Here's the breakdown of the repo:
 ```
 
 **Code dependencies:**
-![ACS Authentication Server Sample - Code Dependency Diagram](/docs/images/ACS-Authentication-Server-sample_Dependency-Diagram.png)
+![Azure Communication Services Authentication Server Sample - Code Dependency Diagram](/docs/images/ACS-Authentication-Server-sample_Dependency-Diagram.png)
 
 ## Troubleshooting
 
@@ -113,12 +113,12 @@ Coming soon...
 
 Join us by making a contribution. To get you started check out our [contribution guidelines](CONTRIBUTING.md).
 
-We look forward to building an amazing open source ACS Authentication server sample with you!
+We look forward to building an amazing open source Azure Communication Services Authentication server sample with you!
 
 ## Resources
 
 - [Azure Communication Services Documentation](https://docs.microsoft.com/en-us/azure/communication-services/) - Find more about how to add voice, video, chat, and telephony on our official documentation.
-- [Azure Communication Services Hero Samples](https://docs.microsoft.com/en-us/azure/communication-services/samples/overview) - Find more ACS samples and examples on our samples overview page.
+- [Azure Communication Services Hero Samples](https://docs.microsoft.com/en-us/azure/communication-services/samples/overview) - Find more Azure Communication Services samples and examples on our samples overview page.
 - [On-Behalf-Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) - Find more about the OBO workflow
 - [Creating a protected API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) - Detailed example of creating a protected API
 
