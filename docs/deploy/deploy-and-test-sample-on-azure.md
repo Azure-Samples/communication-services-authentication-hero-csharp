@@ -28,7 +28,7 @@
 
     2. Follow the Troubleshooting section to resolve the issue of "Mismatched ACS identity and ACS Resource" (To Be discussed...) with particular user 
 
-3. Test the Apis
+3. Test the deployed APIs
 
     a. Testing with manually generated AAD Token
 
@@ -43,7 +43,7 @@
         --header 'Authorization: Bearer <put access token here>
         ```
     
-    b. Test the Apis using Test Client (To Be discussed...) 
+    b. Test the APIs using Test Client (To Be discussed...) 
 
 
 **[Proceed to Architecture Overview ...](../design-guides/architecture-overview.md)**
