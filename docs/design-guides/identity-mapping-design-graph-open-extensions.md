@@ -39,7 +39,7 @@ As displayed in the ACS Authentication Server - Identity Mapping overview sequen
 
 ![ACS Authentication Server - Identity Mapping Sequence Diagram](../images/ACS-Authentication-Server-Sample_Identity-Mapping-Sequence.png)
 
-Please refer the [endpoints](./endpoint-and-responses.md) for more details.
+Please refer to the [endpoints design doc](./endpoints-and-responses.md) for more details.
 
 ## Contributing
 
