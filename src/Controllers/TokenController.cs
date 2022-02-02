@@ -99,7 +99,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
         }
 
         /// <summary>
-        /// Eexchange AAD token for an ACS access token of Teams user using the Azure Communication Services Identity SDK.
+        /// Exchange AAD token for an ACS access token of Teams user using the Azure Communication Services Identity SDK.
         /// 1. Get an AAD user access token passed through request header
         /// 2. Initialize a Communication Identity Client and then issue an ACS access token for the Teams user.
         /// </summary>
