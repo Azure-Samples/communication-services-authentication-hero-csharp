@@ -112,7 +112,7 @@ Here's the breakdown of the repo:
      └── Services - folder gathering unit tests for each service.
 ```
 
-**Code dpendencies:**
+**Code dependencies:**
 ![ACS Authentication Server Sample - Code Dependency Diagram](/docs/images/ACS-Authentication-Server-sample_Dependency-Diagram.png)
 
 ## Architecture Overview
