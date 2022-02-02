@@ -19,19 +19,15 @@ Deploy to Azure using instructions [here](./docs/deploy/deploy-and-test-sample-o
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
-2. [Endpoints](#endpoints)
-3. [Getting Started](#getting-started)
+2. [Getting Started](#getting-started)
+3. [Endpoints](#endpoints)
 4. [Code Structure](#code-structure)
-5. [Architecture Overview](#architecture-overview)
-6. [Building off of the sample](#building-off-of-the-sample)
-7. [Publishing to Azure](#publishing-to-azure)
-8. [Troubleshooting](#troubleshooting)
-9. [Known Issues](#known-issues)
-10. [Bring Your Own Identity (BYOI)](#bring-your-own-identity-byoi)
-11. [Contributing](#contributing)
-12. [Resources](#resources)
-13. [Trademark](#trademark)
-14. [License](#license)
+5. [Troubleshooting](#troubleshooting)
+6. [Known Issues](#known-issues)
+7. [Contributing](#contributing)
+8. [Resources](#resources)
+9. [Trademark](#trademark)
+10. [License](#license)
 
 ## Overview
 
@@ -55,22 +51,6 @@ Since this sample only focuses on the server APIs, the client application is not
 
 Before contributing to this sample, please read our [contribution guidelines](./CONTRIBUTING.md).
 
-## Endpoints
-
-This ACS Solutions - Authentication server sample provides the following endpoints:
-
-- **GET /user** - Get an ACS identity through Microsoft Graph.
-
-- **POST /user** - Create an ACS identity and then add the roaming identity mapping information to Microsoft Graph.
-
-- **DELETE /user** - Delete the identity mapping information from Microsoft Graph including the ACS resource related to the ACS identity.
-
-- **GET /token** - Get / refresh an ACS token for an ACS user.
-
-- **GET /token/teams** - Exchange an M365 token of a Teams user for an ACS token.
-
-  > :information_source: Teams users are authenticated via the MSAL library against AAD in the client application. Authentication tokens are exchanged for Microsoft 365 Teams token via the ACS Identity SDK. Developers are encouraged to implement an exchange of tokens in their backend services as exchange requests are signed by credentials for ACS. In backend services, developers can require any additional authentication. Learn more [here](https://docs.microsoft.com/en-ca/azure/communication-services/concepts/teams-interop#microsoft-365-teams-identity).
-
 ## Getting Started
 
 If you're wondering where to get started, here are a few scenarios to help you get going:
@@ -90,6 +70,10 @@ If you're wondering where to get started, here are a few scenarios to help you g
     * [Write Unit Tests](<docs/contribution-guides/5. write-unit-tests.md>)
     * [Submit a PR](<docs/contribution-guides/6. submit-a-pr.md>)
     * [Publish Your Changes](<docs/contribution-guides/7. publish-your-changes.md>)
+
+## Endpoints
+
+This ACS Solutions - Authentication server sample provides responses for **user** and **token** endpoints. For more details, please check our [Endpoints and Responses designe doc](./docs/design-guides/endpoints-and-responses.md).
 
 ## Code Structure
 
@@ -115,33 +99,15 @@ Here's the breakdown of the repo:
 **Code dpendencies:**
 ![ACS Authentication Server Sample - Code Dependency Diagram](/docs/images/ACS-Authentication-Server-sample_Dependency-Diagram.png)
 
-## Architecture Overview
-
-Coming soon...
-
-!!! TODO: add architecture design doc link?
-
-## Building off of the sample
-
-Coming soon...
-
-## Publishing to Azure
-
-Coming soon...
-
 ## Troubleshooting
 
 Coming soon...
 
+!!! TODO
+
 ## Known Issues
 
 - ...
-
-## Bring Your Own Identity (BYOI)
-
-Coming soon...
-
-(AAD B2C)
 
 ## Contributing
 
