@@ -37,7 +37,7 @@
      - Invoke the Api
         Once you get the access token, make a GET request to `/api/token` endpoint with the access token as a Authorization Bearer header. Verify you get a successful status code i.e. 200.
 
-        ``` SHELL
+        ```shell
         curl --location --request GET 'http://<replace with URL on your provisioned App Service>/api/token' \
 
         --header 'Authorization: Bearer <put access token here>
