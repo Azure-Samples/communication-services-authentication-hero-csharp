@@ -8,7 +8,7 @@ products:
 - azure-communication-services
 ---
 
-Deploy to Azure using instructions [here](./docs/deploy/deploy_test-sample-on-azure.md).
+Deploy to Azure using instructions [here](./docs/deploy/deploy-and-test-sample-on-azure.md).
 
 # ACS Solutions - Authentication Server Sample
 
@@ -37,11 +37,11 @@ Deploy to Azure using instructions [here](./docs/deploy/deploy_test-sample-on-az
 
 In order to properly implement a secure Azure Communication Services solutions, developers must start by putting in place the correct infrastructure to properly generate user and access token credentials for Azure Communication Services. Azure Communication Services is identity-agnostic, to learn more check out our [conceptual documentation](https://docs.microsoft.com/azure/communication-services/concepts/identity-model).
 
-This repository provides a sample of a server implementation of an authentication service for Azure Communication Services. It uses best practices to build a trusted backend service that issues Azure Communication Services credentials and maps them to Azure Active Direction identities. 
+This repository provides a sample of a server implementation of an authentication service for Azure Communication Services (ACS). It uses best practices to build a trusted backend service that issues Azure Communication Services credentials and maps them to Azure Active Direction (AAD) identities. 
 
 This sample can help you in the following scenarios:
-1. As a developer, you need to enable an authentication flow for joining native ACS and Teams Interop calling/chat by mapping an ACS identity to an Azure Active Directory identity and using this same ACS identity for the user to fetch an ACS token in every session.
-2. As a developer, you need to enable an authentication flow for Custom Teams Endpoint by using an M365 Azure Active Directory identity of a Teams' user to fetch an ACS token to be able to join Teams calling/chat.
+1. As a developer, you need to enable an authentication flow for joining native ACS and/or Teams Interop calling/chat which is done by mapping an ACS identity to an AAD identity and using this same ACS identity for the user to fetch an ACS token in every session.
+2. As a developer, you need to enable an authentication flow for Custom Teams Endpoint which is done by using an M365 AAD identity of a Teams' user to fetch an ACS token to be able to join Teams calling/chat.
 
 If you are looking to get started with Azure Communication Services, but are still in learning / prototyping phases, check out our [quickstarts for getting started with azure communication services users and access tokens](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
 
@@ -51,40 +51,40 @@ If you are looking to get started with Azure Communication Services, but are sti
 
 Additional documentation for this sample can be found on [Microsoft Docs](https://docs.microsoft.com/azure/communication-services/samples/calling-hero-sample). !!! TODO: change link?
 
-Since this sample only focuses on the server APIs, the client application is not part of it. If you want to add the client application to login user using Azure AD, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-js).
+Since this sample only focuses on the server APIs, the client application is not part of it. If you want to add the client application to login user using AAD, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
 Before contributing to this sample, please read our [contribution guidelines](./CONTRIBUTING.md).
 
 ## Endpoints
 
-This ACS Solutions - Authentication sample provides the following endpoints:
+This ACS Solutions - Authentication server sample provides the following endpoints:
 
-- **GET /user** - Get an Azure Communication Services identity through Microsoft Graph.
+- **GET /user** - Get an ACS identity through Microsoft Graph.
 
-- **POST /user** - Create an Azure Communication Services identity and then add the roaming identity mapping information to Microsoft Graph.
+- **POST /user** - Create an ACS identity and then add the roaming identity mapping information to Microsoft Graph.
 
-- **DELETE /user** - Delete the identity mapping information from Microsoft Graph including the Azure Communication Services resource related to the Azure Communication Services identity.
+- **DELETE /user** - Delete the identity mapping information from Microsoft Graph including the ACS resource related to the ACS identity.
 
-- **GET /token** - Get / refresh an Azure Communication Services token for an Azure Communication Services user.
+- **GET /token** - Get / refresh an ACS token for an ACS user.
 
-- **GET /token/teams** - Exchange an M365 token of a Teams user for an Azure Communication Services token.
+- **GET /token/teams** - Exchange an M365 token of a Teams user for an ACS token.
 
-  > :information_source: Teams users are authenticated via the MSAL library against Azure Active Directory in the client application. Authentication tokens are exchanged for Microsoft 365 Teams token via the Azure Communication Services Identity SDK. Developers are encouraged to implement an exchange of tokens in their backend services as exchange requests are signed by credentials for Azure Communication Services. In backend services, developers can require any additional authentication. Learn more [here](https://docs.microsoft.com/en-ca/azure/communication-services/concepts/teams-interop#microsoft-365-teams-identity).
+  > :information_source: Teams users are authenticated via the MSAL library against AAD in the client application. Authentication tokens are exchanged for Microsoft 365 Teams token via the ACS Identity SDK. Developers are encouraged to implement an exchange of tokens in their backend services as exchange requests are signed by credentials for ACS. In backend services, developers can require any additional authentication. Learn more [here](https://docs.microsoft.com/en-ca/azure/communication-services/concepts/teams-interop#microsoft-365-teams-identity).
 
 ## Getting Started
 
 If you're wondering where to get started, here are a few scenarios to help you get going:
 
-* "How does the ACS Authentication Server sample work?"
+* "How does the ACS Authentication server sample work?"
   * Take a look at our conceptual documentation on:
-    - [ACS Authentication Server Sample Architecture Design](). !!! TODO: add link
-    - [Secured Web API Architecture Design](./docs/design-guides/Secured-Web-API-Design.md).
-    - [Identity Mapping Architecture Design](./docs/design-guides/Identity-Mapping-Design_Graph-Open-Extensions.md).
+    - [ACS Authentication Server Sample Architecture Design](./docs/design-guides/architecture-overview.md).
+    - [Secured Web API Architecture Design](./docs/design-guides/secured-web-api-design.md).
+    - [Identity Mapping Architecture Design](./docs/design-guides/identity-mapping-design-graph-open-extensions.md).
     - [AAD Token Exchange Architecture Design](). !!! TODO: add link
 * "I want to see what this ACS Authentication Server sample can do by running it!"
-  * Check out our [Run Authentication Sample](<docs/contribution-guides/3. run-authentication-sample.md>) guide.
+  * Check out our [Run Authentication Sample](<docs/contribution-guides/3. run-authentication-sample.md>) guide. !!! TODO: guide user directly to #1 of contribution guides?
 * "I want to submit a fix or a feature for this project"
-  * Check out our [making a contribution](CONTRIBUTING.md) guide first.
+  * Check out our [contribution guidelines](CONTRIBUTING.md) first.
   * Check out the following guides in sequence after coding.
     * [Test Your Changes](<docs/contribution-guides/4. test-your-changes.md>)
     * [Write Unit Tests](<docs/contribution-guides/5. write-unit-tests.md>)
@@ -108,8 +108,8 @@ Here's the breakdown of the repo:
 │    ├── Program.cs - file containing the starting point of the sample.
 │    └── Startup.cs - file containing configuration and setup of the sample.
 └── tests - folder gathering all unit tests.
-     ├── controllers - folder gathering unit tests for each controller.
-     └── services - folder gathering unit tests for each service.
+     ├── Controllers - folder gathering unit tests for each controller.
+     └── Services - folder gathering unit tests for each service.
 ```
 
 **Code dpendencies:**
@@ -118,6 +118,8 @@ Here's the breakdown of the repo:
 ## Architecture Overview
 
 Coming soon...
+
+!!! TODO: add architecture design doc link?
 
 ## Building off of the sample
 
@@ -143,9 +145,9 @@ Coming soon...
 
 ## Contributing
 
-Join us by making a contribution. To get you started check out our [making a contribution](CONTRIBUTING.md) guide.
+Join us by making a contribution. To get you started check out our [contribution guidelines](CONTRIBUTING.md).
 
-We look forward to building an amazing open source ACS Authentication Server sample with you!
+We look forward to building an amazing open source ACS Authentication server sample with you!
 
 ## Resources
 

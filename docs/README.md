@@ -14,5 +14,5 @@ Looking to make a contribution to this repo? Check out our guide for a walk-thro
 
 ## Architecture Design Guides
 
-- [Identity Mapping Design](design-guides/Identity-Mapping-Design_Graph-Open-Extensions.md) - How to utilize the **Microsoft Graph Open Extensions** to manage ACS identities by mapping them 1:1 with Azure Active Directory identities.
+- [Identity Mapping Design](design-guides/identity-mapping-design-graph-open-extensions.md) - How to utilize the **Microsoft Graph Open Extensions** to manage ACS identities by mapping them 1:1 with Azure Active Directory identities.
 

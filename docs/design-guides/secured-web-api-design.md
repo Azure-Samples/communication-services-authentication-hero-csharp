@@ -23,7 +23,7 @@ This sample demonstrates how to call a ASP.Net core Web API, protected by [Azure
 
 As displayed in the ACS Authentication Server flow diagram below, the secured Web API contains two parts:
 
-1. Authenticate users to call a **Web API** through **Authorization Code Grant flow** (Client side) - This is outside of the scope for sample solution, however there are necessary tools provided for testing which can be learned from [deployment section](../deploy/deploy_test-sample-on-azure.md).
+1. Authenticate users to call a **Web API** through **Authorization Code Grant flow** (Client side) - This is outside of the scope for sample solution, however there are necessary tools provided for testing which can be learned from [deployment section](../deploy/deploy-and-test-sample-on-azure.md).
 2. Make authenticated requests by a Web API to call a **downstream API** through **On-Behalf-Of flow** (Server side)
 
 **Client Side (Steps 1&2 in below dagram):**

@@ -1,22 +1,24 @@
 # Deploy & Test sample on Azure
 
-1. [Set up App Registrations](./set-up-app-registrations.md)
+1. Set up App Registrations
+
+   To register your Client and Server applications, please refer to our [registrations set up guideline](./set-up-app-registrations.md)
 
 2. Deploy to Azure
-    
-    a. Follow button [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fcommunication-services-authentication-hero-csharp%2Fmain%2Fdeploy%2Fazuredeploy.json) to deploy to Azure through [ARM template](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview).
 
-    b. The template provisions an instance of Communication Services and App Service with deployed code.
+    1. Follow button [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fcommunication-services-authentication-hero-csharp%2Fmain%2Fdeploy%2Fazuredeploy.json) to deploy to Azure through [ARM template](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview).
 
-    c. When the deployment is completed successfully, a few configurations need to be updated on Application settings within App Service using the information from server app registration.
+    2. The template provisions an instance of Communication Services and App Service with deployed code.
 
-    Edit the values of following keys by visiting the server app registration:
+    3. When the deployment is completed successfully, a few configurations need to be updated on Application settings within App Service using the information from server app registration.
 
-    "AzureActiveDirectory__ClientId": "<Application Id from 'Overview page of the server app>"
+        Edit the values of following keys by visiting the server app registration:
 
-    "AzureActiveDirectory__ClientSecret": "<Client Secret Value from 'Certifactes & secrets' of server app>"
+       - "AzureActiveDirectory__ClientId": "<Application Id from 'Overview page of the server app>"
 
-    "AzureActiveDirectory__TenantId": "<Tenant Id from 'Overview' page of the server app>"
+       - "AzureActiveDirectory__ClientSecret": "<Client Secret Value from 'Certifactes & secrets' of server app>"
+
+       - "AzureActiveDirectory__TenantId": "<Tenant Id from 'Overview' page of the server app>"
 
     > :bangbang: For the multiple deployments of ACS Authentication Server sample, there might be issue on "/api/token" with mismatched Communication Services identity not belonging to the instance of Communication Services if using same Azure Active Directory instance for user sign in. The sample perists only single mapping of ACS identity within Active Directory user instance through Graph extensions endpoint. So if a different ACS resource is used within subsequent deployments, the persisted ACS identity within Active Directory user instance will not match the ACS resource.
 

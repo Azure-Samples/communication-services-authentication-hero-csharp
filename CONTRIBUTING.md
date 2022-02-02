@@ -9,7 +9,7 @@ a CLA and decorate the PR appropriately (e.g., status check, comment). Simply fo
 provided by the bot. You will only need to do this once across all repos using our CLA.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+For more information, please check the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 - [Sample App Purpose](#purpose)
@@ -20,11 +20,11 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## <a name="purpose"></a>Sample App Purpose
 
-Sample apps are built to help showcase the capabilities of Azure Communication Services.
-This app uses all best practices and follows limitations related to the service.
+Sample apps are built to help showcase the capabilities of Azure Communication Services (ACS).
+This sample app uses all best practices and follows limitations related to the service.
 As contributor, make sure to follow our guidelines or your work might not be accepted.
-The app is built on top of the existing Azure Communication Services SDKs, and will not diverge from the capabilities offered by the SDK.
-This means that if your desired feature is not supported on the SDK, please don't try to hack it into the sample.
+The app is built on top of the existing ACS SDKs, and will not diverge from the capabilities offered by those SDKs.
+This means that if your desired feature is not supported by those SDKs, please don't try to hack it into the sample.
 
 ## <a name="coc"></a> Code of Conduct
 
@@ -32,17 +32,18 @@ Help us keep this project open and inclusive. Please read and follow our [Code o
 
 ## <a name="issue"></a> Found an Issue?
 
-If you find a bug in the source code or a mistake in the documentation, you can help us by
-[submitting an issue](.github/ISSUE_TEMPLATE/report-a-bug.md) to the GitHub repository. Even better, you can
-[submit a Pull Request](#submit-pr) with a fix.
+If you find a bug in the source code or a mistake in the documentation, you can help us by:
+- [submitting a bug](#submit-issue) to the GitHub repository. 
+- [submit a documention issue](.github/ISSUE_TEMPLATE/report-a-documentation-issue.md) to the GitHub repository.
+- [submit a Pull Request](#submit-pr) with a fix which will be even better.
 
 ## <a name="feature"></a> Want a Feature?
 
-You can *request* a new feature by [submitting an issue](.github/ISSUE_TEMPLATE/request-a-feature.md) to the GitHub
-repository. If you would like to *implement* a new feature, please submit an issue with a proposal for your work first,
+You can *request* a new feature by [submitting a request](.github/ISSUE_TEMPLATE/request-a-feature.md) to the GitHub
+repository. If you would like to *implement* a new feature, please submit a request with a proposal for your work first,
 to be sure that we can use it.
 
-- **Small Features** can be crafted and directly [submitted as a Pull Request](#submit-pr).
+**Small Features** can be crafted and directly [submitted as a Pull Request](#submit-pr).
 
 ## <a name="submit"></a> Submission Guidelines
 
@@ -66,9 +67,9 @@ You can file new issues by providing the above information at the corresponding 
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 
-Before you submit your Pull Request (PR), consider searching the repository (https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/pulls) 
+Before you submit your PR, consider searching the repository (https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/pulls) 
 for an open or closed PR that relates to your submission. You don't want to duplicate effort.
 
-If you did not find anything, please, make a contribution following our [submit a PR guideline](<docs/contribution-guides/6. submit-a-pr.md>)
+If you did not find anything, please, make a contribution following our [submit a PR guide](<docs/contribution-guides/6. submit-a-pr.md>)
 
 Thank you for your contribution!
