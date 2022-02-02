@@ -32,7 +32,7 @@ Follow instructions on how to register your server application with Azure Active
       1. Click on **Add a permission**.
       2. Select **Microsoft Graph**.
       3. Select **Delegated permissions** for the type of permissions required by your app.
-      4. On the permission list, scroll to **User** group and expand it, then check **User.Read** and **User.ReadWrite.All**.
+      4. On the permission list, scroll to **User** group and expand it, then check **User.Read** and **User.ReadWrite**.
       5. Now click on the **Add permissions** button at the bottom to save your permissions.
       6. Once the permissions are added, click on **Grant admin consent** for the Microsoft Graph API call.
       >**Note:** The 'Grant admin consent' step can only be performed by your Azure Active Directory Admin.
@@ -76,7 +76,7 @@ Follow instructions on how to register your client application with Azure Active
 
    - give your application a meaningful name as this will be the displayed name of your app, for example `auther-server-sample-webClient`.
    - select the **Accounts in this organizational directory only (Microsoft only - Single tenant)** option for who can use or access this application.
-   - set the **Redirect URI (optional)** with **Single-page Application (SPA)** as platform and `http://localhost:3000/` as URI. In case of manual generation of AAD Token for testing Auth Sample Apis, select **Web** as platform instead of **SPA**.
+   - set the **Redirect URI (optional)** with **Single-page Application (SPA)** as platform and `http://localhost:5000/` as URI. In case of manual generation of AAD Token for testing Auth Sample Apis, select **Web** as platform instead of **SPA**.
 
    >**Note:** clicking on the **Register** button will open your application page once the registration is sucessful.
 
