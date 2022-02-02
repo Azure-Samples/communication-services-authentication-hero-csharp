@@ -33,11 +33,11 @@ Deploy to Azure using instructions [here](./docs/deploy/deploy-and-test-sample-o
 
 In order to properly implement a secure Azure Communication Services solutions, developers must start by putting in place the correct infrastructure to properly generate user and access token credentials for Azure Communication Services. Azure Communication Services is identity-agnostic, to learn more check out our [conceptual documentation](https://docs.microsoft.com/azure/communication-services/concepts/identity-model).
 
-This repository provides a sample of a server implementation of an authentication service for Azure Communication Services (ACS). It uses best practices to build a trusted backend service that issues Azure Communication Services credentials and maps them to Azure Active Direction (AAD) identities. 
+This repository provides a sample of a server implementation of an authentication service for Azure Communication Services (ACS). It uses best practices to build a trusted backend service that issues Azure Communication Services credentials and maps them to Azure Active Directory identities. 
 
 This sample can help you in the following scenarios:
-1. As a developer, you need to enable an authentication flow for joining native ACS and/or Teams Interop calling/chat which is done by mapping an ACS identity to an AAD identity and using this same ACS identity for the user to fetch an ACS token in every session.
-2. As a developer, you need to enable an authentication flow for Custom Teams Endpoint which is done by using an M365 AAD identity of a Teams' user to fetch an ACS token to be able to join Teams calling/chat.
+1. As a developer, you need to enable an authentication flow for joining native ACS and/or Teams Interop calling/chat which is done by mapping an ACS identity to an Azure Active Directory identity and using this same ACS identity for the user to fetch an ACS token in every session.
+2. As a developer, you need to enable an authentication flow for Custom Teams Endpoint which is done by using an M365 Azure Active Directory identity of a Teams' user to fetch an ACS token to be able to join Teams calling/chat.
 
 If you are looking to get started with Azure Communication Services, but are still in learning / prototyping phases, check out our [quickstarts for getting started with azure communication services users and access tokens](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
 
@@ -47,7 +47,7 @@ If you are looking to get started with Azure Communication Services, but are sti
 
 Additional documentation for this sample can be found on [Microsoft Docs](https://docs.microsoft.com/azure/communication-services/samples/calling-hero-sample). !!! TODO: change link?
 
-Since this sample only focuses on the server APIs, the client application is not part of it. If you want to add the client application to login user using AAD, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-js).
+Since this sample only focuses on the server APIs, the client application is not part of it. If you want to add the client application to login user using Azure Active Directory, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
 Before contributing to this sample, please read our [contribution guidelines](./CONTRIBUTING.md).
 
@@ -60,7 +60,7 @@ If you're wondering where to get started, here are a few scenarios to help you g
     - [ACS Authentication Server Sample Architecture Design](./docs/design-guides/architecture-overview.md).
     - [Secured Web API Architecture Design](./docs/design-guides/secured-web-api-design.md).
     - [Identity Mapping Architecture Design](./docs/design-guides/identity-mapping-design-graph-open-extensions.md).
-    - [AAD Token Exchange Architecture Design](). !!! TODO: add link
+    - [Azure Active Directory Token Exchange Architecture Design](). !!! TODO: add link
 * "I want to see what this ACS Authentication Server sample can do by running it!"
   * Check out our [Run Authentication Sample](<docs/contribution-guides/3. run-authentication-sample.md>) guide. !!! TODO: guide user directly to #1 of contribution guides?
 * "I want to submit a fix or a feature for this project"

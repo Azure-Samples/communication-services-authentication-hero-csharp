@@ -68,7 +68,7 @@ Follow instructions on how to register your server application with Azure Active
 
 ## Client App Registration
 
-**Note** - This client app registration will be used to manually generate the AAD Token required to call AAD protected Web Api as there is no client application in the sample.
+**Note** - This client app registration will be used to manually generate the Azure Active Directory Token required to call Azure Active Directory protected Web Api as there is no client application in the sample.
 
 Follow instructions on how to register your client application with Azure Active Directory [here](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
@@ -76,7 +76,7 @@ Follow instructions on how to register your client application with Azure Active
 
    - give your application a meaningful name as this will be the displayed name of your app, for example `auther-server-sample-webClient`.
    - select the **Accounts in this organizational directory only (Microsoft only - Single tenant)** option for who can use or access this application.
-   - set the **Redirect URI (optional)** with **Single-page Application (SPA)** as platform and `http://localhost:5000/` as URI. In case of manual generation of AAD Token for testing Auth Sample Apis, select **Web** as platform instead of **SPA**.
+   - set the **Redirect URI (optional)** with **Single-page Application (SPA)** as platform and `http://localhost:5000/` as URI. In case of manual generation of Azure Active Directory token for testing Auth Sample Apis, select **Web** as platform instead of **SPA**.
 
    >**Note:** clicking on the **Register** button will open your application page once the registration is sucessful.
 

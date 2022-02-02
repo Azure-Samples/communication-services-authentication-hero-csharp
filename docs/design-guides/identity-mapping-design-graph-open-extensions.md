@@ -4,7 +4,7 @@
 
 - [Scenario](#scenario)
 - [Overview](#overview)
-- [1:1 ACS Identity and AAD user Identity mapping](#11-acs-identity-and-aad-user-identity-mapping)
+- [1:1 ACS Identity and Azure Active Directory user Identity mapping](#11-acs-identity-and-azure-active-directory-user-identity-mapping)
 - [Contributing](#contributing)
 - [More Information](#more-information)
 
@@ -33,7 +33,7 @@ This sample solution demonstrates how to use Microsoft Graph open extensions as 
 
 ![ ACS Authentication Server - Identity Mapping Flow](../images/ACS-Authentication-Server-Sample_Identity-Mapping-Flow.png)
 
-## 1:1 ACS Identity and AAD user Identity mapping
+## 1:1 ACS Identity and Azure Active Directory user Identity mapping
 
 As displayed in the ACS Authentication Server - Identity Mapping overview sequence diagram below, the identity mapping part consists of two endpoints - `/user` and `/token`
 

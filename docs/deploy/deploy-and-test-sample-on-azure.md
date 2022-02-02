@@ -30,9 +30,9 @@
 
 3. Test the deployed APIs
 
-    a. Testing with manually generated AAD Token
+    a. Testing with manually generated Azure Active Directory Token
 
-     - [Generate AAD token manually](../test-tools/generate_aad_token_manually.md) to call secure Apis of ACS Authentication Hero sample.
+     - [Generate Azure Active Directory token manually](../test-tools/generate_aad_token_manually.md) to call secure Apis of ACS Authentication Hero sample.
 
      - Invoke the Api
         Once you get the access token, make a GET request to `/api/token` endpoint with the access token as a Authorization Bearer header. Verify you get a successful status code i.e. 200.

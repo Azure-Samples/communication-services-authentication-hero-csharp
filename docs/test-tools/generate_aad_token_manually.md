@@ -1,4 +1,4 @@
-# Manually generating AAD Token to test secure ACS Authentication Server Sample Apis
+# Manually generating Azure Active Directory Token to test secure ACS Authentication Server Sample Apis
 
 **Note:** The `<client app id>` is the application id of the client app registration (`auther-server-sample-webClient`) referred in the below requests. 
 The client app in those requests generally refers the client app registration. You can get the `<tenantid>` from the app registration overview page as well. 
