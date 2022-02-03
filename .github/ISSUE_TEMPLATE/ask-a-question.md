@@ -1,7 +1,6 @@
 ---
 name: Ask a Question
-about: Describe this issue template'sFile a question for the Azure Communication Services Authentication Server
-  sample purpose here.
+about: Ask your question about the Azure Communication Services Authentication Server sample here.
 title: "[Question]"
 labels: question
 assignees: alcail, clarenceli-msft, ikumarapeli-msft, lei-msft, rvenugopal-msft, vaibhavjain-msft

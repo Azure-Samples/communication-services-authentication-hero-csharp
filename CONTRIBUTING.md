@@ -22,7 +22,7 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 Sample apps are built to help showcase the capabilities of Azure Communication Services.
 This sample app uses all best practices and follows limitations related to the service.
-As contributor, make sure to follow our guidelines or your work might not be accepted.
+As a contributor, make sure to follow our guidelines or your work might not be accepted.
 The app is built on top of the existing Azure Communication Services SDKs, and will not diverge from the capabilities offered by those SDKs.
 This means that if your desired feature is not supported by those SDKs, please don't try to hack it into the sample.
 
