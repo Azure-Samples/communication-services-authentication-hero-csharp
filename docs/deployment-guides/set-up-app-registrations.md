@@ -88,11 +88,3 @@ Follow instructions on how to register your client application with Azure Active
       3. In the list of APIs, select the API `auther-server-sample-webApi`.
       4. In the **Delegated permissions** section, select `access_as_user` in the list. Use the search box if necessary.
       5. Now click on the **Add permissions** button at the bottom to save your permissions.
-
-3. Go back to your `auther-server-sample-webApi` app
-
-   1. Navigate to and click on **Expose an API**
-   2. Click on **Add client applications**
-   3. In the **Client ID** field, past your `auther-server-sample-webClient` application ID
-   4. Check the corresponding authorized scope box
-   5. Click on **Add application** at the bottom
