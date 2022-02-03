@@ -28,7 +28,7 @@ Follow instructions on how to register your server application with Azure Active
       1. Click on **Add a permission**.
       2. Select **Microsoft Graph**.
       3. Select **Delegated permissions** for the type of permissions required by your app.
-      4. On the permission list, scroll to **User** group and expand it, then check **User.Read** and **User.ReadWrite**.
+      4. On the permission list, scroll to **User** group and expand it, then check **User.Read** and **User.ReadWrite.All**.
       5. Now click on the **Add permissions** button at the bottom to save your permissions.
       6. Once the permissions are added, click on **Grant admin consent** for the Microsoft Graph API call.
       >**Note:** The 'Grant admin consent' step can only be performed by your Azure Active Directory Admin.
