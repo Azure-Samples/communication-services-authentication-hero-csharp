@@ -75,30 +75,6 @@ If you're wondering where to get started, here are a few scenarios to help you g
 
 This Azure Communication Services Solutions - Authentication server sample provides responses for **user** and **token** endpoints. For more details, please check our [Endpoints and Responses designe doc](./docs/design-guides/endpoints-and-responses.md).
 
-## Code Structure
-
-Here's the breakdown of the repo:
-
-```
-.
-├── deploy - folder gathering all that is needed for Azure deployment
-├── src
-│    ├── Controllers - folder gathering each controller which describes the path of each route │and the method to call.
-│    ├── Extensions - folder gathering all extensions like exeption handler middleware or service collection.
-│    ├── Interfaces - folder gathering all interfaces.
-│    ├── Models - folder gathering all objects.
-│    ├── Properties - folder gathering properties needed to run the sample.
-│    ├── Services - folder gathering all services used in the project like Microsoft Graph, Communication Services and Azure Active Directory.
-│    ├── Program.cs - file containing the starting point of the sample.
-│    └── Startup.cs - file containing configuration and setup of the sample.
-└── tests - folder gathering all unit tests.
-     ├── Controllers - folder gathering unit tests for each controller.
-     └── Services - folder gathering unit tests for each service.
-```
-
-**Code dependencies:**
-![Azure Communication Services Authentication Server Sample - Code Dependency Diagram](/docs/images/ACS-Authentication-Server-sample_Dependency-Diagram.png)
-
 ## Troubleshooting
 
 Coming soon...
