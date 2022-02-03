@@ -1,24 +1,22 @@
 # Deploy Locally
 
-1. [Prerequisites](#prerequisites)
-2. [Get Set up](#get-set-up)
-3. [Build Authentication Server Sample](#build-authentication-sample)
-4. [Run Authentication Server Sample](#run-authentication-sample)
+1. [Get Set up](#get-set-up)
+   1. [Prerequisites](#prerequisites-for-development-environment-setup)
+   2. [Cloning the repo](#cloning-the-repo)
+   2. [Installing dependencies](#installing-dependencies)
+2. [Build Authentication Server Sample](#build-authentication-sample)
+3. [Run Authentication Server Sample](#run-authentication-sample)
+   1. [Set up App Registrations to run the sample](#set-up-app-registrations-to-run-the-sample)
+   2. [Update the appSettings.json file](#update-the-appSettings.json-file)
+   3. [Generate an Azure Active Directory Token Manually](#generate-an-azure-active-directory-token-manually)
+   4. [Run the App](#run-the-app)
 
-## Prerequisites
+## Get Set up
 
-### Prerequisites to use this sample
+### Prerequisites for Development Environment Setup
 
 - Install [.Net](https://dotnet.microsoft.com/en-us/).
 - (Recommended) Install [Visual Studio](https://visualstudio.microsoft.com/).
-
-### Prerequisites to deploy this sample
-
-- Register a Client and Server (Web API) applications in Azure Active Directory as part of [On Behalf Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Follow instructions on [registrations set up guideline](../deployment-guides/set-up-app-registrations.md)
-- Create an Azure Communication Services resource through [Azure Portal](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/create-communication-resource?tabs=linux&pivots=platform-azp). Follow [Quickstart: Create and manage Communication Services resources](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp) to create an ACS resource using Azure Portal.
-- Update the Server (Web API) application with information from the app registrations.
-
-## Get Set up
 
 ### Cloning the repo
 
@@ -67,6 +65,12 @@ dotnet build
 >    2. Click on **Build Solution**
 
 ## Run Authentication Server Sample
+
+### Set up App Registrations to run the sample
+
+- Register a Client and Server (Web API) applications in Azure Active Directory as part of [On Behalf Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Follow instructions on [registrations set up guideline](../deployment-guides/set-up-app-registrations.md)
+- Create an Azure Communication Services resource through [Azure Portal](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/create-communication-resource?tabs=linux&pivots=platform-azp). Follow [Quickstart: Create and manage Communication Services resources](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp) to create an ACS resource using Azure Portal.
+- Update the Server (Web API) application with information from the app registrations.
 
 ### Update the `appSettings.json` File
 
