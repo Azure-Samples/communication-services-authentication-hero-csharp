@@ -8,7 +8,7 @@ products:
 - azure-communication-services
 ---
 
-Deploy to Azure using instructions [here](./docs/deploy/deploy-and-test-sample-on-azure.md).
+Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-test-sample-on-azure.md).
 
 # Azure Communication Services Solutions - Authentication Server Sample
 
@@ -62,14 +62,14 @@ If you're wondering where to get started, here are a few scenarios to help you g
     - [Identity Mapping Architecture Design](./docs/design-guides/identity-mapping-design-graph-open-extensions.md).
     - [Azure Active Directory Token Exchange Architecture Design](). !!! TODO: add link
 * "I want to see what this Azure Communication Services Authentication Server sample can do by running it!"
-  * Check out our [Run Authentication Sample](<docs/contribution-guides/3. run-authentication-sample.md>) guide. !!! TODO: guide user directly to #1 of contribution guides?
+  * Check out our [local deployment guide](<docs/deployment-guides/deploy-locally>) guide.
 * "I want to submit a fix or a feature for this project"
   * Check out our [contribution guidelines](CONTRIBUTING.md) first.
   * Check out the following guides in sequence after coding.
-    * [Test Your Changes](<docs/contribution-guides/4. test-your-changes.md>)
-    * [Write Unit Tests](<docs/contribution-guides/5. write-unit-tests.md>)
-    * [Submit a PR](<docs/contribution-guides/6. submit-a-pr.md>)
-    * [Publish Your Changes](<docs/contribution-guides/7. publish-your-changes.md>)
+    * [Test Your Changes](<docs/contribution-guides/2. test-your-changes.md>)
+    * [Write Unit Tests](<docs/contribution-guides/3. write-unit-tests.md>)
+    * [Submit a PR](<docs/contribution-guides/4. submit-a-pr.md>)
+    * [Publish Your Changes](<docs/contribution-guides/5. publish-your-changes.md>)
 
 ## Endpoints
 

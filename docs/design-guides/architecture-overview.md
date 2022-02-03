@@ -53,4 +53,4 @@ If Graph Open Extensions does not meet your requirement for storage of Identity 
 - [Azure Communication Services Documentation](https://docs.microsoft.com/azure/communication-services/)
 
 
-**[Setting up for Local Development ...](<../contribution-guides/1. get-set-up.md>)**
+**[Setting up for Local Development ...](<../deployment-guides/deploy-locally.md>)**

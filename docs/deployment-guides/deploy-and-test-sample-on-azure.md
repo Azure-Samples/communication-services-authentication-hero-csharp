@@ -48,4 +48,4 @@
 
 **[Proceed to Architecture Overview ...](../design-guides/architecture-overview.md)**
 
-**[Setting up for Local Development ...](<../contribution-guides/1. get-set-up.md>)**
+**[Setting up for Local Development ...](<./deploy-locally.md>)**

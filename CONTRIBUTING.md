@@ -70,6 +70,6 @@ You can file new issues by providing the above information at the corresponding 
 Before you submit your PR, consider searching the repository (https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/pulls) 
 for an open or closed PR that relates to your submission. You don't want to duplicate effort.
 
-If you did not find anything, please, make a contribution following our [submit a PR guide](<docs/contribution-guides/6. submit-a-pr.md>)
+If you did not find anything, please, make a contribution following our [submit a PR guide](<docs/contribution-guides/4. submit-a-pr.md>)
 
 Thank you for your contribution!
