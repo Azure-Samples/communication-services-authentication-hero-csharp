@@ -41,15 +41,18 @@ On your AuthServer page:
       ![Diagram](../images/add_exposed_api_scope_server_app.png)
 
 ## Client App Registration
-**Note** - This client app registration will be used to manually generate the AAD Token required to call AAD protected Web Api as there is no client application in the sample.
-Follow instructions on how to register your client application with Azure Active Directory [here](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
+
+> Note:
+>
+> 1. This client app registration will be used to manually generate the AAD Token required to call AAD protected Web API as there is no client application in the sample. Follow instructions on how to register your client application with Azure Active Directory [here](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
+> 2. In order to implement the **Token Exchange** feature, please visit [this documentation](https://docs.microsoft.com/azure/communication-services/quickstarts/manage-teams-identity?pivots=programming-language-javascript#administrator-actions) to configure an App Registration for a Client.
 
 When registering use the following information:
     - name your application `AuthClient`
-    - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
-    - set the redirect URI selecting 'Single-page Application (SPA)' with `http://localhost:3000/` as url.  (**Note:** In case of manual generation of AAD Token for testing Auth Sample Apis, select 'Web'instead of SPA. )
-    - click on 'Register' and it will open your application page once registration is sucessful
-    ![Diagram](../images/register-client-app.png)
+        - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
+        - set the redirect URI selecting 'Single-page Application (SPA)' with `http://localhost:3000/` as url.  (**Note:** In case of manual generation of AAD Token for testing Auth Sample Apis, select 'Web'instead of SPA. )
+        - click on 'Register' and it will open your application page once registration is sucessful
+        ![Diagram](../images/register-client-app.png)
 
 On your AuthClient page:
   - navigate to and click on 'API permissions' menu item
