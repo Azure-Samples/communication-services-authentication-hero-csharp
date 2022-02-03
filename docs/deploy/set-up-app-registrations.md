@@ -12,8 +12,6 @@ Follow instructions on how to register your server application with Azure Active
 
    >**Note:** clicking on the **Register** button will open your application page once the registration is sucessful.
 
-   ![Diagram](../images/register-server-app.png)
-
 2. On the app's registration screen (**auther-server-sample-webApi** page):
 
    1. Navigate to and click on **Certificates & secrets** menu item on the left to open the page where you can generate secrets and upload certificates.
@@ -25,8 +23,6 @@ Follow instructions on how to register your server application with Azure Active
          >**Note:** You'll need this key later on in your code's configuration files. This key value will not be displayed again, and is not retrievable
          by any other means, so make sure to note it from the Azure portal before navigating to any other screen or page.
 
-      ![Diagram](../images/create_client_secrets_server_app.png)
-
    2. Navigate to and click on **API permissions** menu item on the left to open the page where access to the APIs needed by your application will be defined.
 
       1. Click on **Add a permission**.
@@ -37,16 +33,12 @@ Follow instructions on how to register your server application with Azure Active
       6. Once the permissions are added, click on **Grant admin consent** for the Microsoft Graph API call.
       >**Note:** The 'Grant admin consent' step can only be performed by your Azure Active Directory Admin.
 
-      ![Diagram](../images/add_graph_api_permissions_server_app.png)
-
    3. Navigate to and click on the **Expose an API** menu item on the left to open the page where you can declare the parameters to expose this app as an API from which client applications can obtain the [access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
 
       1. The first thing that you need to do is to declare the unique [resource](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) URI that the clients will be using to obtain access tokens for this API. To declare a resource URI, follow the steps below:
 
          1. Select on `Set` next to the **Application ID URI** to generate an URI that is unique for this app.
          2. For this sample, accept the proposed Application ID URI (`api://{clientId}`) by clicking on the **Save** button.
-
-         ![Diagram](../images/set_application_id_uri_server_app.png)
 
       2. All APIs have to publish a minimum of one [scope](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-authorization-code) for the client to successfully obtain an access token. To publish a scope, click on the **Add a scope** button. This will open the **Add a scope** pane where you can defined your scope's values as indicated below:
 
@@ -58,8 +50,6 @@ Follow instructions on how to register your server application with Azure Active
          6. For **User consent description**, type `Allow the application to access Microsoft Graph API on your behalf.`
          7. Keep the **State** as **Enabled**.
          8. Click on the **Add scope** button at the bottom to save this scope.
-
-         ![Diagram](../images/add_exposed_api_scope_server_app.png)
 
    4. Navigate to and click on **Manifest** menu item on the left.
 
@@ -80,8 +70,6 @@ Follow instructions on how to register your client application with Azure Active
 
    >**Note:** clicking on the **Register** button will open your application page once the registration is sucessful.
 
-   ![Diagram](../images/register-client-app.png)
-
 2. On the app's registration screen (**auther-server-sample-webClient** page):
 
    1. Navigate to and click on **Certificates & secrets** menu item on the left to open the page where you can generate secrets and upload certificates.
@@ -93,8 +81,6 @@ Follow instructions on how to register your client application with Azure Active
          > Note: You'll need this key later on in your code's configuration files. This key value will not be displayed again, and is not retrievable 
          by any other means, so make sure to note it from the Azure portal before navigating to any other screen or page.
 
-      ![Diagram](../images/create_client_secrets_client_app.png)
-
   2. Navigate to and click on **API permissions** menu item on the left to open the page where access to the APIs needed by your application will be defined.
 
       1. Click on **Add a permission**
@@ -103,8 +89,6 @@ Follow instructions on how to register your client application with Azure Active
       4. In the **Delegated permissions** section, select `access_as_user` in the list. Use the search box if necessary.
       5. Now click on the **Add permissions** button at the bottom to save your permissions.
 
-      ![Diagram](../images/set_api_permissions_client_app.png)
-
 3. Go back to your `auther-server-sample-webApi` app
 
    1. Navigate to and click on **Expose an API**
@@ -112,5 +96,3 @@ Follow instructions on how to register your client application with Azure Active
    3. In the **Client ID** field, past your `auther-server-sample-webClient` application ID
    4. Check the corresponding authorized scope box
    5. Click on **Add application** at the bottom
-
-   ![Diagram](../images/add_client_app_to_server_app.png)
