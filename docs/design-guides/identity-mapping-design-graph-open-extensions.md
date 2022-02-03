@@ -43,7 +43,7 @@ Please refer to the [endpoints design doc](./endpoints-and-responses.md) for mor
 
 ## Contributing
 
-If you'd like to contribute to this sample, please refer to our [contribution page](../../CONTRIBUTING.md).
+If you'd like to contribute to this sample, please refer to our [contribution guidelines](../../CONTRIBUTING.md).
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, check the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 

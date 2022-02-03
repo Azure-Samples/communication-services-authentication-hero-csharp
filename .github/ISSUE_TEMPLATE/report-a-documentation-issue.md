@@ -13,4 +13,4 @@ For example, there is an issue at line `888` in the [README](https://github.com/
 **Please describe documentation issues**
 A clear and concise description of what needs changing.
 
-> If you are planning to submit a pull request to fix the documentation issue, please read the [contribution guide](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/blob/main/CONTRIBUTING.md) first.
+> If you are planning to submit a pull request to fix the documentation issue, please read the [contribution guidelines](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/blob/main/CONTRIBUTING.md) first.
