@@ -19,15 +19,16 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
-2. [Getting Started](#getting-started)
-3. [Endpoints](#endpoints)
-4. [Code Structure](#code-structure)
-5. [Troubleshooting](#troubleshooting)
-6. [Known Issues](#known-issues)
-7. [Contributing](#contributing)
-8. [Resources](#resources)
-9. [Trademark](#trademark)
-10. [License](#license)
+2. [Prerequistes](#prerequistes)
+3. [Getting Started](#getting-started)
+4. [Endpoints](#endpoints)
+5. [Code Structure](#code-structure)
+6. [Troubleshooting](#troubleshooting)
+7. [Known Issues](#known-issues)
+8. [Contributing](#contributing)
+9. [Resources](#resources)
+10. [Trademark](#trademark)
+11. [License](#license)
 
 ## Overview
 
@@ -50,6 +51,14 @@ Additional documentation for this sample can be found on [Microsoft Docs](https:
 Since this sample only focuses on the server APIs, the client application is not part of it. If you want to add the client application to login user using Azure Active Directory, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
 Before contributing to this sample, please read our [contribution guidelines](./CONTRIBUTING.md).
+
+## Prerequisites
+
+To be able to run this sample, you will need to:
+
+- Register a Client and Server (Web API) applications in Azure Active Directory as part of [On Behalf Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Follow instructions on [registrations set up guideline](../deployment-guides/set-up-app-registrations.md)
+- Create an Azure Communication Services resource through [Azure Portal](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/create-communication-resource?tabs=linux&pivots=platform-azp). Follow [Quickstart: Create and manage Communication Services resources](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp) to create an ACS resource using Azure Portal.
+- Update the Server (Web API) application with information from the app registrations.
 
 ## Getting Started
 
