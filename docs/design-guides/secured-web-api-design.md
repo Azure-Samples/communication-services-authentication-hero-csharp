@@ -1,10 +1,9 @@
 # Secured Web API Design
 
-## Table of content
+## Table of Contents
 
 - [Scenario](#scenario)
 - [Overview](#overview)
-- [The Way How to Secure](#the-way-how-to-secure)
   - [Authorization Code Grant Flow (ACG Flow)](#authorization-code-grant-flow-acg-flow)
   - [On-Behalf-Of Flow (OBO Flow)](#on-behalf-of-flow-obo-flow)
 - [Community Help and Support](#community-help-and-support)
@@ -34,7 +33,7 @@ As displayed in the Azure Communication Services Authentication Server flow diag
 
 **Server Side (Steps 3&4 in below dagram):**
 
-1. Once the user is authorizedpassing the Azure Active Directory token (as would be gained on client side) in Authorization Header of the api call request, the flow acquires another access token on behalf of the signed-in user using the [On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)..
+1. Once the user is authorizedpassing the Azure Active Directory token (as would be gained on client side) in Authorization Header of the API call request, the flow acquires another access token on behalf of the signed-in user using the [On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 2. The Web API then uses this new access token to call downstream APIs (Microsoft Graph in this sample).
 
 ![OBO Flow](../images/ACS-Authentication-Server-Sample_Secured-Web-API-Flow.png)
@@ -91,9 +90,9 @@ Below is a diagram and step-by-step explanation of the OBO flow for better under
 
 ## Community Help and Support
 
-Use [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) to get support from the community. Ask your questions on Stack Overflow first and browse existing issues to see if someone has already asked something similar before. Make sure that your questions or comments are tagged with [`azure-active-directory` `msal` `node.js`].
+Use [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) to get support from the community. Ask your questions on Stack Overflow first and browse existing issues to see if someone has already asked something similar before. Make sure that your questions or comments are tagged with [`azure-active-directory` `msal` `csharp`].
 
-If you find a bug in the sample, please raise the issue on [GitHub Issues](https://github.com/Azure-Samples/communication-services-authentication-hero-nodejs/issues).
+If you find a bug in the sample, please raise the issue on [GitHub Issues](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/issues).
 
 ## Contributing
 
@@ -117,6 +116,5 @@ For more information, visit the following links:
   - [Microsoft identity platform - OAuth 2.0 Authorization Code flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
   - [Tutorial: Sign in users and call the Microsoft Graph API from a JavaScript single-page app (SPA) using auth code flow](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code)
   - [Microsoft identity platform - OAuth 2.0 On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
-  - [MSAL Node Standalone Sample: On-Behalf-Of Flow](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/samples/msal-node-samples/on-behalf-of/README.md)
-  - [Microsoft Authentication Library for JavaScript (MSAL.js) Samples](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples)
+  - [Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/master/README.md)
   - [Microsoft identity platform code samples](https://docs.microsoft.com/en-us/azure/active-directory/develop/sample-v2-code)

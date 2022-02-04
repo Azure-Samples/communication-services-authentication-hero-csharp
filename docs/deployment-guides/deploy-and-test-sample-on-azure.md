@@ -14,11 +14,11 @@
 
         Edit the values of following keys by visiting the server app registration:
 
-       - "AzureActiveDirectory__ClientId": "<Application Id from 'Overview page of the server app>"
+       - `AzureActiveDirectory__ClientId`: "<Application Id from 'Overview page of the server app>"
 
-       - "AzureActiveDirectory__ClientSecret": "<Client Secret Value from 'Certifactes & secrets' of server app>"
+       - `AzureActiveDirectory__ClientSecret`: "<Client Secret Value from 'Certifactes & secrets' of server app>"
 
-       - "AzureActiveDirectory__TenantId": "<Tenant Id from 'Overview' page of the server app>"
+       - `AzureActiveDirectory__TenantId`: "<Tenant Id from 'Overview' page of the server app>"
 
     > :bangbang: For the multiple deployments of Azure Communication Services Authentication Server sample, there might be issue on "/api/token" with mismatched Communication Services identity not belonging to the instance of Communication Services if using same Azure Active Directory instance for user sign in. The sample perists only single mapping of Azure Communication Services identity within Active Directory user instance through Graph extensions endpoint. So if a different Azure Communication Services resource is used within subsequent deployments, the persisted Azure Communication Services identity within Active Directory user instance will not match the Azure Communication Services resource.
 
@@ -34,7 +34,7 @@
 
      - [Generate Azure Active Directory token manually](../test-tools/generate_aad_token_manually.md) to call secure Apis of Azure Communication Services Authentication Hero sample.
 
-     - Invoke the Api
+     - Invoke the API
         Once you get the access token, make a GET request to `/api/token` endpoint with the access token as a Authorization Bearer header. Verify you get a successful status code i.e. 200.
 
         ```shell

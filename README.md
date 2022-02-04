@@ -19,16 +19,15 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
-2. [Prerequistes](#prerequistes)
+2. [Prerequistes](#prerequisites)
 3. [Getting Started](#getting-started)
 4. [Endpoints](#endpoints)
-5. [Code Structure](#code-structure)
-6. [Troubleshooting](#troubleshooting)
-7. [Known Issues](#known-issues)
-8. [Contributing](#contributing)
-9. [Resources](#resources)
-10. [Trademark](#trademark)
-11. [License](#license)
+5. [Troubleshooting](#troubleshooting)
+6. [Known Issues](#known-issues)
+7. [Contributing](#contributing)
+8. [Resources](#resources)
+9. [Trademark](#trademark)
+10. [License](#license)
 
 ## Overview
 
@@ -71,7 +70,7 @@ If you're wondering where to get started, here are a few scenarios to help you g
     - [Identity Mapping Architecture Design](./docs/design-guides/identity-mapping-design-graph-open-extensions.md).
     - [Azure Active Directory Token Exchange Architecture Design](). !!! TODO: add link
 * "I want to see what this Azure Communication Services Authentication Server sample can do by running it!"
-  * Check out our [local deployment guide](<docs/deployment-guides/deploy-locally>) guide.
+  * Check out our [local deployment guide](./docs/deployment-guides/deploy-locally.md) guide.
 * "I want to submit a fix or a feature for this project"
   * Check out our [contribution guidelines](CONTRIBUTING.md) first.
   * Check out the following guides in sequence after coding.

@@ -12,7 +12,7 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Invoke the Api '...'
+1. Invoke the API '...'
 2. Verify the result '....'
 3. See error
 

@@ -4,10 +4,10 @@
    1. [Prerequisites for Development Environment Setup](#prerequisites-for-development-environment-setup)
    2. [Cloning the repo](#cloning-the-repo)
    2. [Installing dependencies](#installing-dependencies)
-2. [Build Authentication Server Sample](#build-authentication-sample)
-3. [Run Authentication Server Sample](#run-authentication-sample)
+2. [Build Authentication Server Sample](#build-authentication-server-sample)
+3. [Run Authentication Server Sample](#run-authentication-server-sample)
    1. [Prerequisites to run the sample](#prerequisites-to-run-the-sample)
-   2. [Update the appSettings.json file](#update-the-appSettings.json-file)
+   2. [Update the appSettings.json file](#update-the-appsettings.json-file)
    3. [Generate an Azure Active Directory Token Manually](#generate-an-azure-active-directory-token-manually)
    4. [Run the App](#run-the-app)
 

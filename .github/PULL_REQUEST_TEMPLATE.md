@@ -16,7 +16,7 @@ What kind of change does this Pull Request introduce?
 [ ] Bugfix
 [ ] Feature
 [ ] Code style update (formatting, local variables)
-[ ] Refactoring (no functional changes, no api changes)
+[ ] Refactoring (no functional changes, no API changes)
 [ ] Documentation content changes
 [ ] Other... Please describe:
 ```
