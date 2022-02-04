@@ -1,6 +1,6 @@
 # Set up App Registrations (For Secure Web API)
 
-App Registrations are required to set up security on Web API using [On-Behalf-Of flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). The following setup walks you through steps required to create app registrations for the Azure Communication Services Authentication Server sample.
+App Registrations are required to set up security on Web API using [On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). The following setup walks you through steps required to create app registrations for the Azure Communication Services Authentication Server sample.
 
 ## Server App Registration
 

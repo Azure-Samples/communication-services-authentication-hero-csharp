@@ -52,7 +52,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information, visit the following links:
 
 - To lean more about **Azure Communication Services - Identity**, visit:
-  - [Quickstart: Create and manage access tokens](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp)
+  - [Quickstart: Create and manage access tokens](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp)
   - [Quickstart: Quickly create Azure Communication Services access tokens for testing](https://docs.microsoft.com/azure/communication-services/quickstarts/identity/quick-create-identity)
   - [Azure Communication Services Identity JavaScript SDK](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-communication-identity/1.0.0/index.html)
 - To learn more about **Microsoft Graph Open Extensions**, visit:

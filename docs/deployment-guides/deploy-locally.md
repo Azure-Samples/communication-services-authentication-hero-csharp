@@ -15,7 +15,7 @@
 
 ### Prerequisites for Development Environment Setup
 
-- Install [.Net](https://dotnet.microsoft.com/en-us/).
+- Install [.Net](https://dotnet.microsoft.com/).
 - (Recommended) Install [Visual Studio](https://visualstudio.microsoft.com/).
 
 ### Cloning the repo
@@ -59,7 +59,7 @@ dotnet build
 >**Note:**
 >
 > 1. this may take some time the first time it runs.
-> 2. To learn more dotnet commands, please visit [.NET CLI overview](https://docs.microsoft.com/en-us/dotnet/core/tools/)
+> 2. To learn more dotnet commands, please visit [.NET CLI overview](https://docs.microsoft.com/dotnet/core/tools/)
 > 3. You can also build the repo using Visual Studio:
 >    1. Right click on the solution `ACSAuthenticationSolution.sln` in **Solution Explorer**.
 >    2. Click on **Build Solution**
