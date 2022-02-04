@@ -20,11 +20,13 @@
 
        - `AzureActiveDirectory__TenantId`: "<Tenant Id from 'Overview' page of the server app>"
 
-    > :bangbang: For the multiple deployments of the sample using the above Azure Resource Manager template, there could be an error of "mismatched Azure Communication Services Identity not belonging to the Azure Communication Services resource" while invoking `/api/token` or `/api/user` endpoints and using same Azure Active Directory instance for user sign in on client side. The sample perists only single mapping of Azure Communication Services Identity within Active Directory user instance through Graph Open Extensions endpoint. So if a different Azure Communication Services resource is used within subsequent deployments(**Note:** The aforementioned Azure Resource Manager template deployment always creates new resources including Azure Communication Services), the persisted Azure Communication Services Identity within Azure Active Directory user instance will not match the Azure Communication Services resource.
+       - Record the value of `CommunicationServices__ConnectionString` for subsequent deployments, if you plan to deploy the sample through Azure Resource Manager Template multiple times.
 
-    **Solutions**
+    > :bangbang: For the multiple deployments of the sample using the above Azure Resource Manager template, there could be an error of "mismatched Azure Communication Services Identity not belonging to the Azure Communication Services resource" while invoking `/api/token` or `/api/user` endpoints and using same Azure Active Directory user account for signing in on client side. The issue would happen since the Azure Communication Services Identity is specific to a Azure Communication Services resource. So if a different Azure Communication Services resource is used within subsequent deployments(**Note:** The aforementioned Azure Resource Manager template deployment always creates new resources including Azure Communication Services), the persisted Azure Communication Services Identity within Azure Active Directory user instance will not match the Azure Communication Services resource for Azure Active Directory user account. For more information regarding Identity Mapping you can visit [Identity Mapping Design](../design-guides/identity-mapping-design-graph-open-extensions.md)
 
-    1. Swap the "CommunicationServices__ConnectionString" within Application Settings of newly deployed App Service from App Service of earlier created deployment or connection string of any manually created Azure Communication Services used in prior deployments.
+    **Recommendations**
+
+    1. For subsequent deployments, swap the "CommunicationServices__ConnectionString" within Application Settings of newly deployed App Service from App Service of earlier created deployment or connection string of any manually created Azure Communication Services used in prior deployments.
 
     2. You can also follow the Troubleshooting section on [README](../../README.md) to resolve the issue of Mismatched Azure Communication Services Identity and Azure Communication Services resource.
 
