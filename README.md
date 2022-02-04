@@ -23,11 +23,10 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 3. [Getting Started](#getting-started)
 4. [Endpoints](#endpoints)
 5. [Troubleshooting](#troubleshooting)
-6. [Known Issues](#known-issues)
-7. [Contributing](#contributing)
-8. [Resources](#resources)
-9. [Trademark](#trademark)
-10. [License](#license)
+6. [Contributing](#contributing)
+7. [Resources](#resources)
+8. [Trademark](#trademark)
+9. [License](#license)
 
 ## Overview
 
@@ -84,12 +83,16 @@ If you're wondering where to get started, here are a few scenarios to help you g
 This Azure Communication Services Solutions - Authentication server sample provides responses for **user** and **token** endpoints. For more details, please check our [Endpoints and Responses designe doc](./docs/design-guides/endpoints-and-responses.md).
 
 ## Troubleshooting
+1. Maximum number of extensions values supported per application is 2.
+> An application can add [at most two open extensions](https://docs.microsoft.com/graph/extensibility-overview#open-extension-limits) for an Azure Active Directory user. 
 
-Coming soon...
+> **Resolution:** If more than 2 extensions are required, then Graph Open Extensions cannot be used to persist the Azure Communication Services Identity mapping as in the sample. You need to consider Alternative Identity Mapping as suggested in [Architecture Overview](./docs/design-guides/architecture-overview.md). Otherwise, you can delete the extensions following [Graph Open Extensions Delete Api](https://docs.microsoft.com/en-us/graph/extensibility-open-users#4-delete-a-users-roaming-profile). You can delete the extension for any user, if you are M365 Tenant/Azure Active Directory Admin. You can use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) to execute for a single user.
 
-!!! TODO
+2. Provided identity doesn't belong to the resource.
+> This issue happens if there is mismatch of Azure Communication Services Identity persisted within Graph Open Extensions user instance and the Azure Communication Services resource.
+> The scenario would happen when the Azure Communication Service Identity mapping for a Azure Active Directory user account was created with one Azure Communication Services resource in the deployed sample and the Azure Communication Services resource changed with subsequent deployments. 
 
-## Known Issues
+> **Resolution:** Swap the Azure Communication Services resource used in the deployed sample as was used in prior deployment. Otherwise delete the extension within Graph Open extensions using the resolution step for above issue.
 
 - ...
 
