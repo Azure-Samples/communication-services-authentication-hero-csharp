@@ -7,7 +7,7 @@
 2. [Build Authentication Server Sample](#build-authentication-server-sample)
 3. [Run Authentication Server Sample](#run-authentication-server-sample)
    1. [Prerequisites to run the sample](#prerequisites-to-run-the-sample)
-   2. [Update the appSettings.json file](#update-the-appsettings.json-file)
+   2. [Update the appSettings.json file](#update-the-appsettingsjson-file)
    3. [Generate an Azure Active Directory Token Manually](#generate-an-azure-active-directory-token-manually)
    4. [Run the App](#run-the-app)
 
@@ -58,7 +58,7 @@ dotnet build
 
 >**Note:**
 >
-> 1. this may take some time the first time it runs.
+> 1. This may take some time the first time it runs.
 > 2. To learn more dotnet commands, please visit [.NET CLI overview](https://docs.microsoft.com/dotnet/core/tools/)
 > 3. You can also build the repo using Visual Studio:
 >    1. Right click on the solution `ACSAuthenticationSolution.sln` in **Solution Explorer**.
