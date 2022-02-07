@@ -66,7 +66,7 @@ Follow instructions on how to register your client application with Azure Active
 
    - give your application a meaningful name as this will be the displayed name of your app, for example `auther-server-sample-webClient`.
    - select the **Accounts in this organizational directory only (Microsoft only - Single tenant)** option for who can use or access this application.
-   - set the **Redirect URI (optional)** with **Single-page Application (SPA)** as platform and `http://localhost:5000/` as URI. In case of manual generation of Azure Active Directory token for testing Auth Sample Apis, select **Web** as platform instead of **SPA**.
+   - set the **Redirect URI (optional)** with **Single-page Application (SPA)** as platform and `http://localhost:3000/` as URI. In case of manual generation of Azure Active Directory token for testing Auth Sample Apis, select **Web** as platform instead of **SPA**.
 
    >**Note:** clicking on the **Register** button will open your application page once the registration is sucessful.
 
