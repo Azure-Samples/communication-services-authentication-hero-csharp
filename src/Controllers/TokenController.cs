@@ -28,6 +28,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
 
         // Error message
         private const string NoAuthorizationCodeError = "Fail to get the authorization code from the request header";
+        private const string NoIdentityMappingError = "There is no identity mapping information stored in Microsoft Graph";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenController"/> class.
@@ -79,21 +80,12 @@ namespace ACS.Solution.Authentication.Server.Controllers
             if (acsUserId == null)
             {
                 // User doesn't exist
-                CommunicationUserIdentifierAndToken acsIdentityTokenObject = await _acsService.CreateACSUserIdentityAndToken();
-
-                // Store the identity mapping information
-                await _graphService.AddIdentityMapping(acsIdentityTokenObject.User.Id);
-
-                // This LoC below should be excuted after AddIdentityMapping excuted successfully
-                // because the acsToken can not be returned if failing to add the identity mapping information to Microsoft Graph
-                acsIdentityTokenResponse = new CommunicationUserIdentifierAndTokenResponse(acsIdentityTokenObject.AccessToken, acsIdentityTokenObject.User);
+                return StatusCode(StatusCodes.Status404NotFound, NoIdentityMappingError);
             }
-            else
-            {
-                // User exists
-                AccessToken acsToken = await _acsService.CreateACSToken(acsUserId);
-                acsIdentityTokenResponse = new CommunicationUserIdentifierAndTokenResponse(acsToken, new CommunicationUserIdentifier(acsUserId));
-            }
+
+            // User exists
+            AccessToken acsToken = await _acsService.CreateACSToken(acsUserId);
+            acsIdentityTokenResponse = new CommunicationUserIdentifierAndTokenResponse(acsToken, new CommunicationUserIdentifier(acsUserId));
 
             return StatusCode(StatusCodes.Status201Created, acsIdentityTokenResponse);
         }

@@ -66,10 +66,19 @@ namespace ACS.Solution.Authentication.Server.Controllers
         [ProducesResponseType(typeof(IdentityMapping), StatusCodes.Status201Created)]
         public async Task<ActionResult> CreateACSUser()
         {
-            string acsUserId = await _acsService.CreateACSUserIdentity();
-            await _graphService.AddIdentityMapping(acsUserId);
 
-            return StatusCode(StatusCodes.Status201Created, new IdentityMapping(acsUserId));
+            string acsUserId = await _graphService.GetACSUserId();
+
+            if (acsUserId == null)
+            {
+                // Create a Communication Services identity.
+                acsUserId = await _acsService.CreateACSUserIdentity();
+                await _graphService.AddIdentityMapping(acsUserId);
+
+                return StatusCode(StatusCodes.Status201Created, new IdentityMapping(acsUserId));
+            }
+
+            return StatusCode(StatusCodes.Status200OK, new IdentityMapping(acsUserId));
         }
 
         /// <summary>
