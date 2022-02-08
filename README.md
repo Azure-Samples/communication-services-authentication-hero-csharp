@@ -46,7 +46,7 @@ If you are looking to get started with Azure Communication Services, but are sti
 
 Additional documentation for this sample can be found on [Microsoft Docs](https://docs.microsoft.com/azure/communication-services/samples/calling-hero-sample). !!! TODO: change link?
 
-Since this sample only focuses on the server APIs, the client application is not part of it. If you want to add the client application to login user using Azure Active Directory, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-js).
+Since this sample only focuses on the server APIs, the client application is not part of it. If you want to add the client application to login user using Azure Active Directory, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet).
 
 Before contributing to this sample, please read our [contribution guidelines](./CONTRIBUTING.md).
 
@@ -54,8 +54,8 @@ Before contributing to this sample, please read our [contribution guidelines](./
 
 To be able to run this sample, you will need to:
 
-- Register a Client and Server (Web API) applications in Azure Active Directory as part of [On Behalf Of workflow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Follow instructions on [registrations set up guideline](../deployment-guides/set-up-app-registrations.md)
-- Create an Azure Communication Services resource through [Azure Portal](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=linux&pivots=platform-azp). Follow [Quickstart: Create and manage Communication Services resources](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp) to create an ACS resource using Azure Portal.
+- Register a Client and Server (Web API) applications in Azure Active Directory as part of [On Behalf Of workflow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Follow instructions on [registrations set up guideline](./docs/deployment-guides/set-up-app-registrations.md)
+- Create an Azure Communication Services resource through [Azure Portal](https://portal.azure.com). Follow [Quickstart: Create and manage Communication Services resources](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp) to create an ACS resource using Azure Portal.
 - Update the Server (Web API) application with information from the app registrations.
 
 ## Getting Started
@@ -84,17 +84,16 @@ This Azure Communication Services Solutions - Authentication server sample provi
 
 ## Troubleshooting
 1. Maximum number of extensions values supported per application is 2.
-> An application can add [at most two open extensions](https://docs.microsoft.com/graph/extensibility-overview#open-extension-limits) for an Azure Active Directory user. 
+   > An application can add [at most two open extensions](https://docs.microsoft.com/graph/extensibility-overview#open-extension-limits) for an Azure Active Directory user. 
 
-> **Resolution:** If more than 2 extensions are required, then Graph Open Extensions cannot be used to persist the Azure Communication Services Identity mapping as in the sample. You need to consider Alternative Identity Mapping as suggested in [Architecture Overview](./docs/design-guides/architecture-overview.md). Otherwise, you can delete the extensions following [Graph Open Extensions Delete Api](https://docs.microsoft.com/en-us/graph/extensibility-open-users#4-delete-a-users-roaming-profile). You can delete the extension for any user, if you are M365 Tenant/Azure Active Directory Admin. You can use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) to execute for a single user.
+   > **Resolution:** If more than 2 extensions are required, then Graph Open Extensions cannot be used to persist the Azure Communication Services Identity mapping as in the sample. You need to consider Alternative Identity Mapping as suggested in [Architecture Overview](./docs/design-guides/architecture-overview.md). Otherwise, you can delete the extensions following [Graph Open Extensions Delete API](https://docs.microsoft.com/graph/extensibility-open-users#4-delete-a-users-roaming-profile). You can delete the extension for any user, if you are M365 Tenant/Azure Active Directory Admin. You can use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) to execute for a single user.
 
 2. Provided identity doesn't belong to the resource.
-> This issue happens if there is mismatch of Azure Communication Services Identity persisted within Graph Open Extensions user instance and the Azure Communication Services resource.
-> The scenario would happen when the Azure Communication Service Identity mapping for a Azure Active Directory user account was created with one Azure Communication Services resource in the deployed sample and the Azure Communication Services resource changed with subsequent deployments. 
+   > This issue happens if there is mismatch of Azure Communication Services Identity persisted within Graph Open Extensions user instance and the Azure Communication Services resource.
+   >
+   > The scenario would happen when the Azure Communication Service Identity mapping for a Azure Active Directory user account was created with one Azure Communication Services resource in the deployed sample and the Azure Communication Services resource changed with subsequent deployments. 
 
-> **Resolution:** Swap the Azure Communication Services resource used in the deployed sample as was used in prior deployment. Otherwise delete the extension within Graph Open extensions using the resolution step for above issue.
-
-- ...
+   > **Resolution:** Swap the Azure Communication Services resource used in the deployed sample as was used in prior deployment. Otherwise delete the extension within Graph Open extensions using the resolution step for above issue.
 
 ## Contributing
 

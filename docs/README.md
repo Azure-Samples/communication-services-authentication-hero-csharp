@@ -25,4 +25,3 @@ Not sure how to register your apps on Azure? Checkout our [app registrations set
 - [Endpoints and Responses](design-guides/endpoints-and-responses.md) - What are the endpoints and responses of the Azure Communication Services Authentication Server sample.
 - [Identity Mapping Design](design-guides/identity-mapping-design-graph-open-extensions.md) - How to utilize the **Microsoft Graph Open Extensions** to manage Azure Communication Services identities by mapping them 1:1 with Azure Active Directory identities.
 - [Secured Web API Design](./design-guides/secured-Web-API-Design.md) - How to protect Web API using the **Authentication Code Grant flow** (Client side excluded from the project) and secure an access token from the Microsoft identity platform using the **On-Behalf-Of flow** (Server side) to make authenticated requests to the downstream services.
-
