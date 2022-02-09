@@ -6,9 +6,9 @@ Follow instructions on how to register your server application with Azure Active
 
 When registering use the following information:
     - name your application `AuthServer`
-    - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
-    - click on 'Register' and it will open your application page once registration is sucessful
-    ![Diagram](../images/register-server-app.png)
+        - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
+        - click on 'Register' and it will open your application page once registration is successful
+        ![Diagram](../images/register-server-app.png)
 
 On your AuthServer page:
   - navigate to and click on 'Certificates & Secrets' menu item
@@ -18,7 +18,7 @@ On your AuthServer page:
     ![Diagram](../images/create_client_secrets_server_app.png)
   - navigate to and click on 'API permissions' menu item
     - click on 'Add a permission'
-    - select 'Microsoft Graph' under 'Microsoft Apis' tab on the page that is presented
+    - select 'Microsoft Graph' under 'Microsoft APIs' tab on the page that is presented
     - select 'Delegated Permissions'
     - now scroll under 'Permission' list to reach 'User'
     - expand 'User' to select permissions 'User.Read' and 'User.ReadWrite'
@@ -50,8 +50,8 @@ On your AuthServer page:
 When registering use the following information:
     - name your application `AuthClient`
         - select the 'Accounts in this organizational directory only (Microsoft only - Single tenant)' option for who can use or access this application
-        - set the redirect URI selecting 'Single-page Application (SPA)' with `http://localhost:3000/` as url.  (**Note:** In case of manual generation of AAD Token for testing Auth Sample Apis, select 'Web'instead of SPA. )
-        - click on 'Register' and it will open your application page once registration is sucessful
+        - set the redirect URI selecting 'Single-page Application (SPA)' with `http://localhost:3000/` as url.  (**Note:** In case of manual generation of AAD Token for testing Auth Sample APIs, select 'Web' instead of SPA. )
+        - click on 'Register' and it will open your application page once registration is successful
         ![Diagram](../images/register-client-app.png)
 
 On your AuthClient page:
