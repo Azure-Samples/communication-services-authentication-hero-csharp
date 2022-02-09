@@ -65,11 +65,12 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// </list>
         /// </summary>
         /// <response code="201">ACS token is successfully generated.</response>
+        /// <response code="404">ACS UserID is not found.</response>
         /// <returns>An ACS token with an ACS identity.</returns>
         [Authorize]
         [RequiredScope("access_as_user")] // This is the scope we gave the AuthService when registering the application.
         [HttpGet]
-        [ProducesResponseType(typeof(CommunicationUserIdentifierAndTokenResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CommunicationUserIdentifierAndTokenResponse), [StatusCodes.Status201Created, StatusCodes.Status404NotFound])]
         public async Task<ActionResult> GetACSTokenAsync()
         {
             CommunicationUserIdentifierAndTokenResponse acsIdentityTokenResponse;

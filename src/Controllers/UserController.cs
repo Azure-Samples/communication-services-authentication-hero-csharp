@@ -47,7 +47,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// <response code="404">Specified acs user id doesn't exist.</response>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), [StatusCodes.Status200OK, StatusCodes.Status404NotFound])]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> GetACSUser()
         {
@@ -61,12 +61,12 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// Create a Communication Services identity and then add the roaming identity mapping information to the user resource.
         /// </summary>
         /// <response code="201">ACS user successfully created.</response>
+        /// <response code="200">ACS user already exists.</response>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(IdentityMapping), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(IdentityMapping), [StatusCodes.Status201Created, StatusCodes.Status201Created])]
         public async Task<ActionResult> CreateACSUser()
         {
-
             string acsUserId = await _graphService.GetACSUserId();
 
             if (acsUserId == null)
