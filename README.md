@@ -38,7 +38,7 @@ This sample can help you in the following scenarios:
 1. As a developer, you need to enable an authentication flow for joining native Azure Communication Services and/or Teams Interop calling/chat which is done by mapping an Azure Communication Services identity to an Azure Active Directory identity and using this same Azure Communication Services identity for the user to fetch an Azure Communication Services token in every session.
 2. As a developer, you need to enable an authentication flow for Custom Teams Endpoint which is done by using an M365 Azure Active Directory identity of a Teams' user to fetch an Azure Communication Services token to be able to join Teams calling/chat.
 
-If you are looking to get started with Azure Communication Services, but are still in learning / prototyping phases, check out our [quickstarts for getting started with azure communication services users and access tokens](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
+If you are looking to get started with Azure Communication Services, but are still in learning / prototyping phases, check out our [quickstarts for getting started with azure communication services users and access tokens](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
 
 > :loudspeaker: An Azure Communication Services Solutions - Authentication Sample (NodeJS version) can be found [here](https://github.com/Azure-Samples/communication-services-authentication-hero-nodejs).
 
@@ -67,7 +67,7 @@ If you're wondering where to get started, here are a few scenarios to help you g
     - [Azure Communication Services Authentication Server Sample Architecture Design](./docs/design-guides/architecture-overview.md).
     - [Secured Web API Architecture Design](./docs/design-guides/secured-web-api-design.md).
     - [Identity Mapping Architecture Design](./docs/design-guides/identity-mapping-design-graph-open-extensions.md).
-    - [Azure Active Directory Token Exchange Architecture Design](./docs/design-guides/token-txchange-design.md).
+    - [Azure Active Directory Token Exchange Architecture Design](./docs/design-guides/token-exchange-design.md).
 * "I want to see what this Azure Communication Services Authentication Server sample can do by running it!"
   * Check out our [local deployment guide](./docs/deployment-guides/deploy-locally.md) guide.
 * "I want to submit a fix or a feature for this project"
@@ -80,13 +80,13 @@ If you're wondering where to get started, here are a few scenarios to help you g
 
 ## Endpoints
 
-This Azure Communication Services Solutions - Authentication server sample provides responses for **user** and **token** endpoints. For more details, please check our [Endpoints and Responses designe doc](./docs/design-guides/endpoints-and-responses.md).
+This Azure Communication Services Solutions - Authentication server sample provides responses for **user** and **token** endpoints. For more details, please check our [Endpoints and Responses design doc](./docs/design-guides/endpoints-and-responses.md).
 
 ## Troubleshooting
 1. Maximum number of extensions values supported per application is 2.
 > An application can add [at most two open extensions](https://docs.microsoft.com/graph/extensibility-overview#open-extension-limits) for an Azure Active Directory user. 
 
-> **Resolution:** If more than 2 extensions are required, then Graph Open Extensions cannot be used to persist the Azure Communication Services Identity mapping as in the sample. You need to consider Alternative Identity Mapping as suggested in [Architecture Overview](./docs/design-guides/architecture-overview.md). Otherwise, you can delete the extensions following [Graph Open Extensions Delete Api](https://docs.microsoft.com/en-us/graph/extensibility-open-users#4-delete-a-users-roaming-profile). You can delete the extension for any user, if you are M365 Tenant/Azure Active Directory Admin. You can use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) to execute for a single user.
+> **Resolution:** If more than 2 extensions are required, then Graph Open Extensions cannot be used to persist the Azure Communication Services Identity mapping as in the sample. You need to consider Alternative Identity Mapping as suggested in [Architecture Overview](./docs/design-guides/architecture-overview.md). Otherwise, you can delete the extensions following [Graph Open Extensions Delete API](https://docs.microsoft.com/graph/extensibility-open-users#4-delete-a-users-roaming-profile). You can delete the extension for any user, if you are M365 Tenant/Azure Active Directory Admin. You can use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) to execute for a single user.
 
 2. Provided identity doesn't belong to the resource.
 > This issue happens if there is mismatch of Azure Communication Services Identity persisted within Graph Open Extensions user instance and the Azure Communication Services resource.
@@ -104,15 +104,15 @@ We look forward to building an amazing open source Azure Communication Services 
 
 ## Resources
 
-- [Azure Communication Services Documentation](https://docs.microsoft.com/en-us/azure/communication-services/) - Find more about how to add voice, video, chat, and telephony on our official documentation.
-- [Azure Communication Services Hero Samples](https://docs.microsoft.com/en-us/azure/communication-services/samples/overview) - Find more Azure Communication Services samples and examples on our samples overview page.
-- [On-Behalf-Of workflow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) - Find more about the OBO workflow.
+- [Azure Communication Services Documentation](https://docs.microsoft.com/azure/communication-services/) - Find more about how to add voice, video, chat, and telephony on our official documentation.
+- [Azure Communication Services Hero Samples](https://docs.microsoft.com/azure/communication-services/samples/overview) - Find more Azure Communication Services samples and examples on our samples overview page.
+- [On-Behalf-Of workflow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) - Find more about the OBO workflow.
 - [Creating a protected API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) - Detailed example of creating a protected API.
-- [Graph Open Extensions](https://docs.microsoft.com/en-us/graph/extensibility-open-users) - Find out more about Microsoft Graph open extensions.
+- [Graph Open Extensions](https://docs.microsoft.com/graph/extensibility-open-users) - Find out more about Microsoft Graph open extensions.
 
 ## Trademark
 
-**Trademarks** This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow [Microsoft’s Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general). Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party’s policies.
+**Trademarks** This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow [Microsoft’s Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general). Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party’s policies.
 
 ## License
 
