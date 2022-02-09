@@ -19,7 +19,7 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
-2. [Prerequistes](#prerequisites)
+2. [Prerequisites](#prerequisites)
 3. [Getting Started](#getting-started)
 4. [Endpoints](#endpoints)
 5. [Troubleshooting](#troubleshooting)
@@ -67,7 +67,7 @@ If you're wondering where to get started, here are a few scenarios to help you g
     - [Azure Communication Services Authentication Server Sample Architecture Design](./docs/design-guides/architecture-overview.md).
     - [Secured Web API Architecture Design](./docs/design-guides/secured-web-api-design.md).
     - [Identity Mapping Architecture Design](./docs/design-guides/identity-mapping-design-graph-open-extensions.md).
-    - [Azure Active Directory Token Exchange Architecture Design](). !!! TODO: add link
+    - [Azure Active Directory Token Exchange Architecture Design](./docs/design-guides/token-txchange-design.md).
 * "I want to see what this Azure Communication Services Authentication Server sample can do by running it!"
   * Check out our [local deployment guide](./docs/deployment-guides/deploy-locally.md) guide.
 * "I want to submit a fix or a feature for this project"
