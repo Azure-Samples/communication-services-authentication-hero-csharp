@@ -61,15 +61,25 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// Create a Communication Services identity and then add the roaming identity mapping information to the user resource.
         /// </summary>
         /// <response code="201">ACS user successfully created.</response>
+        /// <response code="200">ACS user already exists.</response>
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         [HttpPost]
+        [ProducesResponseType(typeof(IdentityMapping), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(IdentityMapping), StatusCodes.Status201Created)]
         public async Task<ActionResult> CreateACSUser()
         {
-            string acsUserId = await _acsService.CreateACSUserIdentity();
-            await _graphService.AddIdentityMapping(acsUserId);
+            string acsUserId = await _graphService.GetACSUserId();
 
-            return StatusCode(StatusCodes.Status201Created, new IdentityMapping(acsUserId));
+            if (acsUserId == null)
+            {
+                // Create a Communication Services identity.
+                acsUserId = await _acsService.CreateACSUserIdentity();
+                await _graphService.AddIdentityMapping(acsUserId);
+
+                return StatusCode(StatusCodes.Status201Created, new IdentityMapping(acsUserId));
+            }
+
+            return StatusCode(StatusCodes.Status200OK, new IdentityMapping(acsUserId));
         }
 
         /// <summary>

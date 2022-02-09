@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from '@azure/msal-react';
 import { loginRequest } from './authConfig';
 import { PageLayout } from './components/PageLayout';
-import { GetAcsToken } from './acsAuthApiCaller';
+import { GetAcsToken, CreateOrGetACSUser } from './acsAuthApiCaller';
 import Button from 'react-bootstrap/Button';
 import './styles/App.css';
 import { v4 as uuidv4 } from 'uuid';
@@ -35,10 +35,17 @@ const TestCallContent = () => {
         account: accounts[0]
       })
       .then((response) => {
-        GetAcsToken(response.accessToken).then((message) => {
-          setToken(message.token);
-          setId(message.user.id);
+
+        CreateOrGetACSUser(response.accessToken).then(() => {
+
+          GetAcsToken(response.accessToken).then((message) => {
+            setToken(message.token);
+            setId(message.user.id);
+            
+          });
+
         });
+        
         setUsername(response.account.username);
       });
   }
