@@ -71,7 +71,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
         [RequiredScope("access_as_user")] // This is the scope we gave the AuthService when registering the application.
         [HttpGet]
         [ProducesResponseType(typeof(CommunicationUserIdentifierAndTokenResponse), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> GetACSTokenAsync()
         {
             CommunicationUserIdentifierAndTokenResponse acsIdentityTokenResponse;

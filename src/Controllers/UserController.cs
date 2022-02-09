@@ -48,7 +48,6 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         [HttpGet]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> GetACSUser()
         {
