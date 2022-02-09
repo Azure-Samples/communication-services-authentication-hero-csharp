@@ -18,3 +18,19 @@ export async function GetAcsToken(accessToken) {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 }
+
+export async function CreateOrGetACSUser(accessToken) {
+  const headers = new Headers();
+  const bearer = `Bearer ${accessToken}`;
+
+  headers.append('Authorization', bearer);
+
+  const options = {
+    method: 'POST',
+    headers: headers
+  };
+
+  return await fetch('https://localhost:5001/api/user', options) //Update this to your deployed endpoint if not testing locally
+    .then((response) => response.json())
+    .catch((error) => console.log(error));
+}
