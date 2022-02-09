@@ -68,7 +68,6 @@ namespace ACS.Solution.Authentication.Server.Controllers
         [ProducesResponseType(typeof(IdentityMapping), StatusCodes.Status201Created)]
         public async Task<ActionResult> CreateACSUser()
         {
-
             string acsUserId = await _graphService.GetACSUserId();
 
             if (acsUserId == null)
