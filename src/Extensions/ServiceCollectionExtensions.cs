@@ -22,7 +22,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
         public static void AddCustomCors(this IServiceCollection services)
         {
             // Refer to this article if you require more information on CORS
-            // https://docs.microsoft.com/en-us/aspnet/core/security/cors
+            // https://docs.microsoft.com/aspnet/core/security/cors
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin()
@@ -67,7 +67,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
         public static void AddDownstreamApis(this IServiceCollection services, IConfiguration configuration)
         {
             // Add the Microsoft Graph api as one of downstream apis
-            // For more information, see https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-web-api-call-api-app-configuration?tabs=aspnetcore#option-1-call-microsoft-graph
+            // For more information, see https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration?tabs=aspnetcore#option-1-call-microsoft-graph
             services.AddMicrosoftIdentityWebApiAuthentication(configuration, AzureActiveDirectorySettingsModel.AzureActiveDirectorySettingsName)
                     .EnableTokenAcquisitionToCallDownstreamApi()
                     .AddMicrosoftGraph(configuration.GetSection(GraphSettingsModel.GraphSettingsName))

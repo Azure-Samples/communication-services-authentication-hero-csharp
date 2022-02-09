@@ -57,7 +57,7 @@ Below is a diagram and step-by-step explanation of the ACG flow for better under
 
    1. User signs in with their credentials and consents to permissions indicated in the `scope` query parameter through the SPA.
 
-      > If the user has not consented to any of those permissions, it will ask the user to consent to the required permissions. Details of [permissions, consent, and multi-tenant apps are provided here](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent).
+      > If the user has not consented to any of those permissions, it will ask the user to consent to the required permissions. Details of permissions, consent, and multi-tenant apps are provided [here](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
    2. The user is directed to the `authorize` endpoint for authentication and consent grant.
 
    3. Once the user authenticates and grants their consent, the Microsoft identity platform will return a response containing  an authentication code to the SPA at the indicated `redirect_uri`.
@@ -110,11 +110,11 @@ For more information, visit the following links:
   - [Quickstart: Register an application with the Microsoft identity platform (Preview)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
   - [Quickstart: Configure a client application to access web APIs (Preview)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)
   - [Quickstart: Configure an application to expose web APIs (Preview)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)
-- To learn more about **[Microsoft identity platform](http://aka.ms/aaddevv2))**, visit:
+- To learn more about **[Microsoft identity platform](http://aka.ms/aaddevv2)**, visit:
   - [Microsoft identity platform - Supported Authentication Flows Scenarios](https://docs.microsoft.com/azure/active-directory/develop/msal-authentication-flows)
   - [Microsoft identity platform - Application Types](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types)
   - [Microsoft identity platform - OAuth 2.0 Authorization Code flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
   - [Tutorial: Sign in users and call the Microsoft Graph API from a JavaScript single-page app (SPA) using auth code flow](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code)
   - [Microsoft identity platform - OAuth 2.0 On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
   - [Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/master/README.md)
-  - [Microsoft identity platform code samples](https://docs.microsoft.com/en-us/azure/active-directory/develop/sample-v2-code)
+  - [Microsoft identity platform code samples](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code)
