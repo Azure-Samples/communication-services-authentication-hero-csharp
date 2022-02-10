@@ -10,7 +10,7 @@
         ```shell
         curl --location --request GET 'http://<replace with URL on your provisioned App Service OR localhost:5000>/api/token' \
 
-        --header 'Authorization: Bearer <put access token here>
+        --header 'Authorization: Bearer <put access token here>'
         ```
         > Note: If you are facing issues running the curl command, then try importing (File -> import -> raw text, paste the curl command and continue) the curl command in [Postman](https://www.postman.com/downloads/) and running it there
 
