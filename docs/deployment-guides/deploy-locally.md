@@ -80,7 +80,11 @@ Before running the sample, you will need to replace the values in the  `appSetti
 
 ### Generate an Azure Active Directory Token Manually
 
-Since the sample does not have a client application, you need to generate a Client Azure Active Directory token manually to make calls to Azure Active Directory protected backend Web APIs in the sample. You will need an access token using client app registration to call the Web API. In order to get the access token manually, please follow the steps [here](../test-tools/generate_aad_token_manually.md). 
+To make calls to Azure Active Directory protected backend Web APIs in the sample. You will need an access token using client app registration to call the Web API. In order to get the access token manually, please follow the steps [here](../test-tools/generate_aad_token_manually.md). 
+
+### Testing this backend with the sample client (A sample to show the endpoints being called)
+
+Please take a look at the MinimalClient setup [MinimalClient](../../MinimalClient/README.md)
 
 >**Note:** If you are integrating a client application, then please ignore these steps as you could test directly via user signing through client application.
 
