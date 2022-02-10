@@ -11,7 +11,7 @@
 
 1. run `npm install`
 2. run `npm start`
-3. navigate to "http://localhost:3000/"
-4. click on "sign" in then use the popup to login with a valid user. 
-5. click on "Join Default Call" to join a call using the displayed randomly generated GUID.
+3. navigate to http://localhost:3000/
+4. click on **Sign** in then use the popup to login with a valid user. 
+5. click on **Join Default Call** to join a call using the displayed randomly generated GUID.
 6. To join a call with another device, share the GUID and enter it in the text box of the client wanting to join the same call.
