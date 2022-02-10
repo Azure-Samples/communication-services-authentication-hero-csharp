@@ -30,23 +30,12 @@
 
     2. You can also follow the Troubleshooting section on [README](../../README.md) to resolve the issue of Mismatched Azure Communication Services Identity and Azure Communication Services resource.
 
-3. Test the deployed APIs
+3. We have two ways of testing the backend service
+   - Using a manually generated token and calling the server directly
+   - Using a sample client
 
-    a. Testing with manually generated Azure Active Directory Token
 
-     - [Generate Azure Active Directory token manually](../test-tools/generate_aad_token_manually.md) to call secure Apis of Azure Communication Services Authentication Hero sample.
-
-     - Invoke the API
-        Once you get the access token, make a GET request to `/api/token` endpoint with the access token as a Authorization Bearer header. Verify you get a successful status code i.e. 200.
-
-        ```shell
-        curl --location --request GET 'http://<replace with URL on your provisioned App Service>/api/token' \
-
-        --header 'Authorization: Bearer <put access token here>
-        ```
-    
-    b. Test the APIs using Test Client
-     -  Please take a look at the MinimalClient README.md [MinimalClient](../../MinimalClient/README.md)
+   Please see the two options in detail here [Test deployed service](../test-tools/test-backend-service.md).
 
 
 **[Proceed to Architecture Overview ...](../design-guides/architecture-overview.md)**
