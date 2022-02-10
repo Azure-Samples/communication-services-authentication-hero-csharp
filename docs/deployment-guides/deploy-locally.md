@@ -76,7 +76,7 @@ Before running the sample, you will need to replace the values in the  `appSetti
 1. Replace `connectionString` and `scopes` for the Communication Services
 2. Replace `clientId`, `tenantId` and `clientSecret` for the Azure Active Directory.
 
->**Note:** Values of `clientId`, `tenantId` and `clientSecret` are all from your `auther-server-sample-webApi`.
+>**Note:** Values of `clientId`, `tenantId` and `clientSecret` are all from your `auther-server-sample-webApi`. If you created the app registrations in [prerequisites](#prerequisites-to-run-the-sample) using app creation scripts, then you should already have these values updated in your local repository.
 
 ### Generate an Azure Active Directory Token Manually
 
@@ -106,7 +106,9 @@ In order to run the Azure Communication Services Authentication Server sample,
 
    > Note: You can also run the selected project using the Visual Studio.
 
-3. Make a GET request to `http://localhost:5000/api/token` with the `access_token` generated at **step 2** of **Generate an Azure Active Directory Token manually** guide as a Authorization Bearer header. Verify you get a response with a successful status code (i.e. 200).
+3. You can refer to our [Endpoints and Responses design guide](../design-guides/endpoints-and-responses.md) to learn more about the deployed APIs.
+
+4. Make a GET request to `http://localhost:5000/api/token` with the `access_token` generated at **step 2** of **Generate an Azure Active Directory Token manually** guide as a Authorization Bearer header. Verify you get a response with a successful status code (i.e. 200).
 
    ```shell
    curl --location --request GET 'http://localhost:5000/api/token' --header 'Authorization: Bearer <access_token>'
@@ -114,6 +116,6 @@ In order to run the Azure Communication Services Authentication Server sample,
 
    > Note: If you are facing issues running the curl command, then try importing (File -> import -> raw text, paste the curl command and continue) the curl command in [Postman](https://www.postman.com/downloads/) and running it there.
 
-4. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint, please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Azure Active Directory Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
+5. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint, please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Azure Active Directory Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
 
 >**Note:** Want to contribute to this sample and help us make it even better? Check our [contribution guide](../contribution-guides/1.get-set-up.md).
