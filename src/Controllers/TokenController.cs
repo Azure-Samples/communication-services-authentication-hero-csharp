@@ -102,7 +102,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
         /// <response code="401">Fail to get an authorization code from the request header.</response>
         /// <returns>If authorizing successfully, an ACS access token for the Teams user. Otherwise, an unauthorized error message.</returns>
         [HttpGet]
-        [Route("aad")]
+        [Route("teams")]
         public async Task<ActionResult> ExchangeAADTokenAsync([FromHeader] string authorization)
         {
             if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
