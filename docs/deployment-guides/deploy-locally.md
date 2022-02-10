@@ -84,7 +84,7 @@ To make calls to Azure Active Directory protected backend Web APIs in the sample
 
 ### Testing this backend with the sample client (A sample to show the endpoints being called)
 
-Please take a look at the MinimalClient setup [MinimalClient](../../MinimalClient/README.md)
+Please take a look at the MinimalClient README.md [MinimalClient](../../MinimalClient/README.md)
 
 >**Note:** If you are integrating a client application, then please ignore these steps as you could test directly via user signing through client application.
 

@@ -45,7 +45,8 @@
         --header 'Authorization: Bearer <put access token here>
         ```
     
-    b. Test the APIs using Test Client (To Be discussed...) 
+    b. Test the APIs using Test Client
+     -  Please take a look at the MinimalClient README.md [MinimalClient](../../MinimalClient/README.md)
 
 
 **[Proceed to Architecture Overview ...](../design-guides/architecture-overview.md)**
