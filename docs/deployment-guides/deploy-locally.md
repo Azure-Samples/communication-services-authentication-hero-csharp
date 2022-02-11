@@ -102,10 +102,11 @@ In order to run the Azure Communication Services Authentication Server sample,
    - Using a manually generated token and calling the server directly
    - Using a sample client
 
-4. Make a GET request to `http://localhost:5000/api/token` with the `access_token` generated at **step 2** of **Generate an Azure Active Directory Token manually** guide as a Authorization Bearer header. Verify you get a response with a successful status code (i.e. 200).
+   Please see the two options in detail here. [Test deployed service](../test-tools/test-backend-service.md).
 
-   Please see the two options in detail here [Test deployed service](../test-tools/test-backend-service.md).
+   Here is a set of endpoints that can be tested. [API Endpoints](../design-guides/endpoints-and-responses.md). 
+   For testing with the client, we currently use GetAcsToken, and CreateOrGetACSUser.
 
-5. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint, please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Azure Active Directory Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
+4. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint, please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Azure Active Directory Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
 
 >**Note:** Want to contribute to this sample and help us make it even better? Check our [contribution guide](../contribution-guides/1.get-set-up.md).
