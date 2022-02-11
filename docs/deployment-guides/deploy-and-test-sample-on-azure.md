@@ -38,7 +38,8 @@
    Please see the two options in detail here. [Test deployed service](../test-tools/test-backend-service.md).
 
    Here is a set of endpoints that can be tested. [API Endpoints](../design-guides/endpoints-and-responses.md). 
-   For testing with the client, we currently use GetAcsToken, and CreateOrGetACSUser.
+
+   For testing with the client, we currently use the `GET /api/token`, and `POST /api/user` endpoints.
 
 
 **[Proceed to Architecture Overview ...](../design-guides/architecture-overview.md)**
