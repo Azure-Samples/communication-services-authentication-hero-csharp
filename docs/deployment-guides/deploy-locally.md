@@ -78,14 +78,6 @@ Before running the sample, you will need to replace the values in the  `appSetti
 
 >**Note:** Values of `clientId`, `tenantId` and `clientSecret` are all from your `auther-server-sample-webApi`. If you created the app registrations in [prerequisites](#prerequisites-to-run-the-sample) using app creation scripts, then you should already have these values updated in your local repository.
 
-### Generate an Azure Active Directory Token Manually
-
-Since the sample does not have a client application, you need to generate a Client Azure Active Directory token manually to make calls to Azure Active Directory protected backend Web APIs in the sample. You will need an access token using client app registration to call the Web API. In order to get the access token manually, please follow the steps [here](../test-tools/generate_aad_token_manually.md). 
-
->**Note:** If you are integrating a client application, then please ignore these steps as you could test directly via user signing through client application.
-
-Once you get the `access_token` in the response, you can jump to the next step to start the server and call `http://localhost:5000/api/token` or `https://localhost:5001/api/token` using the  `access_token`.
-
 ### Run the App
 
 In order to run the Azure Communication Services Authentication Server sample,
@@ -106,16 +98,15 @@ In order to run the Azure Communication Services Authentication Server sample,
 
    > Note: You can also run the selected project using the Visual Studio.
 
-3. You can refer to our [Endpoints and Responses design guide](../design-guides/endpoints-and-responses.md) to learn more about the deployed APIs.
+3. We have two ways of testing the backend service
+   - Using a manually generated token and calling the server directly
+   - Using a sample client
 
-4. Make a GET request to `http://localhost:5000/api/token` with the `access_token` generated at **step 2** of **Generate an Azure Active Directory Token manually** guide as a Authorization Bearer header. Verify you get a response with a successful status code (i.e. 200).
+   Please see the two options in detail here. [Test deployed service](../test-tools/test-backend-service.md).
 
-   ```shell
-   curl --location --request GET 'http://localhost:5000/api/token' --header 'Authorization: Bearer <access_token>'
-   ```
+   Here is a set of endpoints that can be tested. [API Endpoints](../design-guides/endpoints-and-responses.md). 
+   For testing with the client, we currently use GetAcsToken, and CreateOrGetACSUser.
 
-   > Note: If you are facing issues running the curl command, then try importing (File -> import -> raw text, paste the curl command and continue) the curl command in [Postman](https://www.postman.com/downloads/) and running it there.
-
-5. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint, please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Azure Active Directory Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
+4. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint, please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Azure Active Directory Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
 
 >**Note:** Want to contribute to this sample and help us make it even better? Check our [contribution guide](../contribution-guides/1.get-set-up.md).
