@@ -2,7 +2,23 @@
 
 App Registrations are required to set up security on Web API using [On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). The following setup walks you through steps required to create app registrations for the Azure Communication Services Authentication Server sample.
 
-## Server App Registration
+## [Set up App Registrations using script](../../AppCreationScripts/README.md)
+
+You need to clone the repository for this step: https://github.com/Azure-Samples/communication-services-authentication-hero-csharp
+
+```shell
+# HTTPS
+git clone https://github.com/Azure-Samples/communication-services-authentication-hero-csharp.git
+
+# SSH
+git clone git@github.com:Azure-Samples/communication-services-authentication-hero-csharp.git
+```
+
+Once the script is run in local environment as instructed, the `AzureActiveDirectory` fields are updated in **src/appsettings.json** from service app registration and `msalConfig.auth` fields are updated in **MinimalClient/src/authConfig.js** from client app registration in the cloned repository.
+
+## Set up App Registrations manually
+
+### Server App Registration
 
 Follow instructions on how to register your server application with Azure Active Directory [here](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
 
@@ -56,7 +72,7 @@ Follow instructions on how to register your server application with Azure Active
       1. In the editor, set `accessTokenAcceptedVersion` property to **2**.
       2. Click on **Save** on the top bar.
 
-## Client App Registration
+### Client App Registration
 
 **Note** - This client app registration will be used to manually generate the Azure Active Directory Token required to call Azure Active Directory protected Web API as there is no client application in the sample.
 

@@ -95,6 +95,10 @@ This Azure Communication Services Solutions - Authentication server sample provi
 
    > **Resolution:** Swap the Azure Communication Services resource used in the deployed sample as was used in prior deployment. Otherwise delete the extension within Graph Open extensions using the resolution step for above issue.
 
+3. For troubleshooting Azure Active Directory Token issues, please refer to [Troubleshoot AAD Token](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token).
+
+4. For troubleshooting consent issues during Azure Active Directory authentication flow, please refer to [Unexpected user consent error](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error#requesting-not-authorized-permissions-error), [Unexpected user consent prompt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt).
+
 ## Contributing
 
 Join us by making a contribution. To get you started check out our [contribution guidelines](CONTRIBUTING.md).
