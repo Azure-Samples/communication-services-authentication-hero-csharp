@@ -8,7 +8,7 @@
     Once you get the access token, make a GET request to `/api/token` endpoint with the access token as a Authorization Bearer header. Verify you get a successful status code (i.e. 200).
 
         ```shell
-        curl --location --request GET 'https://<replace with URL on your provisioned App Service OR localhost:5001>/api/token' \
+        curl --location --request GET 'https://<replace with URL on your provisioned App Service>/api/token  OR http://localhost:5000/api/token' \
 
         --header 'Authorization: Bearer <put access token here>'
         ```
