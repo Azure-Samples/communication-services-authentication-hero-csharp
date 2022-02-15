@@ -4,8 +4,9 @@
 
 ## Pre-Requisite
  - Backend server set up and running. (If deployed to a non local environment, modify SERVER_ADDRESS in acsAuthApiCaller.js)
- - Single page client app registered on Azure Active Directory 
- - Populate the authConfig.js file with the clientId, authority, redirectUri, and loginRequest Scope values from the app registrations (server and client).
+ - Single page client app registered on Azure Active Directory. 
+ - Populate the authConfig.js file with the clientId, authority, and redirectUri values from the client app registration.
+ - Populate the authConfig.js file with the loginRequest Scopes value from the server app registration - > Expose an API -> scopes.
 
 ## To run this client
 1. run `npm install`
