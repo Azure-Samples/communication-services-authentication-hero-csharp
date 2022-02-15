@@ -2,7 +2,7 @@
 page_type: sample
 languages:
 - csharp
-- .Net 5
+- .Net Core 3.1
 products:
 - azure
 - azure-communication-services
@@ -15,7 +15,7 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 [![CI](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/ci.yml/badge.svg)](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/codeql-analysis.yml)
 [![C#](https://img.shields.io/badge/%3C%2F%3E-C%23-blue)](https://dotnet.microsoft.com/languages/csharp)
-[![.Net 5.0](https://img.shields.io/badge/%3C%2F%3E-.Net5.0-%230074c1.svg)](https://dotnet.microsoft.com/)
+[![.Net Core 3.1](https://img.shields.io/badge/%3C%2F%3E-.Net Core 3.1-%230074c1.svg)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
@@ -101,12 +101,13 @@ This Azure Communication Services Solutions - Authentication server sample provi
 4. For troubleshooting consent issues during Azure Active Directory authentication flow, please refer to [Unexpected user consent error](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error#requesting-not-authorized-permissions-error), [Unexpected user consent prompt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt).
 
 ### Application Troubleshooting
-1. When running sample application in local, to troubleshoot unexpected error response on Apis, you could use `stacktrace` present in the response.
 
-2. When running the sample application in production e.g. Azure App Service, you can enable Application Insights to troubleshoot the Api failures in absence of application logs. 
+1. When running sample application in local, to troubleshoot unexpected error response on APIs, you could use `stacktrace` present in the response.
+
+2. When running the sample application in production e.g. Azure App Service, you can enable Application Insights to troubleshoot the API failures in absence of application logs. 
    > (i) You can refer to [Enable Application Insights on App Service](https://docs.microsoft.com/en-us/azure/azure-monitor/app/azure-web-apps-net-core?tabs=Linux%2Cwindows#enable-monitoring) for enabling Application Insights on web application deployed on App Service.
    >
-   > (ii) You can refer to [Analyze Failures](https://docs.microsoft.com/en-us/azure/azure-monitor/app/tutorial-runtime-exceptions#analyze-failures) on how to troubleshoot unexpected Api response. 
+   > (ii) You can refer to [Analyze Failures](https://docs.microsoft.com/en-us/azure/azure-monitor/app/tutorial-runtime-exceptions#analyze-failures) on how to troubleshoot unexpected API response. 
 
 ## Contributing
 
