@@ -15,7 +15,7 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 [![CI](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/ci.yml/badge.svg)](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/codeql-analysis.yml)
 [![C#](https://img.shields.io/badge/%3C%2F%3E-C%23-blue)](https://dotnet.microsoft.com/languages/csharp)
-[![.Net Core 3.1](https://img.shields.io/badge/%3C%2F%3E-.Net Core 3.1-%230074c1.svg)](https://dotnet.microsoft.com/)
+[![.Net Core 3.1](https://img.shields.io/badge/%3C%2F%3E-.%20Net%20Core%203.1-blue)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
