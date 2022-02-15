@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/src</RepositoryUrl>
     <PackageReleaseNotes>The release notes are available at https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/blob/main/CHANGELOG.md </PackageReleaseNotes>
     <ProjectGuid>{E84EE52D-D9C9-41D5-ACF9-A244A79FE212}</ProjectGuid>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>ACS.Solution.Authentication.Server</RootNamespace>
   </PropertyGroup>
 

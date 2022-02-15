@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See LICENSE.md in the project root for license information.
  *---------------------------------------------------------------------------------------------*/
 
- const SERVER_ADDRESS = 'https://localhost:5001/';
+ const SERVER_ADDRESS = 'http://localhost:5000/';
 
 export async function GetAcsToken(accessToken) {
   const headers = new Headers();
