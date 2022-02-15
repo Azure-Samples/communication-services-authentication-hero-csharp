@@ -23,6 +23,7 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 3. [Getting Started](#getting-started)
 4. [Endpoints](#endpoints)
 5. [Troubleshooting](#troubleshooting)
+   - 5.1 [Application Troubleshooting](#application-troubleshooting)
 6. [Contributing](#contributing)
 7. [Resources](#resources)
 8. [Trademark](#trademark)
@@ -98,6 +99,14 @@ This Azure Communication Services Solutions - Authentication server sample provi
 3. For troubleshooting Azure Active Directory Token issues, please refer to [Troubleshoot AAD Token](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token).
 
 4. For troubleshooting consent issues during Azure Active Directory authentication flow, please refer to [Unexpected user consent error](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error#requesting-not-authorized-permissions-error), [Unexpected user consent prompt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt).
+
+### Application Troubleshooting
+1. When running sample application in local, to troubleshoot unexpected error response on Apis, you could use `stacktrace` present in the response.
+
+2. When running the sample application in production e.g. Azure App Service, you can enable Application Insights to troubleshoot the Api failures in absence of application logs. 
+   > (i) You can refer to [Enable Application Insights on App Service](https://docs.microsoft.com/en-us/azure/azure-monitor/app/azure-web-apps-net-core?tabs=Linux%2Cwindows#enable-monitoring) for enabling Application Insights on web application deployed on App Service.
+   >
+   > (ii) You can refer to [Analyze Failures](https://docs.microsoft.com/en-us/azure/azure-monitor/app/tutorial-runtime-exceptions#analyze-failures) on how to troubleshoot unexpected Api response. 
 
 ## Contributing
 
