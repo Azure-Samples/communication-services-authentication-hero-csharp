@@ -24,10 +24,11 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 4. [Endpoints](#endpoints)
 5. [Troubleshooting](#troubleshooting)
    - 5.1 [Application Troubleshooting](#application-troubleshooting)
-6. [Contributing](#contributing)
-7. [Resources](#resources)
-8. [Trademark](#trademark)
-9. [License](#license)
+6. [Need Help](#need-help)
+7. [Contributing](#contributing)
+8. [Resources](#resources)
+9. [Trademark](#trademark)
+10. [License](#license)
 
 ## Overview
 
@@ -108,6 +109,9 @@ This Azure Communication Services Solutions - Authentication server sample provi
    > (i) You can refer to [Enable Application Insights on App Service](https://docs.microsoft.com/en-us/azure/azure-monitor/app/azure-web-apps-net-core?tabs=Linux%2Cwindows#enable-monitoring) for enabling Application Insights on web application deployed on App Service.
    >
    > (ii) You can refer to [Analyze Failures](https://docs.microsoft.com/en-us/azure/azure-monitor/app/tutorial-runtime-exceptions#analyze-failures) on how to troubleshoot unexpected API response. 
+
+## Need Help
+If you are are unable to find solution to the issue you are facing while running the sample on local or on production, you can use [Discussions Channel](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/discussions) to seek advise.
 
 ## Contributing
 
