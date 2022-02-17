@@ -2,7 +2,7 @@
 
 1. Testing with manually generated Azure Active Directory Token
 
-    - [Generate Azure Active Directory token manually](../test-tools/generate_aad_token_manually.md) to call secure Apis of Azure Communication Services Authentication Hero sample.
+    - [Generate Azure Active Directory token manually](../test-tools/generate-aad-token-manually.md) to call secure Apis of Azure Communication Services Authentication Hero sample.
 
     - Invoke the API
     Once you get the access token, make a GET request to `/api/token` endpoint with the access token as a Authorization Bearer header. Verify you get a successful status code (i.e. 200).
