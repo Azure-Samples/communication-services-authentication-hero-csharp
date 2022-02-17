@@ -18,6 +18,7 @@ let updatedAdapter = true;
 
 const TestCallContent = () => {
   const { instance, accounts } = useMsal();
+  const [acsToken, setAcsToken] = useState('');
   const [token, setToken] = useState('');
   const [acsID, setId] = useState('');
   const [callGUID, setCallGUID] = useState('');
@@ -26,7 +27,7 @@ const TestCallContent = () => {
   const [buttonText, setbuttonText] = useState('Join Default Call');
 
   async function RequestCallData() {
-    setCallGUID(document.getElementById('guidTextBox').value);
+    setCallGUID(document.getElementById('callGUIDTextBox').value);
     // Silently acquires an access token which is then attached to a request for MS Graph data
     setbuttonText('loading call');
     instance
@@ -39,7 +40,7 @@ const TestCallContent = () => {
         CreateOrGetACSUser(response.accessToken).then(() => {
 
           GetAcsToken(response.accessToken).then((message) => {
-            setToken(message.token);
+            setAcsToken(message.token);
             setId(message.user.id);
             
           });
@@ -50,12 +51,22 @@ const TestCallContent = () => {
       });
   }
 
-  if (username != '' && token != '' && acsID != '' && callAdapter == null && updatedAdapter && callGUID != '') {
+  // Silently acquires an access token
+  instance
+  .acquireTokenSilent({
+    ...loginRequest,
+    account: accounts[0]
+  })
+  .then((response) => {
+    setToken(response.accessToken);
+  });
+
+  if (username != '' && acsToken != '' && acsID != '' && callAdapter == null && updatedAdapter && callGUID != '') {
     updatedAdapter = false;
     createAzureCommunicationCallAdapter({
       userId: { communicationUserId: acsID },
       displayName: username,
-      credential: new AzureCommunicationTokenCredential(token),
+      credential: new AzureCommunicationTokenCredential(acsToken),
       locator: { groupId: callGUID }
     }).then((adapter) => setCallAdapter(adapter));
   }
@@ -71,11 +82,13 @@ const TestCallContent = () => {
   } else {
     return (
       <>
-        <h5 className="card-title">Welcome {accounts[0].name}</h5>
-        <label>Enter a GUID Or Use Generated GUID for the call ID</label>
-        <form>
-          <input type="text" defaultValue={uuidv4()} id="guidTextBox" />
-        </form>
+        <h5 className="card-title">Welcome {accounts[0].name} </h5>
+        <h5 className="card-title">Access Token :&nbsp;&nbsp;
+          <input type="text" defaultValue={token} id="accessTokenTextBox" />
+        </h5>
+        <h5 className="card-title">Call GUID :&nbsp;&nbsp;
+          <input type="text" defaultValue={uuidv4()} id="callGUIDTextBox" />
+        </h5>
         <Button variant="secondary" onClick={RequestCallData}>
           {buttonText}
         </Button>
