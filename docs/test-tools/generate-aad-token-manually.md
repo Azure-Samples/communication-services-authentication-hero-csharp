@@ -6,7 +6,7 @@
 The client app in those requests generally refers the client app registration. You can get the `<tenantid>` from the app registration **Overview** page as well. 
 You can get the `<redirect_uri from client app>` by navigating to **Authentication** page of the client app registration. You can get `<server api scope>` by navigating to the **Expose an Api** page of server app registartion and expanding the added scope.
 The full scope name of the server API should be used for the scope parameter in the below requests (e.g.: "api://1234-5678-abcd-efgh...../access_as_user").
-To learn more about manual generation of Azure Active Directory Token, please refer to [Get Azure AD Tokens by using web browser and curl](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/app-aad-token#get-azure-ad-tokens-by-using-a-web-browser-and-curl).
+To learn more about manual generation of Azure Active Directory Token, please refer to [Get Azure Active Directory Tokens by using web browser and curl](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/app-aad-token#get-azure-ad-tokens-by-using-a-web-browser-and-curl).
 
 1. You will need an access token using client app registration to call the API. In order to get the access token, open your browser in private mode and visit the link below. 
 

@@ -10,7 +10,7 @@
    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
    ```
 3. Make sure to [install AzureAD PowerShell Modules](#install-azuread-powershell-modules)
-4. Run the script to create your Azure AD application and configure the code of the sample application accordingly. (Other ways of running the scripts are described below). Please refer to the **sample.json** file to get an overview of changes.
+4. Run the script to create your Azure Active Directory application and configure the code of the sample application accordingly. (Other ways of running the scripts are described below). Please refer to the **sample.json** file to get an overview of changes.
    ```PowerShell
    cd .\AppCreationScripts\
    .\Configure.ps1
@@ -39,18 +39,18 @@ This sample comes with two PowerShell scripts, which automate the creation of th
 These scripts are:
 
 - `Configure.ps1` which:
-  - creates Azure AD applications and their related objects (permissions, dependencies, secrets),
+  - creates Azure Active Directory applications and their related objects (permissions, dependencies, secrets),
   - changes the configuration files in the C# WebApi and Test MinimalClient JavaScript projects.
-  - creates a summary file named `createdApps.html` in the folder from which you ran the script, and containing, for each Azure AD application it created:
+  - creates a summary file named `createdApps.html` in the folder from which you ran the script, and containing, for each Azure Active Directory application it created:
     - the identifier of the application
     - the AppId of the application
     - the url of its registration in the [Azure portal](https://portal.azure.com).
 
-- `Cleanup.ps1` which cleans-up the Azure AD objects created by `Configure.ps1`. Note that this script does not revert the changes done in the configuration files, though. You will need to undo the change from source control (from Visual Studio, or from the command line using, for instance, git reset).
+- `Cleanup.ps1` which cleans-up the Azure Active Directory objects created by `Configure.ps1`. Note that this script does not revert the changes done in the configuration files, though. You will need to undo the change from source control (from Visual Studio, or from the command line using, for instance, git reset).
 
 ### Usage pattern for tests and DevOps scenarios
 
-The `Configure.ps1` will stop if it tries to create an Azure AD application which already exists in the tenant. For this, if you are using the script to try/test the sample, or in DevOps scenarios, you might want to run `Cleanup.ps1` just before `Configure.ps1`. This is what is shown in the steps below.
+The `Configure.ps1` will stop if it tries to create an Azure Active Directory application which already exists in the tenant. For this, if you are using the script to try/test the sample, or in DevOps scenarios, you might want to run `Cleanup.ps1` just before `Configure.ps1`. This is what is shown in the steps below.
 
 ## How to use the app creation scripts?
 
