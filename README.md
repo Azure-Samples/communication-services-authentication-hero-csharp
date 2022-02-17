@@ -46,7 +46,7 @@ If you are looking to get started with Azure Communication Services, but are sti
 
 ![Azure Communication Services Authentication Server Sample Overview Flow](docs/images/ACS-Authentication-Server-Sample_Overview-Flow.png)
 
-Additional documentation for this sample can be found on [Microsoft Docs](https://docs.microsoft.com/azure/communication-services/samples/calling-hero-sample). !!! TODO: change link?
+Additional documentation for this sample can be found on [Microsoft Docs](https://docs.microsoft.com/azure/communication-services/samples/trusted-auth-sample).
 
 Since this sample only focuses on the server APIs, the client application is not part of it. If you want to add the client application to login user using Azure Active Directory, then please follow the MSAL samples [here](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet).
 
@@ -56,9 +56,8 @@ Before contributing to this sample, please read our [contribution guidelines](./
 
 To be able to run this sample, you will need to:
 
-- Register a Client and Server (Web API) applications in Azure Active Directory as part of [On Behalf Of workflow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Follow instructions on [registrations set up guideline](./docs/deployment-guides/set-up-app-registrations.md)
+- Register a Client and Server (Web API) applications in Azure Active Directory as part of [On Behalf Of workflow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Follow instructions on how to [set up App Registrations](./docs/deployment-guides/set-up-app-registrations.md)
 - Create an Azure Communication Services resource through [Azure Portal](https://portal.azure.com). Follow [Quickstart: Create and manage Communication Services resources](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp) to create an Azure Communication Services resource using Azure Portal.
-- Update the Server (Web API) application with information from the app registrations.
 
 ## Getting Started
 
@@ -97,7 +96,7 @@ This Azure Communication Services Solutions - Authentication server sample provi
 
    > **Resolution:** Swap the Azure Communication Services resource used in the deployed sample as was used in prior deployment. Otherwise delete the extension within Graph Open extensions using the resolution step for above issue.
 
-3. For troubleshooting Azure Active Directory Token issues, please refer to [Troubleshoot AAD Token](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token).
+3. For troubleshooting Azure Active Directory Token issues, please refer to [Troubleshoot Azure Active Directory Token](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token).
 
 4. For troubleshooting consent issues during Azure Active Directory authentication flow, please refer to [Unexpected user consent error](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error#requesting-not-authorized-permissions-error), [Unexpected user consent prompt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt).
 
@@ -105,9 +104,9 @@ This Azure Communication Services Solutions - Authentication server sample provi
 1. When running sample application in local, to troubleshoot unexpected error response on Apis, you could use `stacktrace` present in the response.
 
 2. When running the sample application in production e.g. Azure App Service, you can enable Application Insights to troubleshoot the Api failures in absence of application logs. 
-   > (i) You can refer to [Enable Application Insights on App Service](https://docs.microsoft.com/en-us/azure/azure-monitor/app/azure-web-apps-net-core?tabs=Linux%2Cwindows#enable-monitoring) for enabling Application Insights on web application deployed on App Service.
+   > (i) You can refer to [Enable Application Insights on App Service](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps-net-core?tabs=Linux%2Cwindows#enable-monitoring) for enabling Application Insights on web application deployed on App Service.
    >
-   > (ii) You can refer to [Analyze Failures](https://docs.microsoft.com/en-us/azure/azure-monitor/app/tutorial-runtime-exceptions#analyze-failures) on how to troubleshoot unexpected Api response. 
+   > (ii) You can refer to [Analyze Failures](https://docs.microsoft.com/azure/azure-monitor/app/tutorial-runtime-exceptions#analyze-failures) on how to troubleshoot unexpected Api response. 
 
 ## Need Help
 If you are are unable to find solution to the issue you are facing while running the sample on local or on production, you can use [Discussions Channel](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/discussions) to seek advise.
