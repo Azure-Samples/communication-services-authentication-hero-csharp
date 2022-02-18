@@ -33,14 +33,14 @@ As displayed in the Azure Communication Services Authentication Server flow diag
 
 **Server Side (Steps 3&4 in below dagram):**
 
-1. Once the user is authorizedpassing the Azure Active Directory token (as would be gained on client side) in Authorization Header of the API call request, the flow acquires another access token on behalf of the signed-in user using the [On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
+1. Once the user is authorized passing the Azure Active Directory token (as would be gained on client side) in Authorization Header of the API call request, the flow acquires another access token on behalf of the signed-in user using the [On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 2. The Web API then uses this new access token to call downstream APIs (Microsoft Graph in this sample).
 
 ![OBO Flow](../images/ACS-Authentication-Server-Sample_Secured-Web-API-Flow.png)
 
 ### Authorization Code Grant Flow (ACG Flow)
 
-In order to gain access to protected resources, such as web APIs, the application needs to"
+In order to gain access to protected resources, such as web APIs, the application needs to:
 - obtain an authentication code from the Microsoft identity platform `authorize` endpoint (`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`),
 - redeem it for an access token using the Microsoft identity platform `token` endpoint (`https://login.microsoftonline.com/common/oauth2/v2.0/token`) and a refresh token using cross-site web requests. 
 
