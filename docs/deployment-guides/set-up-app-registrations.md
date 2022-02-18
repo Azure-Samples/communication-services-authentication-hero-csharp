@@ -91,8 +91,8 @@ Follow instructions on how to register your client application with Azure Active
    1. Navigate to and click on **Certificates & secrets** menu item on the left to open the page where you can generate secrets and upload certificates.
 
       1. In the **Client secrets** section, click on **New client secret** to create a new one.
-      2. Type a key description (for instance `app secret`),
-      3. Select one of the available key durations (**In 1 year**, **In 2 years**, or **Never Expires**) as per your security posture.
+      2. Type a key description (for instance `app secret`).
+      3. Select one of the available key durations as per your security posture.
       4. The generated key value will be displayed when you click on the **Add** button. Copy the generated value for use in the steps later.
          > Note: You'll need this key later on in your code's configuration files. This key value will not be displayed again, and is not retrievable 
          by any other means, so make sure to note it from the Azure portal before navigating to any other screen or page.

@@ -7,7 +7,7 @@
 2. [Build Authentication Server Sample](#build-authentication-server-sample)
 3. [Run Authentication Server Sample](#run-authentication-server-sample)
    1. [Prerequisites to run the sample](#prerequisites-to-run-the-sample)
-   2. [Update the appSettings.json file](#update-the-appsettingsjson-file)
+   2. [Update the appsettings.json file](#update-the-appsettingsjson-file)
    3. [Run the App](#run-the-app)
 
 ## Get Set up
@@ -68,9 +68,9 @@ dotnet build
 ### Prerequisites to run the sample
 To be able to run this sample locally, you will first need to follow those [prerequisites](../../README.md#prerequisites).
 
-### Update the `appSettings.json` File
+### Update the `appsettings.json` File
 
-Before running the sample, you will need to replace the values in the  `appSettings.json` file:
+Before running the sample, you will need to replace the values in the  `appsettings.json` file:
 
 1. Replace `connectionString` and `scopes` for the Communication Services
 2. Replace `clientId`, `tenantId` and `clientSecret` for the Azure Active Directory.
