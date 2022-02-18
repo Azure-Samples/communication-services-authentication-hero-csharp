@@ -33,13 +33,11 @@
 
 3. We have two ways of testing the backend service
    - Calling the server directly with an Azure Active Directory Access Token
-   - Using a sample client
+   - Using the MinimalClient
 
    Please see the two options in detail here. [Test deployed service](../test-tools/test-backend-service.md).
 
-   Here is a set of endpoints that can be tested. [API Endpoints](../design-guides/endpoints-and-responses.md). 
-
-   For testing with the client, we currently use the `GET /api/token`, and `POST /api/user` endpoints.
+   Here is a set of endpoints that can be tested. [API Endpoints](../design-guides/endpoints-and-responses.md).
 
 
 **[Proceed to Architecture Overview ...](../design-guides/architecture-overview.md)**

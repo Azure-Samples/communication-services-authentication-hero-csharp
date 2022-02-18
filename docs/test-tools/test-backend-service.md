@@ -16,5 +16,5 @@
         ```
         > Note: If you are facing issues running the curl command, then try importing (File -> import -> raw text, paste the curl command and continue) the curl command in [Postman](https://www.postman.com/downloads/) and running it there
 
-2. Test the APIs using the MinimalClient
+2. Test the APIs using the MinimalClient (This will test the `GET /api/token`, and `POST /api/user` endpoints)
     -  Please take a look at the MinimalClient README.md [MinimalClient](../../MinimalClient/README.md)
