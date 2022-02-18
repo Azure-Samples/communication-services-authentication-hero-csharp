@@ -8,8 +8,7 @@
 3. [Run Authentication Server Sample](#run-authentication-server-sample)
    1. [Prerequisites to run the sample](#prerequisites-to-run-the-sample)
    2. [Update the appSettings.json file](#update-the-appsettingsjson-file)
-   3. [Generate an Azure Active Directory Token Manually](#generate-an-azure-active-directory-token-manually)
-   4. [Run the App](#run-the-app)
+   3. [Run the App](#run-the-app)
 
 ## Get Set up
 
