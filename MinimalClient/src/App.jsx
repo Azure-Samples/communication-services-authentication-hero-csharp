@@ -83,7 +83,7 @@ const TestCallContent = () => {
     return (
       <>
         <h5 className="card-title">Welcome {accounts[0].name} </h5>
-        <h5 className="card-title">Access Token :&nbsp;&nbsp;
+        <h5 className="card-title">AAD Access Token :&nbsp;&nbsp;
           <input type="text" defaultValue={token} id="accessTokenTextBox" />
         </h5>
         <h5 className="card-title">Call GUID :&nbsp;&nbsp;
