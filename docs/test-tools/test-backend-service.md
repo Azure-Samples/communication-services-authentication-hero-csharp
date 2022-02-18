@@ -4,6 +4,8 @@
 
     - [Generate Azure Active Directory token (Refer to steps 1 - 5)](../../MinimalClient/README.md) to call secure Apis of Azure Communication Services Authentication Hero sample.
 
+        - [You can also generate a token without a client if you prefer.](../test-tools/generate-aad-token-manually.md) *Note that this process is longer and has some complexities.
+
     - Invoke the API
     Once you get the access token, make a GET request to `/api/token` endpoint with the access token as a Authorization Bearer header. Verify you get a successful status code (i.e. 200).
 
