@@ -1,6 +1,6 @@
 # Test deployed service
 
-1. Testing manually with an Azure Active Directory Token
+1. Testing Backend APIs directly with an Azure Active Directory Token
 
     - [Generate Azure Active Directory token (Refer to steps 1 - 5)](../../MinimalClient/README.md) to call secure Apis of Azure Communication Services Authentication Hero sample.
 
