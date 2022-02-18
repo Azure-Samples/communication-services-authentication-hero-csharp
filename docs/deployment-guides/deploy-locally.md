@@ -99,7 +99,7 @@ In order to run the Azure Communication Services Authentication Server sample,
    > Note: You can also run the selected project using the Visual Studio.
 
 3. We have two ways of testing the backend service
-   - Using a manually generated token and calling the server directly
+   - Calling the server directly with an Azure Active Directory Access Token
    - Using a sample client
 
    Please see the two options in detail here. [Test deployed service](../test-tools/test-backend-service.md).
