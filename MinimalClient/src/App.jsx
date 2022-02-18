@@ -36,17 +36,15 @@ const TestCallContent = () => {
         account: accounts[0]
       })
       .then((response) => {
-
-        CreateOrGetACSUser(response.accessToken).then(() => {
-
-          GetAcsToken(response.accessToken).then((message) => {
-            setAcsToken(message.token);
-            setId(message.user.id);
-            
+        CreateOrGetACSUser(response.accessToken)
+        .then(() => {
+          GetAcsToken(response.accessToken)
+            .then((message) => {
+              setAcsToken(message.token);
+              setId(message.user.id);
           });
-
-        });
-        
+        })
+        .catch((error) => console.log(error));
         setUsername(response.account.username);
       });
   }
@@ -68,7 +66,9 @@ const TestCallContent = () => {
       displayName: username,
       credential: new AzureCommunicationTokenCredential(acsToken),
       locator: { groupId: callGUID }
-    }).then((adapter) => setCallAdapter(adapter));
+    })
+    .then((adapter) => setCallAdapter(adapter))
+    .catch((error) => console.log(error));;
   }
 
   if (callAdapter) {
