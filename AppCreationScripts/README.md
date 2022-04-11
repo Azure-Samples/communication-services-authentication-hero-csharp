@@ -6,17 +6,20 @@
 
 1. On Windows run PowerShell and navigate to the root of the cloned directory
 2. In PowerShell run:
+   
    ```PowerShell
    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
    ```
 3. Make sure to [install AzureAD PowerShell Modules](#install-azuread-powershell-modules)
 4. Run the script to create your Azure Active Directory application and configure the code of the sample application accordingly. (Other ways of running the scripts are described below). Please refer to the **sample.json** file to get an overview of changes.
+   
    ```PowerShell
    cd .\AppCreationScripts\
    .\Configure.ps1
    ```
 5. After running the script, there are manual steps presented on the PowerShell terminal if the script is completed successfully, please make sure to follow those.
-### More details
+   
+   ### More details
 
 If you prefer, you can directly go to the following paragraphs:
 
@@ -39,6 +42,7 @@ This sample comes with two PowerShell scripts, which automate the creation of th
 These scripts are:
 
 - `Configure.ps1` which:
+  
   - creates Azure Active Directory applications and their related objects (permissions, dependencies, secrets),
   - changes the configuration files in the C# WebApi and Test MinimalClient JavaScript projects.
   - creates a summary file named `createdApps.html` in the folder from which you ran the script, and containing, for each Azure Active Directory application it created:
@@ -57,23 +61,31 @@ The `Configure.ps1` will stop if it tries to create an Azure Active Directory ap
 ### Pre-requisites
 
 1. Open PowerShell (On Windows, press  `Windows-R` and type `PowerShell` in the search window)
+
 2. Navigate to the root directory of the project.
+
 3. Until you change it, the default [Execution Policy](https:/go.microsoft.com/fwlink/?LinkID=135170) for scripts is usually `Restricted`. In order to run the PowerShell script you need to set the Execution Policy to `RemoteSigned`. You can set this just for the current PowerShell process by running the command:
-    ```PowerShell
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-    ```
-### Install AzureAD PowerShell modules
-The scripts install the required PowerShell module (AzureAD) for the current user if needed. However, if you want to install it for all users on the machine, you can follow the following steps:
+   
+   ```PowerShell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+   ```
+   
+   ### Install AzureAD PowerShell modules
+   
+   The scripts install the required PowerShell module (AzureAD) for the current user if needed. However, if you want to install it for all users on the machine, you can follow the following steps:
 
 4. If you have never done it already, in the PowerShell window, install the AzureAD PowerShell modules. For this:
-
+   
    1. Open PowerShell as admin (On Windows, search **Powershell** in the Search bar, right click on it and select **Run as administrator**).
+   
    2. Type:
+      
       ```PowerShell
       Install-Module AzureAD
       ```
-
+      
       or if you cannot be administrator on your machine, run:
+      
       ```PowerShell
       Install-Module AzureAD -Scope CurrentUser
       ```
@@ -81,9 +93,10 @@ The scripts install the required PowerShell module (AzureAD) for the current use
 ### Run the script and start running
 
 5. Go to the `AppCreationScripts` sub-folder. From the folder where you cloned the repo,
-    ```PowerShell
-    cd AppCreationScripts
-    ```
+   
+   ```PowerShell
+   cd AppCreationScripts
+   ```
 6. Run the scripts. See below for the [four options](#four-ways-to-run-the-script) to do that.
 7. Open the Visual Studio solution, and in the solution's context menu, choose **Set Startup Projects**.
 8. select **Start** for the projects
@@ -98,6 +111,19 @@ We advise four ways of running the script:
 - Non-interactive: you will provide credentials, and the scripts decide in which tenant to create the objects,
 - Interactive in specific tenant:  you will provide the tenant in which you want to create the objects and then you will be prompted for credentials, and the scripts will create the objects,
 - Non-interactive in specific tenant: you will provide tenant in which you want to create the objects and credentials, and the scripts will create the objects.
+
+> Note: You need to add service principal for Azure Communication service manually when it is not existed.
+> 
+> 1. **How to check if service principal is existed**:
+>    
+>    ```PowerShell
+>    az ad sp show --id "Your-App-ID"
+>    ```
+> 2. **How to add service principal**:
+>    
+>    ```PowerShell
+>    New-AzureADServicePrincipal -AppId "Your-App-ID"
+>    ```
 
 Here are the details on how to do this.
 
@@ -124,6 +150,7 @@ Of course, in real life, you might already get the password as a `SecureString`.
 #### Option 3 (Interactive, but create apps in a specified tenant)
 
   if you want to create the apps in a particular tenant, you can use the following option:
+
 - open the [Azure portal](https://portal.azure.com)
 - Select the Azure Active Directory you are interested in (in the combo-box below your name on the top right of the browser window)
 - Find the "Active Directory" object in this tenant
@@ -161,7 +188,7 @@ The acceptable values for this parameter are:
 
 Example:
 
- ```PowerShell
- . .\Cleanup.ps1 -AzureEnvironmentName "AzureGermanyCloud"
- . .\Configure.ps1 -AzureEnvironmentName "AzureGermanyCloud"
- ```
+```PowerShell
+. .\Cleanup.ps1 -AzureEnvironmentName "AzureGermanyCloud"
+. .\Configure.ps1 -AzureEnvironmentName "AzureGermanyCloud"
+```
