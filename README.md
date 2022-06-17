@@ -2,7 +2,7 @@
 page_type: sample
 languages:
 - csharp
-- .Net Core 3.1
+- .Net 6.0
 products:
 - azure
 - azure-communication-services
@@ -15,7 +15,7 @@ Deploy to Azure using instructions [here](./docs/deployment-guides/deploy-and-te
 [![CI](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/ci.yml/badge.svg)](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/actions/workflows/codeql-analysis.yml)
 [![C#](https://img.shields.io/badge/%3C%2F%3E-C%23-blue)](https://dotnet.microsoft.com/languages/csharp)
-[![.Net Core 3.1](https://img.shields.io/badge/%3C%2F%3E-.%20Net%20Core%203.1-blue)](https://dotnet.microsoft.com/)
+[![.Net 6.0](https://img.shields.io/badge/%3C%2F%3E-.%20Net%206.0-blue)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 1. [Overview](#overview)
@@ -37,6 +37,7 @@ In order to properly implement a secure Azure Communication Services solutions, 
 This repository provides a sample of a server implementation of an authentication service for Azure Communication Services. It uses best practices to build a trusted backend service that issues Azure Communication Services credentials and maps them to Azure Active Directory identities. 
 
 This sample can help you in the following scenarios:
+
 1. As a developer, you need to enable an authentication flow for joining native Azure Communication Services and/or Teams Interop calling/chat which is done by mapping an Azure Communication Services identity to an Azure Active Directory identity and using this same Azure Communication Services identity for the user to fetch an Azure Communication Services token in every session.
 2. As a developer, you need to enable an authentication flow for Custom Teams Endpoint which is done by using an M365 Azure Active Directory identity of a Teams' user to fetch an Azure Communication Services token to be able to join Teams calling/chat.
 
@@ -84,16 +85,19 @@ If you're wondering where to get started, here are a few scenarios to help you g
 This Azure Communication Services Solutions - Authentication server sample provides responses for **user** and **token** endpoints. For more details, please check our [Endpoints and Responses designe doc](./docs/design-guides/endpoints-and-responses.md).
 
 ## Troubleshooting
-1. Maximum number of extensions values supported per application is 2.
-   > An application can add [at most two open extensions](https://docs.microsoft.com/graph/extensibility-overview#open-extension-limits) for an Azure Active Directory user. 
 
+1. Maximum number of extensions values supported per application is 2.
+   
+   > An application can add [at most two open extensions](https://docs.microsoft.com/graph/extensibility-overview#open-extension-limits) for an Azure Active Directory user. 
+   
    > **Resolution:** If more than 2 extensions are required, then Graph Open Extensions cannot be used to persist the Azure Communication Services Identity mapping as in the sample. You need to consider Alternative Identity Mapping as suggested in [Architecture Overview](./docs/design-guides/architecture-overview.md). Otherwise, you can delete the extensions following [Graph Open Extensions Delete API](https://docs.microsoft.com/graph/extensibility-open-users#4-delete-a-users-roaming-profile). You can delete the extension for any user, if you are M365 Tenant/Azure Active Directory Admin. You can use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) to execute for a single user.
 
 2. Provided identity doesn't belong to the resource.
+   
    > This issue happens if there is mismatch of Azure Communication Services Identity persisted within Graph Open Extensions user instance and the Azure Communication Services resource.
-   >
+   > 
    > The scenario would happen when the Azure Communication Service Identity mapping for a Azure Active Directory user account was created with one Azure Communication Services resource in the deployed sample and the Azure Communication Services resource changed with subsequent deployments. 
-
+   
    > **Resolution:** Swap the Azure Communication Services resource used in the deployed sample as was used in prior deployment. Otherwise delete the extension within Graph Open extensions using the resolution step for above issue.
 
 3. For troubleshooting Azure Active Directory Token issues, please refer to [Troubleshoot Azure Active Directory Token](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token).
@@ -101,14 +105,17 @@ This Azure Communication Services Solutions - Authentication server sample provi
 4. For troubleshooting consent issues during Azure Active Directory authentication flow, please refer to [Unexpected user consent error](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error#requesting-not-authorized-permissions-error), [Unexpected user consent prompt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt).
 
 ### Application Troubleshooting
+
 1. When running sample application in local, to troubleshoot unexpected error response on Apis, you could use `stacktrace` present in the response.
 
 2. When running the sample application in production e.g. Azure App Service, you can enable Application Insights to troubleshoot the Api failures in absence of application logs. 
+   
    > (i) You can refer to [Enable Application Insights on App Service](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps-net-core?tabs=Linux%2Cwindows#enable-monitoring) for enabling Application Insights on web application deployed on App Service.
-   >
+   > 
    > (ii) You can refer to [Analyze Failures](https://docs.microsoft.com/azure/azure-monitor/app/tutorial-runtime-exceptions#analyze-failures) on how to troubleshoot unexpected Api response. 
 
 ## Need Help
+
 If you are are unable to find solution to the issue you are facing while running the sample on local or on production, you can use [Discussions Channel](https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/discussions) to seek advise.
 
 ## Contributing

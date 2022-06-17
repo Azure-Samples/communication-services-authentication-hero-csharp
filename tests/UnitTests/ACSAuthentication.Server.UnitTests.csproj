@@ -15,7 +15,7 @@
     <RepositoryUrl>https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/tests/UnitTests</RepositoryUrl>
     <PackageReleaseNotes>The release notes are available at https://github.com/Azure-Samples/communication-services-authentication-hero-csharp/blob/main/CHANGELOG.md </PackageReleaseNotes>
     <ProjectGuid>{6A078371-4D1B-4636-AC4E-A6C9F5E45660}</ProjectGuid>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <RootNamespace>ACS.Solution.Authentication.Server.UnitTests</RootNamespace>
   </PropertyGroup>
