@@ -54,7 +54,7 @@ For more information, visit the following links:
 - To lean more about **Azure Communication Services - Identity**, visit:
   - [Quickstart: Create and manage access tokens](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp)
   - [Quickstart: Quickly create Azure Communication Services access tokens for testing](https://docs.microsoft.com/azure/communication-services/quickstarts/identity/quick-create-identity)
-  - [Azure Communication Services Identity JavaScript SDK](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Communication.Identity/1.0.0/index.html)
+  - [Azure Communication Services Identity .Net SDK](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Communication.Identity/1.0.0/index.html)
 - To learn more about **Microsoft Graph Open Extensions**, visit:
   - [Microsoft Graph Extensions Overview](https://docs.microsoft.com/graph/extensibility-overview)
   - [Add custom data to users using open extensions](https://docs.microsoft.com/graph/extensibility-open-users)
