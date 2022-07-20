@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Communication.Identity" Version="1.1.0-beta.1" />
+    <PackageReference Include="Azure.Communication.Identity" Version="1.1.0" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.21.1" />
     <PackageReference Include="Microsoft.Identity.Web.MicrosoftGraph" Version="1.21.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">

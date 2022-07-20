@@ -18,16 +18,19 @@ namespace ACS.Solution.Authentication.Server.Services
     public sealed class ACSService : IACSService
     {
         private readonly CommunicationServicesSettingsModel _communicationServicesSettings;
+        private readonly AzureActiveDirectorySettingsModel _azureActiveDirectorySettingsOptions;
         private readonly CommunicationIdentityClient _identityClient;
 
         /// <summary>
         /// Initializes a new instance of Azure.Communication.Identity.CommunicationIdentityClient.
         /// </summary>
         /// <param name="communicationServicesSettingsOptions">The Communication Services settings object in appsettings file.</param>
+        /// <param name="azureActiveDirectorySettingsOptions">The Azure Active Directory settings object in appsettings file.</param>
         /// <param name="identityClient">The Azure Communication Services Identity client.</param>
-        public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions, CommunicationIdentityClient identityClient = null)
+        public ACSService(IOptionsMonitor<CommunicationServicesSettingsModel> communicationServicesSettingsOptions, IOptionsMonitor<AzureActiveDirectorySettingsModel> azureActiveDirectorySettingsOptions = null, CommunicationIdentityClient identityClient = null)
         {
             _communicationServicesSettings = communicationServicesSettingsOptions.CurrentValue;
+            _azureActiveDirectorySettingsOptions = azureActiveDirectorySettingsOptions.CurrentValue;
             _identityClient = identityClient ?? new CommunicationIdentityClient(_communicationServicesSettings.ConnectionString);
         }
 
@@ -52,7 +55,7 @@ namespace ACS.Solution.Authentication.Server.Services
         {
             CommunicationTokenScope[] tokenScopes = GetCommunicationTokenScopes();
             // Issue an access token with the given scope for an identity
-            CommunicationUserIdentifier identity = new CommunicationUserIdentifier(acsUserId);
+            CommunicationUserIdentifier identity = new (acsUserId);
             Response<AccessToken> tokenResponse = await _identityClient.GetTokenAsync(identity, scopes: tokenScopes);
 
             return tokenResponse.Value;
@@ -61,14 +64,13 @@ namespace ACS.Solution.Authentication.Server.Services
         /// <summary>
         /// Exchange an AAD access token of a Teams user for a new Communication Services AccessToken with a matching expiration time.
         /// </summary>
-        /// <param name="aadTokan">The Azure AD token of the Teams user.</param>
+        /// <param name="teamsUserAadToken">The Azure AD token of the Teams user.</param>
+        /// <param name="userObjectId">Object ID of an Azure AD user (Teams User) to be verified against the OID claim in the Azure AD access token.</param>
         /// <returns>An ACS access token with the given scope for a given ACS identity.</returns>
-        public async Task<AccessToken> GetACSTokenForTeamsUser(string aadTokan)
+        public async Task<AccessToken> GetACSTokenForTeamsUser(string teamsUserAadToken, string userObjectId)
         {
             // Issue an access token for the Teams user that can be used with the Azure Communication Services SDKs.
-            // Notice: the function name will be renamed to exchangeTeamsUserAadToken
-            // Know more, please read this https://github.com/Azure/azure-sdk-for-net/pull/24846#issuecomment-948489542
-            Response<AccessToken> tokenResponse = await _identityClient.GetTokenForTeamsUserAsync(aadTokan);
+            Response<AccessToken> tokenResponse = await _identityClient.GetTokenForTeamsUserAsync(new GetTokenForTeamsUserOptions(teamsUserAadToken, _azureActiveDirectorySettingsOptions.ClientId, userObjectId));
 
             return tokenResponse.Value;
         }
@@ -95,7 +97,7 @@ namespace ACS.Solution.Authentication.Server.Services
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         public async Task DeleteACSUserIdentity(string acsUserId)
         {
-            CommunicationUserIdentifier identity = new CommunicationUserIdentifier(acsUserId);
+            CommunicationUserIdentifier identity = new (acsUserId);
             await _identityClient.DeleteUserAsync(identity);
         }
 

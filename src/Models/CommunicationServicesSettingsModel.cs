@@ -16,7 +16,7 @@ namespace ACS.Solution.Authentication.Server.Models
         public const string CommunicationServicesSettingsName = "CommunicationServices";
 
         /// <summary>
-        /// Gets or sets conection string of Communication Services.
+        /// Gets or sets connection string of Communication Services.
         /// </summary>
         public string ConnectionString { get; set; }
 

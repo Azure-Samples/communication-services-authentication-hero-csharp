@@ -35,15 +35,16 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
         [Fact]
         public void CreateACSUserIdentity_Returns_ACSUserId()
         {
-            Mock<CommunicationIdentityClient> mockACSClient = new Mock<CommunicationIdentityClient>();
-            Mock<IOptionsMonitor<CommunicationServicesSettingsModel>> optionsMonitorMock = new Mock<IOptionsMonitor<CommunicationServicesSettingsModel>>();
+            Mock<CommunicationIdentityClient> mockACSClient = new();
+            Mock<IOptionsMonitor<CommunicationServicesSettingsModel>> optionsMonitorMock = new();
+            Mock<IOptionsMonitor<AzureActiveDirectorySettingsModel>> aadOptionsMonitorMock = new();
 
             const string ACS_USER_ID = "John";
             Response<CommunicationUserIdentifier> communicationUserIdentifierResponse = Response.FromValue(new CommunicationUserIdentifier(ACS_USER_ID), null);
 
             mockACSClient.Setup(g => g.CreateUserAsync(CancellationToken.None)).Returns(Task.Run(() => communicationUserIdentifierResponse)).Verifiable();
 
-            ACSService ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object);
+            ACSService ACSService = new(optionsMonitorMock.Object, aadOptionsMonitorMock.Object, mockACSClient.Object);
             Task<string> returnedACSUserIdentity = ACSService.CreateACSUserIdentity();
 
             Assert.Equal(ACS_USER_ID, returnedACSUserIdentity.Result);
@@ -52,13 +53,14 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
         [Fact]
         public void CreateACSToken_Returns_AccessToken()
         {
-            Mock<CommunicationIdentityClient> mockACSClient = new Mock<CommunicationIdentityClient>();
-            Mock<IOptionsMonitor<CommunicationServicesSettingsModel>> optionsMonitorMock = new Mock<IOptionsMonitor<CommunicationServicesSettingsModel>>();
+            Mock<CommunicationIdentityClient> mockACSClient = new();
+            Mock<IOptionsMonitor<CommunicationServicesSettingsModel>> optionsMonitorMock = new();
+            Mock<IOptionsMonitor<AzureActiveDirectorySettingsModel>> aadOptionsMonitorMock = new();
 
             const string ACS_USER_ID = "John";
             const string TOKEN_VALUE = "John_TOKEN117";
 
-            CommunicationServicesSettingsModel communicationServiceSettingsModel = new CommunicationServicesSettingsModel();
+            CommunicationServicesSettingsModel communicationServiceSettingsModel = new();
             communicationServiceSettingsModel.Scopes = new string[] { "chat", "voip" };
             Response<AccessToken> accessTokenResponse = Response.FromValue(new AccessToken(TOKEN_VALUE, DateTime.Now), null);
 
@@ -66,7 +68,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
             CommunicationTokenScope[] scopes = GetCommunicationTokenScopes(optionsMonitorMock.Object.CurrentValue);
             mockACSClient.Setup(g => g.GetTokenAsync(new CommunicationUserIdentifier(ACS_USER_ID), scopes, CancellationToken.None)).Returns(Task.Run(() => accessTokenResponse)).Verifiable();
 
-            ACSService ACSService = new ACSService(optionsMonitorMock.Object, mockACSClient.Object);
+            ACSService ACSService = new(optionsMonitorMock.Object, aadOptionsMonitorMock.Object, mockACSClient.Object);
             Task<AccessToken> returnedACSUserIdentity = ACSService.CreateACSToken(ACS_USER_ID);
 
             Assert.Equal(TOKEN_VALUE, returnedACSUserIdentity.Result.Token);

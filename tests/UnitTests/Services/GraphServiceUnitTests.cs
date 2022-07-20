@@ -19,14 +19,14 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
         [Fact]
         public void GetACSUserId_With_Existing_User_Returns_ACSUserId()
         {
-            Mock<IAuthenticationProvider> mockAuthProvider = new Mock<IAuthenticationProvider>();
-            Mock<IHttpProvider> mockHttpProvider = new Mock<IHttpProvider>();
-            Mock<GraphServiceClient> mockGraphClient = new Mock<GraphServiceClient>(mockAuthProvider.Object, mockHttpProvider.Object);
-            Mock<IOptionsMonitor<GraphSettingsModel>> optionsMonitorMock = new Mock<IOptionsMonitor<GraphSettingsModel>>();
+            Mock<IAuthenticationProvider> mockAuthProvider = new();
+            Mock<IHttpProvider> mockHttpProvider = new();
+            Mock<GraphServiceClient> mockGraphClient = new(mockAuthProvider.Object, mockHttpProvider.Object);
+            Mock<IOptionsMonitor<GraphSettingsModel>> optionsMonitorMock = new();
 
             const string ACS_USER_ID = "John";
 
-            GraphSettingsModel graphSettingsModel = new GraphSettingsModel();
+            GraphSettingsModel graphSettingsModel = new();
             graphSettingsModel.ExtensionName = "com.contoso.identityMapping";
 
             optionsMonitorMock.SetupGet(g => g.CurrentValue).Returns(graphSettingsModel);
@@ -39,7 +39,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
                 AdditionalData = new Dictionary<string, object>() { { IdentityMapping.IdentityMappingKeyName, ACS_USER_ID } },
             };
 
-            User testUser = new User
+            User testUser = new()
             {
                 Extensions = new UserExtensionsCollectionPage() { extension },
             };
@@ -47,7 +47,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
             mockGraphClient.Setup(g => g.Me.Request().Expand("extensions").Select("id").GetAsync(CancellationToken.None)).Returns(Task.Run(() => testUser)).Verifiable();
 
 
-            GraphService mockGraphService = new GraphService(mockGraphClient.Object, optionsMonitorMock.Object);
+            GraphService mockGraphService = new(mockGraphClient.Object, optionsMonitorMock.Object);
             Task<string> returnedACSUserId = mockGraphService.GetACSUserId();
 
             Assert.Equal(ACS_USER_ID, returnedACSUserId.Result);
@@ -57,22 +57,22 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Service
         [Fact]
         public void GetACSUserId_With_No_ACS_Extension_Returns_Null()
         {
-            Mock<IAuthenticationProvider> mockAuthProvider = new Mock<IAuthenticationProvider>();
-            Mock<IHttpProvider> mockHttpProvider = new Mock<IHttpProvider>();
-            Mock<GraphServiceClient> mockGraphClient = new Mock<GraphServiceClient>(mockAuthProvider.Object, mockHttpProvider.Object);
-            Mock<IOptionsMonitor<GraphSettingsModel>> optionsMonitorMock = new Mock<IOptionsMonitor<GraphSettingsModel>>();
+            Mock<IAuthenticationProvider> mockAuthProvider = new();
+            Mock<IHttpProvider> mockHttpProvider = new();
+            Mock<GraphServiceClient> mockGraphClient = new(mockAuthProvider.Object, mockHttpProvider.Object);
+            Mock<IOptionsMonitor<GraphSettingsModel>> optionsMonitorMock = new();
 
-            User testUser = new User
+            User testUser = new()
             {
                 Extensions = new UserExtensionsCollectionPage() { },
             };
 
-            GraphSettingsModel graphSettingsModel = new GraphSettingsModel();
+            GraphSettingsModel graphSettingsModel = new();
 
             mockGraphClient.Setup(g => g.Me.Request().Expand("extensions").Select("id").GetAsync(CancellationToken.None)).Returns(Task.Run(() => testUser)).Verifiable();
             optionsMonitorMock.SetupGet(g => g.CurrentValue).Returns(graphSettingsModel);
 
-            GraphService mockGraphService = new GraphService(mockGraphClient.Object, optionsMonitorMock.Object);
+            GraphService mockGraphService = new(mockGraphClient.Object, optionsMonitorMock.Object);
             Task<string> returnedToken = mockGraphService.GetACSUserId();
 
             Assert.Null(returnedToken.Result);

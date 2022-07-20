@@ -18,8 +18,8 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
         [Fact]
         public void GetACSTokenAsync_IdentityMappingExists_Returns_Status201()
         {
-            Mock<IGraphService> mockGraphService = new Mock<IGraphService>();
-            Mock<IACSService> mockAcsService = new Mock<IACSService>();
+            Mock<IGraphService> mockGraphService = new();
+            Mock<IACSService> mockAcsService = new();
 
             const string EXISTING_USERID = "UserId123";
             const string EXISTING_USERID_TOKENVAL = "UserId123_TokenVal";
@@ -27,7 +27,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
             mockGraphService.Setup(mg => mg.GetACSUserId()).Returns(Task.Run(() => EXISTING_USERID));
             mockAcsService.Setup(ma => ma.CreateACSToken(EXISTING_USERID)).Returns(Task.Run(() => new AccessToken(EXISTING_USERID_TOKENVAL, DateTime.Now)));
 
-            TokenController tokenController = new TokenController(mockAcsService.Object, mockGraphService.Object);
+            TokenController tokenController = new(mockAcsService.Object, mockGraphService.Object);
             Task<ActionResult> returnedTokenResult = tokenController.GetACSTokenAsync();
             ObjectResult returnedToken = returnedTokenResult.Result as ObjectResult;
 
