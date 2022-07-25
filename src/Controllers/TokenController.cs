@@ -92,8 +92,9 @@ namespace ACS.Solution.Authentication.Server.Controllers
 
         /// <summary>
         /// Exchange Azure AD token of a Teams user for an ACS access token using the Azure Communication Services Identity SDK.
-        /// 1. Get an AAD user access token passed through request header
-        /// 2. Initialize a Communication Identity Client and then issue an ACS access token for the Teams user.
+        /// 1. Get an Azure AD token with Teams.ManageCalls and Teams.ManageChats delegated permissions passed through the 'teams-user-aad-token' header.
+        /// 2. Get Azure AD user object ID obtained from the oid claim of the token received in the Authorization header.
+        /// 3. Initialize a Communication Identity Client and then issue an ACS access token for the Teams user.
         /// </summary>
         /// <param name="teamsUserAadToken">An Azure AD token with Teams.ManageCalls and Teams.ManageChats delegated permissions.</param>
         /// <response code="201">ACS token is successfully generated.</response>
@@ -103,7 +104,7 @@ namespace ACS.Solution.Authentication.Server.Controllers
         [RequiredScope("access_as_user")] // This is the scope we gave the AuthService when registering the application.
         [HttpGet]
         [Route("teams")]
-        public async Task<ActionResult> ExchangeAADTokenAsync([FromBody] string teamsUserAadToken)
+        public async Task<ActionResult> ExchangeAADTokenAsync([FromHeader(Name = "teams-user-aad-token")] string teamsUserAadToken)
         {
             // Exchange the Azure AD token of a Teams user for a Communication token
             AccessToken acsTokenForTeamsUser = await _acsService.GetACSTokenForTeamsUser(teamsUserAadToken, User.GetObjectId());
