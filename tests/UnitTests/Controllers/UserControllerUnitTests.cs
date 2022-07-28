@@ -24,7 +24,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
             mockGraphService.Setup(mg => mg.GetACSUserId()).Returns(Task.Run(() => EXISTING_USERID));
 
             var userController = new Server.Controllers.UserController(mockACSService.Object, mockGraphService.Object);
-            var returnedACSUserResult = userController.GetACSUser();
+            Task<ActionResult> returnedACSUserResult = userController.GetACSUser();
             var returnedUser = returnedACSUserResult.Result as OkObjectResult;
 
             IdentityMapping map = (IdentityMapping)returnedUser.Value;
@@ -40,7 +40,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
             var mockACSService = new Mock<IACSService>();
 
             var userController = new Server.Controllers.UserController(mockACSService.Object, mockGraphService.Object);
-            var returnedACSUserResult = userController.GetACSUser();
+            Task<ActionResult> returnedACSUserResult = userController.GetACSUser();
             var returnedUser = returnedACSUserResult.Result as ObjectResult;
 
             Assert.Equal(404, returnedUser.StatusCode);
@@ -58,7 +58,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
             mockGraphService.Setup(mg => mg.AddIdentityMapping(NEW_USERID)).Returns(Task.Run(() => NEW_USERID));
 
             var userController = new Server.Controllers.UserController(mockACSService.Object, mockGraphService.Object);
-            var returnedACSUserResult = userController.CreateACSUser();
+            Task<ActionResult> returnedACSUserResult = userController.CreateACSUser();
             var returnedUser = returnedACSUserResult.Result as ObjectResult;
 
             Assert.Equal(NEW_USERID, (returnedUser.Value as IdentityMapping).ACSUserIdentity);
@@ -77,7 +77,7 @@ namespace ACS.Solution.Authentication.Server.UnitTests.Controllers
             mockGraphService.Setup(mg => mg.GetACSUserId()).Returns(Task.Run(() => NEW_USERID));
 
             var userController = new Server.Controllers.UserController(mockACSService.Object, mockGraphService.Object);
-            var deleteACSUserResult = userController.DeleteACSUser();
+            Task<IActionResult> deleteACSUserResult = userController.DeleteACSUser();
             var returnedStatusCode = deleteACSUserResult.Result as StatusCodeResult;
 
             Assert.Equal(204, returnedStatusCode.StatusCode);

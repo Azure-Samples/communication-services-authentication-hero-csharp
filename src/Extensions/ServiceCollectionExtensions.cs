@@ -32,7 +32,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
         }
 
         /// <summary>
-        /// Add all setting models realted to the appsettings to the service container with Configure and bound to configuration.
+        /// Add all setting models related to the appsettings to the service container with Configure and bound to configuration.
         /// </summary>
         /// <param name="services">A collection of service descriptors.</param>
         /// <param name="configuration">Represents a set of key/value application configuration properties.</param>
@@ -45,6 +45,8 @@ namespace ACS.Solution.Authentication.Server.Extensions
             // Add GraphSettingsModel to the service container with Configure and bound to configuration
             services.Configure<GraphSettingsModel>(
                 configuration.GetSection(GraphSettingsModel.GraphSettingsName));
+            // Add AzureActiveDirectorySettingsModel to the service container with Configure and bound to configuration
+            services.Configure<AzureActiveDirectorySettingsModel>(configuration.GetSection(AzureActiveDirectorySettingsModel.AzureActiveDirectorySettingsName));
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace ACS.Solution.Authentication.Server.Extensions
         }
 
         /// <summary>
-        /// Add all downstream apis to the service container.
+        /// Add all downstream APIs to the service container.
         /// </summary>
         /// <param name="services">A collection of service descriptors.</param>
         /// <param name="configuration">Represents a set of key/value application configuration properties.</param>

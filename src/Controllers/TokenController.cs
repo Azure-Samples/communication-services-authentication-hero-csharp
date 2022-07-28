@@ -2,16 +2,15 @@
 // Licensed under the MIT License. See LICENSE.md in the project root for license information.
 
 using System;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ACS.Solution.Authentication.Server.Interfaces;
 using ACS.Solution.Authentication.Server.Models;
 using Azure.Communication;
-using Azure.Communication.Identity;
 using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.Resource;
 
 namespace ACS.Solution.Authentication.Server.Controllers
@@ -27,7 +26,6 @@ namespace ACS.Solution.Authentication.Server.Controllers
         private readonly IGraphService _graphService;
 
         // Error message
-        private const string NoAuthorizationCodeError = "Fail to get the authorization code from the request header";
         private const string NoIdentityMappingError = "There is no identity mapping information stored in Microsoft Graph";
 
         /// <summary>
@@ -93,35 +91,25 @@ namespace ACS.Solution.Authentication.Server.Controllers
         }
 
         /// <summary>
-        /// Exchange AAD token for an ACS access token of Teams user using the Azure Communication Services Identity SDK.
-        /// 1. Get an AAD user access token passed through request header
-        /// 2. Initialize a Communication Identity Client and then issue an ACS access token for the Teams user.
+        /// Exchange Azure AD token of a Teams user for an ACS access token using the Azure Communication Services Identity SDK.
+        /// 1. Get an Azure AD token with Teams.ManageCalls and Teams.ManageChats delegated permissions passed through the 'teams-user-aad-token' header.
+        /// 2. Get Azure AD user object ID obtained from the oid claim of the token received in the Authorization header.
+        /// 3. Initialize a Communication Identity Client and then issue an ACS access token for the Teams user.
         /// </summary>
-        /// <param name="authorization">The authorization string to validate.</param>
+        /// <param name="teamsUserAadToken">An Azure AD token with Teams.ManageCalls and Teams.ManageChats delegated permissions.</param>
         /// <response code="201">ACS token is successfully generated.</response>
         /// <response code="401">Fail to get an authorization code from the request header.</response>
         /// <returns>If authorizing successfully, an ACS access token for the Teams user. Otherwise, an unauthorized error message.</returns>
+        [Authorize]
+        [RequiredScope("access_as_user")] // This is the scope we gave the AuthService when registering the application.
         [HttpGet]
         [Route("teams")]
-        public async Task<ActionResult> ExchangeAADTokenAsync([FromHeader] string authorization)
+        public async Task<ActionResult> ExchangeAADTokenAsync([FromHeader(Name = "teams-user-aad-token")] string teamsUserAadToken)
         {
-            if (AuthenticationHeaderValue.TryParse(authorization, out var headerValue))
-            {
-                // Get an AAD token passed through request header
-                string aadTokenViaRequest = headerValue.Parameter;
-                // Exchange the AAD user token for the Teams access token
-                AccessToken acsTokenForTeamsUser = await _acsService.GetACSTokenForTeamsUser(aadTokenViaRequest);
+            // Exchange the Azure AD token of a Teams user for a Communication token
+            AccessToken acsTokenForTeamsUser = await _acsService.GetACSTokenForTeamsUser(teamsUserAadToken, User.GetObjectId());
 
-                return StatusCode(StatusCodes.Status201Created, acsTokenForTeamsUser);
-            }
-            else
-            {
-                return StatusCode(StatusCodes.Status401Unauthorized, new ErrorDetails()
-                {
-                    StatusCode = StatusCodes.Status401Unauthorized,
-                    Message = NoAuthorizationCodeError,
-                });
-            }
+            return StatusCode(StatusCodes.Status201Created, acsTokenForTeamsUser);
         }
     }
 }

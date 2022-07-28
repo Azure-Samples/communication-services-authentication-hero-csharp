@@ -12,5 +12,10 @@ namespace ACS.Solution.Authentication.Server.Models
         /// The Key name of Azure Active Directory settings in appsettings file.
         /// </summary>
         public const string AzureActiveDirectorySettingsName = "AzureActiveDirectory";
+
+        /// <summary>
+        /// Client ID of an Azure AD application.
+        /// </summary>
+        public string ClientId { get; set; }
     }
 }
