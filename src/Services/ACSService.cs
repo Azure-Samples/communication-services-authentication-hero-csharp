@@ -62,10 +62,10 @@ namespace ACS.Solution.Authentication.Server.Services
         }
 
         /// <summary>
-        /// Exchange an AAD access token of a Teams user for a new Communication Services AccessToken with a matching expiration time.
+        /// Exchange an Microsoft Entra access token of a Teams user for a new Communication Services AccessToken with a matching expiration time.
         /// </summary>
-        /// <param name="teamsUserAadToken">The Azure AD token of the Teams user.</param>
-        /// <param name="userObjectId">Object ID of an Azure AD user (Teams User) to be verified against the OID claim in the Azure AD access token.</param>
+        /// <param name="teamsUserAadToken">The Microsoft Entra token of the Teams user.</param>
+        /// <param name="userObjectId">Object ID of an Microsoft Entra user (Teams User) to be verified against the OID claim in the Microsoft Entra access token.</param>
         /// <returns>An ACS access token with the given scope for a given ACS identity.</returns>
         public async Task<AccessToken> GetACSTokenForTeamsUser(string teamsUserAadToken, string userObjectId)
         {

@@ -73,7 +73,7 @@ To be able to run this sample locally, you will first need to follow those [prer
 Before running the sample, you will need to replace the values in the  `appsettings.json` file:
 
 1. Replace `connectionString` and `scopes` for the Communication Services
-2. Replace `clientId`, `tenantId` and `clientSecret` for the Azure Active Directory.
+2. Replace `clientId`, `tenantId` and `clientSecret` for the Microsoft Entra ID.
 
 >**Note:** Values of `clientId`, `tenantId` and `clientSecret` are all from your `auther-server-sample-webApi`. If you created the app registrations in [prerequisites](#prerequisites-to-run-the-sample) using app creation scripts, then you should already have these values updated in your local repository.
 
@@ -98,7 +98,7 @@ In order to run the Azure Communication Services Authentication Server sample,
    > Note: You can also run the selected project using the Visual Studio.
 
 3. We have two ways of testing the backend service
-   - Calling the backend APIs directly with an Azure Active Directory Access Token
+   - Calling the backend APIs directly with an Microsoft Entra Access Token
    - Using the MinimalClient
 
    Please see the two options in detail here. [Test backend service](../test-tools/test-backend-service.md).
@@ -106,6 +106,8 @@ In order to run the Azure Communication Services Authentication Server sample,
    Here is a set of endpoints that can be tested. [API Endpoints](../design-guides/endpoints-and-responses.md).
 
 
-4. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint, please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Azure Active Directory Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
+4. During local development/testing, if the identity mapping needs to be verified in Graph for `/api/user` and `/api/token` endpoint, please use [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). Sign in with your Microsoft Entra Identity and verify the response on GET `https://graph.microsoft.com/v1.0/me/extensions` endpoint.
 
 >**Note:** Want to contribute to this sample and help us make it even better? Check our [contribution guide](../contribution-guides/1.get-set-up.md).
+
+
