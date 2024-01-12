@@ -1,6 +1,6 @@
 {
     "Sample": {
-        "Title": "A client application that calls an ASP.NET Core Web API protected by Azure AD using OAuth 2.0 access tokens. ",
+        "Title": "A client application that calls an ASP.NET Core Web API protected by Microsoft Entra using OAuth 2.0 access tokens. ",
         "Level": 200,
         "Client": "SPA client application - UI to test Web Api",
         "Service": "ASP.NET Core Web API",
