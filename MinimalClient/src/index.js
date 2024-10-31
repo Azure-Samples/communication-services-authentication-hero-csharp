@@ -21,7 +21,7 @@ const msalInstance = new PublicClientApplication(msalConfig);
 /**
  * We recommend wrapping most or all of your components in the MsalProvider component. It's best to render the MsalProvider as close to the root as possible.
  */
-createRoot('root').render(
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <MsalProvider instance={msalInstance}>
       <App />
