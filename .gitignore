@@ -6,6 +6,7 @@ src/[Bb]in/
 src/[Oo]bj/
 tests/UnitTests/[Bb]in/
 tests/UnitTests/[Oo]bj/
+MinimalClient/build/
 
 # Debug user profile
 src/ACSAuthentication.Server.csproj.user
