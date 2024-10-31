@@ -4,7 +4,7 @@
  *---------------------------------------------------------------------------------------------*/
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.css';
 import App from './App.jsx';
@@ -21,11 +21,10 @@ const msalInstance = new PublicClientApplication(msalConfig);
 /**
  * We recommend wrapping most or all of your components in the MsalProvider component. It's best to render the MsalProvider as close to the root as possible.
  */
-ReactDOM.render(
+createRoot('root').render(
   <React.StrictMode>
     <MsalProvider instance={msalInstance}>
       <App />
     </MsalProvider>
   </React.StrictMode>,
-  document.getElementById('root')
 );
